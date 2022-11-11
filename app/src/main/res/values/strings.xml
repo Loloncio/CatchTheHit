@@ -14,11 +14,3 @@
     <dimen name="players_20">20dp</dimen>
 
 </resources>
-<!--<drawable name="team_icon">team_icon</drawable>
-<drawable name="field_icon">field_icon</drawable>
-<drawable name="howto_icon">howto_icon</drawable>
-<drawable name="red_p">red_player</drawable>
-<drawable name="blue_p">red_player</drawable>
-    <drawable name="green_p">green_player</drawable>
-    <drawable name="purple_p">purple_player</drawable>
-    <drawable name="player_con">player_icon</drawable>-->

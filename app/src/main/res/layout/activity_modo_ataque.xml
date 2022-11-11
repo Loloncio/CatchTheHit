@@ -25,7 +25,7 @@
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        tools:srcCompat="@drawable/board" />
+        tools:srcCompat="@drawable/campo" />
 
     <ImageView
         android:id="@+id/Hitter1"
@@ -285,6 +285,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:background="#FFFFFF"
+                    android:clickable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
