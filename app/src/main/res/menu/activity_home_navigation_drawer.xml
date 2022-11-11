@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_Field"
+            android:title="@string/menu_field" />
+
+        <item
+            android:id="@+id/nav_Player"
+            android:title="@string/menu_player" />
+
+
+        <item
+            android:id="@+id/nav_Team"
+            android:title="@string/menu_team" />
+
+        <item
+            android:id="@+id/nav_HowTo"
+            android:title="@string/menu_howto" />
+
+
+</group>
+
+</menu>
+<!--android:icon="@drawable/field_icon"
+android:icon="@drawable/player_icon"
+android:icon="@drawable/team_icon"
+android:icon="@drawable/howto_icon"-->

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CatchTheHit</string>
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="navigation_drawer_close">Drawer Closed</string>
+    <string name="menu_field">Tablero</string>
+    <string name="menu_player">Tu jugador</string>
+    <string name="menu_team">Equipo</string>
+    <string name="menu_howto">Como jugar</string>
+    <dimen name="icon_width"> 150dp</dimen>
+    <dimen name="icon_heigth"> 150dp</dimen>
+    <dimen name="name_width">150dp</dimen>
+    <dimen name="name_heigth">50dp</dimen>
+    <dimen name="players_10">10dp</dimen>
+    <dimen name="players_20">20dp</dimen>
+
+</resources>
+<!--<drawable name="team_icon">team_icon</drawable>
+<drawable name="field_icon">field_icon</drawable>
+<drawable name="howto_icon">howto_icon</drawable>
+<drawable name="red_p">red_player</drawable>
+<drawable name="blue_p">red_player</drawable>
+    <drawable name="green_p">green_player</drawable>
+    <drawable name="purple_p">purple_player</drawable>
+    <drawable name="player_con">player_icon</drawable>-->
