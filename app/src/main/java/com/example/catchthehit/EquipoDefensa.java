@@ -3,7 +3,9 @@ package com.example.catchthehit;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class EquipoDefensa extends AppCompatActivity {
@@ -43,5 +45,19 @@ public class EquipoDefensa extends AppCompatActivity {
         player_cyan.setText("Charlie");
         player_yellow.setText("Andrey");
 
+    }
+
+    public void clickField(View v) {
+        //Creamos el intent
+        Intent intent = new Intent(EquipoDefensa.this, DefensaActivity.class);
+
+        startActivity(intent);
+    }
+
+    public void clickPlayer(View v) {
+        //Creamos el intent
+        Intent intent = new Intent(EquipoDefensa.this, ModoAtaque.class);
+
+        startActivity(intent);
     }
 }

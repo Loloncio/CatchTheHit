@@ -26,6 +26,8 @@ public class EquipoAtaque extends AppCompatActivity implements NavigationView.On
     private TextView player_red;
     private TextView player_blue;
     private TextView player_purple;
+    private ImageView field;
+    private ImageView player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,22 @@ public class EquipoAtaque extends AppCompatActivity implements NavigationView.On
         player_red.setText("Ted");
         player_blue.setText("Willie");
         player_purple.setText("Stan");
+        field = (ImageView) findViewById(R.id.field);
+        player = (ImageView) findViewById(R.id.player);
+    }
+
+    public void clickField(View v) {
+        //Creamos el intent
+        Intent intent = new Intent(EquipoAtaque.this, ModoAtaque.class);
+
+        startActivity(intent);
+    }
+
+    public void clickPlayer(View v) {
+        //Creamos el intent
+        Intent intent = new Intent(EquipoAtaque.this, ModoAtaque.class);
+
+        startActivity(intent);
     }
 
 

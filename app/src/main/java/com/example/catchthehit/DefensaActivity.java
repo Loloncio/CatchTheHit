@@ -1,4 +1,4 @@
-package com.example.pruebaa3;
+package com.example.catchthehit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
