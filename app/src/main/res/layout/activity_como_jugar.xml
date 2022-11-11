@@ -4,8 +4,8 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_cesped"
-    tools:context="com.example.movilesp1.ComoJugar">
+    android:background="@drawable/fondo_inicio"
+    tools:context="com.example.catchthehit.ComoJugar">
 
     <LinearLayout
         android:orientation="vertical"

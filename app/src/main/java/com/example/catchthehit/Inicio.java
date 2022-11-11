@@ -20,7 +20,7 @@ public class Inicio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_inicio);
         //Obtenemos una referencia a los controles de la interfaz
         btnCrearGrupo = (Button)findViewById(R.id.BtnCrearGrupo);
         btnComoJugar = (Button)findViewById(R.id.BtnComoJugar);
