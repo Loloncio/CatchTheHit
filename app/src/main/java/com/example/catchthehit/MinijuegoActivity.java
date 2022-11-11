@@ -1,4 +1,4 @@
-package com.example.pruebaa3;
+package com.example.catchthehit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +22,7 @@ public class MinijuegoActivity extends AppCompatActivity {
 
     public void clickBotonBolaBuena(View v) {
         //Creamos el intent
-        Intent intent = new Intent(MinijuegoActivity.this, MovimientoActivity.class);
+        Intent intent = new Intent(MinijuegoActivity.this, ModoAtaque.class);
 
         //Iniciamos la nueva actividad
         startActivity(intent);
