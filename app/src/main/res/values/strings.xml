@@ -16,10 +16,6 @@
     <string name="resumen_ronda_tu_equipo_puntos">puntos</string>
     <string name="resumen_ronda_equipo_rival_puntos">puntos</string>
     <string name="siguiente_ronda_button">Siguiente ronda</string>
-
-    <string name="prueba1">prueba1</string>
-
-    <string name="prueba">Prueba</string>
     <string name="boton_empezar">Empezar juego</string>
     <string name="botonComoJugar">¿Cómo jugar?</string>
     <string name="boton_1">1 ronda (demo)</string>
