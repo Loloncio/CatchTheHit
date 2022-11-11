@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="@drawable/fondo_cesped"
     >
 
     <androidx.appcompat.widget.Toolbar
@@ -20,7 +20,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/player"
         android:layout_width="@dimen/icon_width"
         android:layout_height="@dimen/icon_heigth"
         android:layout_marginStart="45dp"
@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/player_icon" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/field"
         android:layout_width="@dimen/icon_width"
         android:layout_height="@dimen/icon_heigth"
         android:layout_marginTop="30dp"

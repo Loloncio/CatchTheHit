@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_cesped"
+    tools:context="com.example.movilesp1.ComoJugar">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        >
+
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:id="@+id/videoView" />
+
+        <Button
+            android:text="PLAY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/botonPlay"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/botonPause"
+            android:layout_toStartOf="@+id/botonPause"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:text="PAUSE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/botonPause"
+            android:layout_alignBaseline="@+id/botonPlay"
+            android:layout_alignBottom="@+id/botonPlay"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:text="STOP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/botonStop"
+            android:layout_alignBaseline="@+id/botonPause"
+            android:layout_alignBottom="@+id/botonPause"
+            android:layout_toRightOf="@+id/botonPause"
+            android:layout_toEndOf="@+id/botonPause"
+            />
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,88 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tableLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_row="5"
+    android:layout_column="5" >
 
-    <TextView
-        android:id="@+id/textView3"
+    <Button
+        android:id="@+id/minijuego"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="Equipo ataque"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="37dp"
+        android:onClick="clickMinijuego"
+        android:text="Minijuego"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintTop_toBottomOf="@+id/equipo_at" />
+
+    <Button
+        android:id="@+id/inicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="47dp"
+        android:onClick="clickInicio"
+        android:text="Inicio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/howto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="157dp"
-        android:layout_marginTop="@dimen/players_20"
-        android:layout_marginEnd="157dp"
-        android:text="Equipo defensa"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="37dp"
+        android:onClick="clickHowto"
+        android:text="How To"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EquipoAtaque" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="165dp"
-        android:layout_marginTop="@dimen/players_20"
-        android:layout_marginEnd="164dp"
-        android:text="Modo ataque"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EquipoDefensa" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/EquipoAtaque"
+        android:id="@+id/ataque"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="@dimen/players_20"
-        android:layout_marginEnd="129dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="36dp"
+        android:onClick="clickAtaque"
+        android:text="Tablero ataque"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inicio" />
+
+    <Button
+        android:id="@+id/equipo_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="37dp"
         android:onClick="clickEquipoAtaque"
-        android:text="Equipo ataque"
+        android:text="Equipo atacantes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/partida" />
 
     <Button
-        android:id="@+id/EquipoDefensa"
+        android:id="@+id/equipo_def"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="@dimen/players_20"
-        android:layout_marginEnd="124dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="35dp"
         android:onClick="clickEquipoDefensa"
-        android:text="Equipo defensa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text="Equipo defensores"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/ataque" />
 
     <Button
-        android:id="@+id/ModoAtaque"
+        android:id="@+id/resumen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="@dimen/players_20"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="228dp"
-        android:onClick="clickModoAtaque"
-        android:text="Modo ataque"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="38dp"
+        android:onClick="clickResumen"
+        android:text="Resumen ronda"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/equipo_def" />
+
+    <Button
+        android:id="@+id/partida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="37dp"
+        android:onClick="clickRondas"
+        android:text="Selección rondas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/howto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+

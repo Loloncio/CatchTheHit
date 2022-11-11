@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/fondo_cesped">
+
+    <TextView
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CATCH THE HIT"
+        android:textSize="50dp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"/>
+
+    <EditText
+        android:id="@+id/TxtEdad"
+        android:layout_marginTop="175dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:gravity="center_horizontal"
+        android:inputType="text"
+        android:text="CÃ³digo de partida" />
+
+    <Button
+        android:id="@+id/BtnCrearGrupo"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#8f989e"
+        android:onClick="clickBotonEmpezarJuego"
+        android:text="@string/boton_empezar" />
+
+    <Button
+        android:id="@+id/BtnComoJugar"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#73bbee"
+        android:onClick="clickBotonComoJugar"
+        android:text="@string/botonComoJugar" />
+
+
+</LinearLayout>
