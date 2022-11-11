@@ -12,5 +12,10 @@
     <dimen name="name_heigth">50dp</dimen>
     <dimen name="players_10">10dp</dimen>
     <dimen name="players_20">20dp</dimen>
+    <string name="resumen_ronda_titulo">Final de la ronda</string>
+    <string name="resumen_ronda_tu_equipo_puntos">puntos</string>
+    <string name="resumen_ronda_equipo_rival_puntos">puntos</string>
+    <string name="siguiente_ronda_button">Siguiente ronda</string>
+
 
 </resources>
