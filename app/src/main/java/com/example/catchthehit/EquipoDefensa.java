@@ -49,7 +49,7 @@ public class EquipoDefensa extends AppCompatActivity {
 
     public void clickField(View v) {
         //Creamos el intent
-        Intent intent = new Intent(EquipoDefensa.this, DefensaActivity.class);
+        Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
         startActivity(intent);
     }

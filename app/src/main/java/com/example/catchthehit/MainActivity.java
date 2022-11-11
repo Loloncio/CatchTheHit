@@ -37,21 +37,21 @@ public class MainActivity extends AppCompatActivity {
     //Implementamos el evento click del botón
     public void clickInicio(View v) {
         //Creamos el intent
-        Intent intent = new Intent(MainActivity.this, EquipoAtaque.class);
+        Intent intent = new Intent(MainActivity.this, Inicio.class);
 
         startActivity(intent);
     }
 
     public void clickHowto(View v) {
         //Creamos el intent
-        Intent intent = new Intent(MainActivity.this, EquipoDefensa.class);
+        Intent intent = new Intent(MainActivity.this, ComoJugar.class);
 
         startActivity(intent);
     }
 
     public void clickRondas(View v) {
         //Creamos el intent
-        Intent intent = new Intent(MainActivity.this, ModoAtaque.class);
+        Intent intent = new Intent(MainActivity.this, CrearGrupos.class);
 
         startActivity(intent);
     }

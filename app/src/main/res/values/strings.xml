@@ -6,8 +6,8 @@
     <string name="menu_player">Tu jugador</string>
     <string name="menu_team">Equipo</string>
     <string name="menu_howto">Como jugar</string>
-    <dimen name="icon_width"> 150dp</dimen>
-    <dimen name="icon_heigth"> 150dp</dimen>
+    <dimen name="icon_width">150dp</dimen>
+    <dimen name="icon_heigth">150dp</dimen>
     <dimen name="name_width">150dp</dimen>
     <dimen name="name_heigth">50dp</dimen>
     <dimen name="players_10">10dp</dimen>
@@ -17,6 +17,13 @@
     <string name="resumen_ronda_equipo_rival_puntos">puntos</string>
     <string name="siguiente_ronda_button">Siguiente ronda</string>
     <string name="prueba">Prueba</string>
+    <string name="boton_empezar">Empezar juego</string>
+    <string name="botonComoJugar">¿Cómo jugar?</string>
+    <string name="boton_1">1 ronda (demo)</string>
+    <string name="boton_2">2 rondas</string>
+    <string name="boton_3">3 rondas</string>
+    <string name="boton_4">4 rondas</string>
+    <string name="boton_5">5 rondas</string>
 
 
 </resources>
