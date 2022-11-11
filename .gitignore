@@ -83,3 +83,6 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+#strings.xml
+./app/src/main/res/values/strings.xml
