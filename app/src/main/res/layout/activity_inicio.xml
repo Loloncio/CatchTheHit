@@ -22,13 +22,15 @@
 
     <EditText
         android:id="@+id/TxtEdad"
-        android:layout_marginTop="175dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
+        android:layout_marginTop="175dp"
+        android:backgroundTintMode="add"
+        android:breakStrategy="high_quality"
         android:gravity="center_horizontal"
         android:inputType="text"
-        android:text="CÃ³digo de partida" />
+        android:text="Código de partida" />
 
     <Button
         android:id="@+id/BtnCrearGrupo"
