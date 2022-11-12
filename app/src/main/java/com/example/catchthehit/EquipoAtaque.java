@@ -55,7 +55,7 @@ public class EquipoAtaque extends AppCompatActivity implements NavigationView.On
 
     public void clickPlayer(View v) {
         //Creamos el intent
-        Intent intent = new Intent(EquipoAtaque.this, ModoAtaque.class);
+        Intent intent = new Intent(EquipoAtaque.this, Jugador.class);
 
         startActivity(intent);
     }

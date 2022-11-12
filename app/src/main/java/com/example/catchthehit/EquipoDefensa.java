@@ -56,7 +56,7 @@ public class EquipoDefensa extends AppCompatActivity {
 
     public void clickPlayer(View v) {
         //Creamos el intent
-        Intent intent = new Intent(EquipoDefensa.this, ModoAtaque.class);
+        Intent intent = new Intent(EquipoDefensa.this, Jugador.class);
 
         startActivity(intent);
     }
