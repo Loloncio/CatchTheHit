@@ -108,6 +108,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resumen" />
 
+    <Button
+        android:id="@+id/jugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="41dp"
+        android:onClick="clickJugador"
+        android:text="Jugador"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minijuego" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
