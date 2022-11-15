@@ -39,5 +39,5 @@ public class Inicio extends AppCompatActivity {
         Intent intent = new Intent(Inicio.this, CrearGrupos.class);
         startActivity(intent);
     }
-
+// SOLO YO PROBANDO COSAS, DO NOT WORRY XD
 }
