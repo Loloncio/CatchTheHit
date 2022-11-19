@@ -1,8 +1,10 @@
-package com.example.catchthehit;
+package es.uva.inf.smov.catchthehit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import es.uva.inf.smov.catchthehit.R;
 
 public class ModoAtaque extends AppCompatActivity {
 

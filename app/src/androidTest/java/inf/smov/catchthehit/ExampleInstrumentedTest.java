@@ -1,4 +1,4 @@
-package com.example.catchthehit;
+package inf.smov.catchthehit;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.catchthehit", appContext.getPackageName());
+        assertEquals("es.uva.inf.smov.catchthehit", appContext.getPackageName());
     }
 }

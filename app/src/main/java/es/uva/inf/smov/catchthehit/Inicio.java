@@ -1,4 +1,4 @@
-package com.example.catchthehit;
+package es.uva.inf.smov.catchthehit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import es.uva.inf.smov.catchthehit.R;
 
 
 public class Inicio extends AppCompatActivity {

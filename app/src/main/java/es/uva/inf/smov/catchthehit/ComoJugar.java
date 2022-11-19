@@ -1,15 +1,16 @@
-package com.example.catchthehit;
+package es.uva.inf.smov.catchthehit;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.media.MediaPlayer;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
 
-import java.io.IOException;
+import es.uva.inf.smov.catchthehit.R;
+
 
 public class ComoJugar extends AppCompatActivity implements View.OnClickListener{
     private Button btnPlay;

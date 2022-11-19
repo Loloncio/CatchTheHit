@@ -1,4 +1,4 @@
-package com.example.catchthehit;
+package es.uva.inf.smov.catchthehit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import es.uva.inf.smov.catchthehit.R;
 
 public class EquipoDefensa extends AppCompatActivity {
 

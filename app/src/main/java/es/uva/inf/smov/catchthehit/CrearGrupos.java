@@ -1,10 +1,10 @@
-package com.example.catchthehit;
+package es.uva.inf.smov.catchthehit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import es.uva.inf.smov.catchthehit.R;
 
 public class CrearGrupos extends AppCompatActivity {
 

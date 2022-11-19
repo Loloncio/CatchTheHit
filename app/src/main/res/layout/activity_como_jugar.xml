@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_inicio"
-    tools:context="com.example.catchthehit.ComoJugar">
+    tools:context="es.uva.inf.smov.catchthehit.inf.example.catchthehit.ComoJugar">
 
     <LinearLayout
         android:orientation="vertical"

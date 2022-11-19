@@ -1,4 +1,4 @@
-package com.example.catchthehit;
+package inf.smov.catchthehit;
 
 import org.junit.Test;
 

@@ -1,14 +1,15 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    namespace 'com.example.catchthehit'
+    namespace 'es.uva.inf.smov.catchthehit'
     compileSdk 32
     compileOptions.encoding "ISO-8859-1"
 
     defaultConfig {
-        applicationId "com.example.catchthehit"
+        applicationId "es.uva.inf.smov.catchthehit"
         minSdk 28
         targetSdk 32
         versionCode 1
