@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "833204329396",
+    "project_id": "catch-the-hit",
+    "storage_bucket": "catch-the-hit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833204329396:android:6b7facead70f98fecbb0e1",
+        "android_client_info": {
+          "package_name": "es.uva.inf.smov.catchthehit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833204329396-jdj3ip4mvvtpqiqv2i7elst3o9lrr7jv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZkm-LJvIXt8f7_QQZn3rnJ_NUZkzDBw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833204329396-jdj3ip4mvvtpqiqv2i7elst3o9lrr7jv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

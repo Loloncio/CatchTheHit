@@ -1,9 +1,11 @@
-package com.example.catchthehit;
+package es.uva.inf.smov.catchthehit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
+import es.uva.inf.smov.catchthehit.R;
 
 public class ResumenRonda extends AppCompatActivity {
 
