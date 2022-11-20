@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "833204329396",
+    "firebase_url": "https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "catch-the-hit",
     "storage_bucket": "catch-the-hit.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:833204329396:android:6b7facead70f98fecbb0e1",
+        "mobilesdk_app_id": "1:833204329396:android:2085eaa55f681749cbb0e1",
         "android_client_info": {
           "package_name": "es.uva.inf.smov.catchthehit"
         }
