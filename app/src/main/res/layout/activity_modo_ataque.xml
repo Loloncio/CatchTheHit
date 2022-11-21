@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA">
-
-    <androidx.appcompat.widget.Toolbar
+    android:background="@drawable/fondo_cesped">
+    <!--
+        <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -15,450 +15,104 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="406dp"
-        android:layout_height="366dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        tools:srcCompat="@drawable/attack_field" />
-
-    <ImageView
-        android:id="@+id/Hitter1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="264dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/blue_hitter" />
-
-    <ImageView
-        android:id="@+id/Hitter4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="152dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/red_hitter" />
-
-    <ImageView
-        android:id="@+id/Hitter3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/purple_hitter" />
-
-    <ImageView
-        android:id="@+id/Hitter2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="152dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/green_hitter" />
+        -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/attack_field"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/Hitter1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/blue_hitter" />
+
+        <ImageView
+            android:id="@+id/Hitter2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.47"
+            app:srcCompat="@drawable/green_hitter" />
+
+        <ImageView
+            android:id="@+id/Hitter4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.47"
+            app:srcCompat="@drawable/red_hitter" />
+
+        <ImageView
+            android:id="@+id/Hitter3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="182dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="170dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/purple_hitter" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:background="#7524681D"
+        android:background="@drawable/border"
+        android:backgroundTint="#6C9F50"
         android:backgroundTintMode="src_over"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
+            android:background="@drawable/border"
+            android:backgroundTint="#6C9F50"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
             tools:layout_editor_absoluteX="0dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/movimientos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:backgroundTint="#6C9F50"
+                android:orientation="vertical"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="5dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/attack_option3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="#FFFFFF"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/attack_option2">
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Avanza 3 bases"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imageView18"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fuerza3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9"
-                        app:srcCompat="@drawable/resistencia" />
-
-                    <ImageView
-                        android:id="@+id/imageView19"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9"
-                        app:srcCompat="@drawable/velocidad" />
-
-                    <ImageView
-                        android:id="@+id/imageView20"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView18"
-                        app:layout_constraintStart_toEndOf="@+id/imageView19"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9"
-                        app:srcCompat="@drawable/fuerza" />
-
-                    <TextView
-                        android:id="@+id/velocidad3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="13dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView19"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                    <TextView
-                        android:id="@+id/fuerza3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="13dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView20"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                    <TextView
-                        android:id="@+id/energia3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView18"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/attack_option_rest"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="#FFFFFF"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/attack_option3">
-
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Descansa"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imageView21"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fuerza4"
-                        app:layout_constraintTop_toBottomOf="@+id/textView10"
-                        app:srcCompat="@drawable/resistencia" />
-
-                    <ImageView
-                        android:id="@+id/imageView22"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView10"
-                        app:srcCompat="@drawable/velocidad" />
-
-                    <ImageView
-                        android:id="@+id/imageView23"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView21"
-                        app:layout_constraintStart_toEndOf="@+id/imageView22"
-                        app:layout_constraintTop_toBottomOf="@+id/textView10"
-                        app:srcCompat="@drawable/fuerza" />
-
-                    <TextView
-                        android:id="@+id/velocidad4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="13dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView22"
-                        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-                    <TextView
-                        android:id="@+id/fuerza4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="13dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView23"
-                        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-                    <TextView
-                        android:id="@+id/energia4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView21"
-                        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/attack_option1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="#FFFFFF"
-                    android:clickable="false"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Avanza 1 base"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.501"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imageView14"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fuerza1"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7"
-                        app:srcCompat="@drawable/resistencia" />
-
-                    <ImageView
-                        android:id="@+id/imageView12"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7"
-                        app:srcCompat="@drawable/velocidad" />
-
-                    <ImageView
-                        android:id="@+id/imageView13"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView14"
-                        app:layout_constraintStart_toEndOf="@+id/imageView12"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7"
-                        app:srcCompat="@drawable/fuerza" />
-
-                    <TextView
-                        android:id="@+id/velocidad1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="13dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView12"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                    <TextView
-                        android:id="@+id/fuerza1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="13dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView13"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                    <TextView
-                        android:id="@+id/energia1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView14"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/attack_option2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="#FFFFFF"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/attack_option1">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Avanza 2 bases"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imageView15"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fuerza2"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
-                        app:srcCompat="@drawable/resistencia" />
-
-                    <ImageView
-                        android:id="@+id/imageView16"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
-                        app:srcCompat="@drawable/velocidad" />
-
-                    <ImageView
-                        android:id="@+id/imageView17"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView15"
-                        app:layout_constraintStart_toEndOf="@+id/imageView16"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
-                        app:srcCompat="@drawable/fuerza" />
-
-                    <TextView
-                        android:id="@+id/velocidad2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="13dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView16"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-                    <TextView
-                        android:id="@+id/fuerza2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="13dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView17"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-                    <TextView
-                        android:id="@+id/energia2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:text="TextView"
-                        app:layout_constraintStart_toEndOf="@+id/imageView15"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </ScrollView>
 
         <TextView
@@ -466,7 +120,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="TextView"
+            android:text="Elige una opción"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -475,6 +129,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
