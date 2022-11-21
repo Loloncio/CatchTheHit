@@ -71,7 +71,6 @@
         android:layout_height="@dimen/icon_heigth"
         android:layout_marginStart="@dimen/players_20"
         android:layout_marginTop="30dp"
-        android:background="@drawable/borde_jugador"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:srcCompat="@drawable/red_player" />
