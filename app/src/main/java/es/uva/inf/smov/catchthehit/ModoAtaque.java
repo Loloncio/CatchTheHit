@@ -22,22 +22,50 @@ public class ModoAtaque extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo_ataque);
         layout = (ViewGroup) findViewById(R.id.movimientos);
-        String tirada = " Avanza 1 base";
-        addChild(tirada);
-        tirada = "Avanza 2 bases";
-        addChild(tirada);
+        addTirada(1);
+        addTirada(2);
+        addTirada(3);
+        addTirada(0);
     }
 
     @SuppressLint("InlinedApi")
-    private void addChild(String tirada) {
-
+    private void addTirada(int avance) {
         LayoutInflater inflater = LayoutInflater.from(this);
         int id = R.layout.movimiento;
-
         ConstraintLayout relativeLayout = (ConstraintLayout) inflater.inflate(id, null, false);
 
-        TextView textView = (TextView) relativeLayout.findViewById(R.id.textView);
-        textView.setText(String.valueOf(tirada));
+        TextView movimiento = (TextView) relativeLayout.findViewById(R.id.textView);
+        movimiento.setText("Avanza " + String.valueOf(avance));
+        TextView fuerza = (TextView) relativeLayout.findViewById(R.id.fuerzaMov);
+        TextView velocidad = (TextView) relativeLayout.findViewById(R.id.velocidadMov);;
+        TextView energia = (TextView) relativeLayout.findViewById(R.id.energiaMov);;
+
+        switch (avance){
+            case 1:
+                fuerza.setText("- "+"2");
+                velocidad.setText("- "+"2");
+                energia.setText("- "+"5");
+                break;
+
+            case 2:
+                fuerza.setText("- "+"4");
+                velocidad.setText("- "+"4");
+                energia.setText("- "+"10");
+                break;
+
+            case 3:
+                fuerza.setText("- "+"6");
+                velocidad.setText("- "+"6");
+                energia.setText("- "+"15");
+                break;
+
+            default:
+                movimiento.setText("Descansa");
+                fuerza.setText("- "+"0");
+                velocidad.setText("- "+"0");
+                energia.setText("+ "+"5");
+
+        }
 
         layout.addView(relativeLayout);
     }
