@@ -14,6 +14,7 @@ public class Jugador {
     private int posicion;
     private boolean ready;
     private boolean enjuego;
+    private Test test;
 
     public Jugador(String nombbre){
         String nombre;
@@ -25,6 +26,7 @@ public class Jugador {
         resistencia = 100;
         ready = false;
         enjuego = true;
+        test = new Test();
     }
 
     public String getUsuario(){
