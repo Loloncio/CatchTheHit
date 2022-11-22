@@ -13,77 +13,91 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name="es.uva.inf.smov.catchthehit.Jugador"
+            android:name=".Resultados"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.Inicio"
+            android:name=".Test"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.ModoAtaque"
+            android:name=".Jugador"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.EquipoAtaque"
+            android:name=".Inicio"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.EquipoDefensa"
+            android:name=".ModoAtaque"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.ComoJugar"
+            android:name=".EquipoAtaque"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.CrearGrupos"
+            android:name=".EquipoDefensa"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.MinijuegoActivity"
+            android:name=".ComoJugar"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.ResumenRonda"
+            android:name=".CrearGrupos"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.ModoDefensa"
+            android:name=".MinijuegoActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="es.uva.inf.smov.catchthehit.MainActivity"
+            android:name=".ResumenRonda"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ModoDefensa"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
