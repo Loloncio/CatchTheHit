@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import es.uva.inf.smov.catchthehit.R;
-
 public class MainActivity extends AppCompatActivity {
 
     private Button btnInicio;
@@ -102,6 +100,19 @@ public class MainActivity extends AppCompatActivity {
     public void clickJugador(View v) {
         //Creamos el intent
         Intent intent = new Intent(MainActivity.this, Jugador.class);
+
+        startActivity(intent);
+    }
+
+    public void clickTest(View v) {
+        //Creamos el intent
+        Intent intent = new Intent(MainActivity.this, Test.class);
+
+        startActivity(intent);
+    }
+    public void clickResultados(View v) {
+        //Creamos el intent
+        Intent intent = new Intent(MainActivity.this, Resultados.class);
 
         startActivity(intent);
     }
