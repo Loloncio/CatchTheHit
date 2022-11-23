@@ -13,9 +13,10 @@
         android:alpha="0.4"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/field" />
+        app:srcCompat="@drawable/attack_field" />
 
     <TextView
         android:id="@+id/resumen_ronda_titulo"

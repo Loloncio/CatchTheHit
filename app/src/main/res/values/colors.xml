@@ -10,5 +10,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="fondo">#75FFFFFF</color>
+    <color name="lightgreen2">#3F7A1F</color>
 
 </resources>

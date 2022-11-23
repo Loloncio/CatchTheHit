@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnMinijuego;
     private Button btnDefensa;
     private Button btnJugador;
+    private Button btnEventosSpeciales;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         btnResumen = (Button)findViewById(R.id.resumen);
         btnDefensa = (Button)findViewById(R.id.defensa);
         btnJugador = (Button)findViewById(R.id.jugador);
+        btnEventosSpeciales = findViewById(R.id.eventosSpeciales);
 
     }
 
@@ -113,6 +115,13 @@ public class MainActivity extends AppCompatActivity {
     public void clickResultados(View v) {
         //Creamos el intent
         Intent intent = new Intent(MainActivity.this, Resultados.class);
+
+        startActivity(intent);
+    }
+
+    public void clickEventosSpeciales(View v) {
+        //Creamos el intent
+        Intent intent = new Intent(MainActivity.this, EventosSpeciales.class);
 
         startActivity(intent);
     }
