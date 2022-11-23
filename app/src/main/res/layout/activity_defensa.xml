@@ -38,12 +38,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="0dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/primera_base"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitCenter"
+        android:onClick="clickPrimeraBase"
+        android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.725"
@@ -51,12 +51,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.562" />
 
-    <Button
+    <ImageButton
         android:id="@+id/segunda_base"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitCenter"
+        android:scaleType="center"
+        android:onClick="clickSegundaBase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.619"
@@ -64,12 +64,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.515" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tercera_base"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitCenter"
+        android:scaleType="center"
+        android:onClick="clickTerceraBase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.266"
@@ -77,12 +77,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.562" />
 
-    <Button
+    <ImageButton
         android:id="@+id/short_stop"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitCenter"
+        android:scaleType="center"
+        android:onClick="clickShortStop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.367"
@@ -90,12 +90,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.515" />
 
-    <Button
+    <ImageButton
         android:id="@+id/jardinero_derecho"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitCenter"
+        android:scaleType="center"
+        android:onClick="clickJardineroDerecho"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.761"
@@ -103,24 +103,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.463" />
 
-    <Button
+    <ImageButton
         android:id="@+id/jardinero_centro"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitCenter"
+        android:scaleType="center"
+        android:onClick="clickJardineroCentro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.427" />
 
-    <Button
+    <ImageButton
         android:id="@+id/jardinero_izquierdo"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitCenter"
+        android:scaleType="center"
+        android:onClick="clickJardineroIzquierdo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.266"

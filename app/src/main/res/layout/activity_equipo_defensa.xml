@@ -73,6 +73,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_10"
+                    android:onClick="clickRedPlayer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/red_player" />
@@ -105,6 +106,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
                     android:layout_marginEnd="@dimen/players_20"
+                    android:onClick="clickGreenPlayer"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/green_player" />
@@ -115,6 +117,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
+                    android:onClick="clickBluePlayer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_red"
                     app:srcCompat="@drawable/blue_player" />
@@ -136,6 +139,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
                     android:layout_marginEnd="@dimen/players_20"
+                    android:onClick="clickPurplePlayer"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_green"
                     app:srcCompat="@drawable/purple_player" />
@@ -146,6 +150,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
+                    android:onClick="clickGrayPlayer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_blue"
                     app:srcCompat="@drawable/gray_player" />
@@ -167,6 +172,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
                     android:layout_marginEnd="@dimen/players_20"
+                    android:onClick="clickOrangePlayer"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_purple"
                     app:srcCompat="@drawable/orange_player" />
@@ -188,6 +194,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
+                    android:onClick="clickPinkPlayer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_gray"
                     app:srcCompat="@drawable/pink_player" />
@@ -209,6 +216,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
                     android:layout_marginEnd="@dimen/players_20"
+                    android:onClick="clickCyanPlayer"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_orange"
                     app:srcCompat="@drawable/cyan_player" />
@@ -230,6 +238,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
+                    android:onClick="clickYellowPlayer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_pink"
                     app:srcCompat="@drawable/yellow_player" />
