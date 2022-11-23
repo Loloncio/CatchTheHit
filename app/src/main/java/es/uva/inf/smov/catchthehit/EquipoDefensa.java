@@ -52,6 +52,7 @@ public class EquipoDefensa extends AppCompatActivity {
         bundle = this.getIntent().getExtras();
         b = new Bundle();
 
+        //Para que se guarden las imagenes
         if(bundle.containsKey("primera_base")) {
             b.putInt("primera_base", bundle.getInt("primera_base"));
         }

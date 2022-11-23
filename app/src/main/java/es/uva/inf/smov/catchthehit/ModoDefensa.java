@@ -24,6 +24,7 @@ public class ModoDefensa extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
         b = new Bundle();
 
+        //para guardar las imagenes
         if(bundle != null) {
             //ImageButton btn = (ImageButton) findViewById(bundle.getInt("casilla"));
             if(bundle.containsKey("primera_base")) {
