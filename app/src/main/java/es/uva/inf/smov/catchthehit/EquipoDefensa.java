@@ -1,12 +1,24 @@
 package es.uva.inf.smov.catchthehit;
 
+import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import es.uva.inf.smov.catchthehit.datos.Partida;
 
 public class EquipoDefensa extends AppCompatActivity {
 
@@ -22,6 +34,10 @@ public class EquipoDefensa extends AppCompatActivity {
     private TextView player_yellow;
     private Bundle bundle;
     private Bundle b;
+    private String codigo;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    Partida partida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +89,25 @@ public class EquipoDefensa extends AppCompatActivity {
             b.putInt("jardinero_izquierdo", bundle.getInt("jardinero_izquierdo"));
         }
 
+        codigo = getIntent().getExtras().getString("codigo");
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(codigo);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                partida = dataSnapshot.getValue(Partida.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.d(TAG, "Failed to read value.");
+            }
+        });
+
 
     }
 
@@ -87,6 +122,11 @@ public class EquipoDefensa extends AppCompatActivity {
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, JugadorActivity.class);
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         startActivity(intent);
     }
 
@@ -96,6 +136,11 @@ public class EquipoDefensa extends AppCompatActivity {
 
         b.putInt(bundle.getString("casilla"),R.drawable.red_player);
         //b.putInt("casilla",bundle.getInt("casilla"));
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
 
         intent.putExtras(b);
 
@@ -111,6 +156,11 @@ public class EquipoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         startActivity(intent);
     }
 
@@ -122,6 +172,11 @@ public class EquipoDefensa extends AppCompatActivity {
         //b.putInt("casilla",bundle.getInt("casilla"));
 
         intent.putExtras(b);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
     }
@@ -135,6 +190,11 @@ public class EquipoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         startActivity(intent);
     }
 
@@ -146,6 +206,11 @@ public class EquipoDefensa extends AppCompatActivity {
         //b.putInt("casilla",bundle.getInt("casilla"));
 
         intent.putExtras(b);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
     }
@@ -159,6 +224,11 @@ public class EquipoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         startActivity(intent);
     }
 
@@ -170,6 +240,11 @@ public class EquipoDefensa extends AppCompatActivity {
         //b.putInt("casilla",bundle.getInt("casilla"));
 
         intent.putExtras(b);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
     }
@@ -183,6 +258,11 @@ public class EquipoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         startActivity(intent);
     }
 
@@ -194,6 +274,11 @@ public class EquipoDefensa extends AppCompatActivity {
         //b.putInt("casilla",bundle.getInt("casilla"));
 
         intent.putExtras(b);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
     }
