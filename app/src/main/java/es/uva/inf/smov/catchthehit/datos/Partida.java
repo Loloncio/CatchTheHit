@@ -1,10 +1,11 @@
 package es.uva.inf.smov.catchthehit.datos;
 
+import java.io.Serializable;
 import java.security.SecureRandom;
-import java.util.ArrayList;
+import java.util.List;
 
 
-public class Partida {
+public class Partida implements Serializable {
     static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     static SecureRandom rnd = new SecureRandom();
     private String codigo;
@@ -14,12 +15,45 @@ public class Partida {
     private Equipo Equipo2;
 
     public Partida(){
+
+    }
+    public Partida(int noRondas){
         codigo = randomString(5);
-        rondas = 0;
+        rondas = noRondas;
         rondaAct=1;
         Equipo1 = new Equipo();
         Equipo2 = new Equipo();
     }
+
+    public static SecureRandom getRnd() {
+        return rnd;
+    }
+
+    public static void setRnd(SecureRandom rnd) {
+        Partida.rnd = rnd;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setRondas(int rondas) {
+        this.rondas = rondas;
+    }
+
+    public void setRondaAct(int rondaAct) {
+        this.rondaAct = rondaAct;
+    }
+
+    public void setEquipo1(Equipo equipo1) {
+        Equipo1 = equipo1;
+    }
+
+    public void setEquipo2(Equipo equipo2) {
+        Equipo2 = equipo2;
+    }
+
+
     /*
     Generamos una cadena alfanumérica aleatoria de la longitud indicada
      */

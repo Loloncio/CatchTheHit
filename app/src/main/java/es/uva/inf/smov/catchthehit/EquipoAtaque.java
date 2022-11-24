@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import es.uva.inf.smov.catchthehit.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class EquipoAtaque extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -51,7 +50,7 @@ public class EquipoAtaque extends AppCompatActivity implements NavigationView.On
 
     public void clickPlayer(View v) {
         //Creamos el intent
-        Intent intent = new Intent(EquipoAtaque.this, Jugador.class);
+        Intent intent = new Intent(EquipoAtaque.this, JugadorActivity.class);
 
         startActivity(intent);
     }

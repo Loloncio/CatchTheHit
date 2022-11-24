@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void clickJugador(View v) {
         //Creamos el intent
-        Intent intent = new Intent(MainActivity.this, Jugador.class);
+        Intent intent = new Intent(MainActivity.this, JugadorActivity.class);
 
         startActivity(intent);
     }

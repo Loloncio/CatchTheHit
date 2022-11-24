@@ -34,7 +34,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Jugador"
+            android:name=".JugadorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -117,5 +117,7 @@
                 android:value="" />
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 </manifest>

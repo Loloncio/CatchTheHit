@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/iconoJugador"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginStart="15dp"
@@ -59,7 +59,7 @@
                 android:id="@+id/TxtFuerza"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:text="Fuerza"
                 android:textSize="24sp"
@@ -71,7 +71,7 @@
                 android:id="@+id/imageView1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +99,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:text="Velocidad"
                 android:textSize="24sp"
@@ -138,9 +138,9 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
-                android:text="Velocidad"
+                android:text="Resistencia"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +150,7 @@
                 android:id="@+id/J3"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -159,7 +159,7 @@
                 app:srcCompat="@drawable/resistencia" />
 
             <ProgressBar
-                android:id="@+id/progressBar"
+                android:id="@+id/resistencia"
                 style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
@@ -176,16 +176,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Ted"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/imageView10"
-            app:layout_constraintStart_toStartOf="@+id/imageView10"
-            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+            app:layout_constraintEnd_toEndOf="@+id/iconoJugador"
+            app:layout_constraintStart_toStartOf="@+id/iconoJugador"
+            app:layout_constraintTop_toBottomOf="@+id/iconoJugador" />
 
         <TextView
             android:id="@+id/textView4"

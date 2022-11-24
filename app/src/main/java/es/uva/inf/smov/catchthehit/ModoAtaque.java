@@ -1,21 +1,36 @@
 package es.uva.inf.smov.catchthehit;
 
+import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import es.uva.inf.smov.catchthehit.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import es.uva.inf.smov.catchthehit.datos.Jugador;
+import es.uva.inf.smov.catchthehit.datos.Partida;
 
 public class ModoAtaque extends AppCompatActivity {
 
     private ViewGroup layout;
+    private String codigo;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    Partida partida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +41,49 @@ public class ModoAtaque extends AppCompatActivity {
         addTirada(2);
         addTirada(3);
         addTirada(0);
+        codigo = getIntent().getExtras().getString("codigo");
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(codigo);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                partida = dataSnapshot.getValue(Partida.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.d(TAG, "Failed to read value.");
+            }
+        });
     }
+
+    public void click1(View v) {
+        aJugador(partida.getEquipo1().elegirJugador(0));
+    }
+    public void click2(View v){
+        aJugador(partida.getEquipo1().elegirJugador(1));
+    }
+    public void click3(View v){
+        aJugador(partida.getEquipo1().elegirJugador(2));
+    }
+    public void click4(View v){
+        aJugador(partida.getEquipo1().elegirJugador(3));
+    }
+
+    public void aJugador(Jugador jugador){
+        Intent intent = new Intent(ModoAtaque.this, JugadorActivity.class);
+        intent.putExtra("nombre",jugador.getNombre());
+        intent.putExtra("fuerza",jugador.getFuerza());
+        intent.putExtra("velocidad",jugador.getVelocidad());
+        intent.putExtra("resistencia",jugador.getResistencia());
+        intent.putExtra("codigo", codigo);
+        startActivity(intent);
+    }
+
 
     @SuppressLint("InlinedApi")
     private void addTirada(int avance) {

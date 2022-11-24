@@ -42,6 +42,7 @@ public class Inicio extends AppCompatActivity {
     private Button btnComoJugar;
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
+    private Bundle b;
 
 
     @Override
@@ -69,6 +70,7 @@ public class Inicio extends AppCompatActivity {
     }
 
     public void clickBotonEmpezarJuego(View v) {
+        b = new Bundle();
         //logueamos al usuario como anónimo
         login();
         //Conexión a la base de datos, habrá que crear un código si no se ha introducido ninguno.
@@ -112,7 +114,6 @@ public class Inicio extends AppCompatActivity {
     Logueamos al usuario como usuario anónimo de la base de datos.
      */
     public void login() {
-        mAuth = FirebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
         //Habrá que añadir este usuario en algún sitio, Jugador sería lo mejor creo
         FirebaseUser currentUser = mAuth.getCurrentUser();
