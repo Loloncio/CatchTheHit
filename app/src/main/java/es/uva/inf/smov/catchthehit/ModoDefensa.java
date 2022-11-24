@@ -1,19 +1,34 @@
 package es.uva.inf.smov.catchthehit;
 
+import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import es.uva.inf.smov.catchthehit.R;
+import es.uva.inf.smov.catchthehit.datos.Partida;
 
 public class ModoDefensa extends AppCompatActivity {
 
     private Bundle b;
+    private String codigo;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    Partida partida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +38,25 @@ public class ModoDefensa extends AppCompatActivity {
         //Recuperamos la información pasada en el intent
         Bundle bundle = this.getIntent().getExtras();
         b = new Bundle();
+
+        codigo = getIntent().getExtras().getString("codigo");
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(codigo);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                partida = dataSnapshot.getValue(Partida.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.d(TAG, "Failed to read value.");
+            }
+        });
 
         //para guardar las imagenes
         if(bundle != null) {
@@ -71,6 +105,11 @@ public class ModoDefensa extends AppCompatActivity {
 
         b.putString("casilla","primera_base");
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         intent.putExtras(b);
 
         startActivity(intent);
@@ -84,6 +123,11 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         startActivity(intent);
     }
 
@@ -94,6 +138,11 @@ public class ModoDefensa extends AppCompatActivity {
         b.putString("casilla","tercera_base");
 
         intent.putExtras(b);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
     }
@@ -106,6 +155,11 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         startActivity(intent);
     }
 
@@ -116,6 +170,11 @@ public class ModoDefensa extends AppCompatActivity {
         b.putString("casilla","jardinero_derecho");
 
         intent.putExtras(b);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
     }
@@ -128,6 +187,11 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
         startActivity(intent);
     }
 
@@ -136,6 +200,27 @@ public class ModoDefensa extends AppCompatActivity {
         Intent intent = new Intent(ModoDefensa.this, EquipoDefensa.class);
 
         b.putString("casilla","jardinero_izquierdo");
+
+        intent.putExtras(b);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
+        startActivity(intent);
+    }
+
+    public void clickFinalizarSeleccion(View v){
+        //Creamos el intent
+        Intent intent = new Intent(ModoDefensa.this, Test.class);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
+        b.putString("modo_defensa","modo_defensa");
 
         intent.putExtras(b);
 

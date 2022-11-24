@@ -164,6 +164,12 @@ public class ModoAtaque extends AppCompatActivity {
         myRef.setValue(partida);
         Intent intent = new Intent(ModoAtaque.this, Test.class);
         intent.putExtra("codigo",partida.getCodigo());
+
+        Bundle b = new Bundle();
+
+        b.putString("modo_ataque","modo_ataque");
+        intent.putExtras(b);
+
         startActivity(intent);
     }
 
