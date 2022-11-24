@@ -21,6 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
+import java.util.zip.Inflater;
+
 import es.uva.inf.smov.catchthehit.datos.Jugador;
 import es.uva.inf.smov.catchthehit.datos.Partida;
 
@@ -74,7 +79,7 @@ public class ModoAtaque extends AppCompatActivity {
         aJugador(partida.getEquipo1().elegirJugador(3));
     }
 
-    public void aJugador(Jugador jugador){
+    private void aJugador(Jugador jugador){
         Intent intent = new Intent(ModoAtaque.this, JugadorActivity.class);
         intent.putExtra("nombre",jugador.getNombre());
         intent.putExtra("fuerza",jugador.getFuerza());
@@ -89,13 +94,12 @@ public class ModoAtaque extends AppCompatActivity {
     private void addTirada(int avance) {
         LayoutInflater inflater = LayoutInflater.from(this);
         int id = R.layout.movimiento;
-        ConstraintLayout relativeLayout = (ConstraintLayout) inflater.inflate(id, null, false);
-
-        TextView movimiento = (TextView) relativeLayout.findViewById(R.id.textView);
+        ConstraintLayout mov = (ConstraintLayout) inflater.inflate(id, null, false);
+        TextView movimiento = (TextView) mov.findViewById(R.id.textView);
         movimiento.setText("Avanza " + String.valueOf(avance));
-        TextView fuerza = (TextView) relativeLayout.findViewById(R.id.fuerzaMov);
-        TextView velocidad = (TextView) relativeLayout.findViewById(R.id.velocidadMov);;
-        TextView energia = (TextView) relativeLayout.findViewById(R.id.energiaMov);;
+        TextView fuerza = (TextView) mov.findViewById(R.id.fuerzaMov);
+        TextView velocidad = (TextView) mov.findViewById(R.id.velocidadMov);;
+        TextView energia = (TextView) mov.findViewById(R.id.energiaMov);;
 
         switch (avance){
             case 1:
@@ -124,6 +128,43 @@ public class ModoAtaque extends AppCompatActivity {
 
         }
 
-        layout.addView(relativeLayout);
+        layout.addView(mov);
     }
+    public void clickOpcion(View v){
+        TextView avance = (TextView) v.findViewById(R.id.textView);
+        /*
+        Si se ha seleccionado descansar solo hay que sumar 5 a la resistencia del jugador.
+         */
+        if(!avance.getText().toString().equals("Descansa")) {
+            /*
+            Si se ha seleccionado otra cosa tendremos que restar estadisticas y cambiar posición con
+            el switch
+             */
+            TextView energia = (TextView) v.findViewById(R.id.energiaMov);
+            TextView fuerza = (TextView) v.findViewById(R.id.fuerzaMov);
+            TextView velocidad = (TextView) v.findViewById(R.id.velocidadMov);
+            switch (avance.getText().toString()) {
+                case "Avanza 1":
+
+                    break;
+                case "Avanza 2":
+
+                    break;
+                case "Avanza 3":
+
+                    break;
+                default:
+
+            }
+        } else{
+
+        }
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        Intent intent = new Intent(ModoAtaque.this, Test.class);
+        intent.putExtra("codigo",partida.getCodigo());
+        startActivity(intent);
+    }
+
 }

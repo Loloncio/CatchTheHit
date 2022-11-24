@@ -7,7 +7,9 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:background="@drawable/border"
-    android:backgroundTint="#75FFFFFF">
+    android:backgroundTint="#75FFFFFF"
+    android:clickable="true"
+    android:onClick="clickOpcion">
 
 
     <TextView
