@@ -1,8 +1,10 @@
 package es.uva.inf.smov.catchthehit.datos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Test {
+public class Test implements Serializable {
 
     private ArrayList<String> preguntas;
     private ArrayList<Jugador> respuestas;
@@ -44,5 +46,21 @@ public class Test {
 
     private Jugador getRespuesta(int index){
         return respuestas.get(index);
+    }
+
+    public ArrayList<String> getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(ArrayList<String> preguntas) {
+        this.preguntas = preguntas;
+    }
+
+    public ArrayList<Jugador> getRespuestas() {
+        return respuestas;
+    }
+
+    public void setRespuestas(ArrayList<Jugador> respuestas) {
+        this.respuestas = respuestas;
     }
 }
