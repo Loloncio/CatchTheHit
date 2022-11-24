@@ -20,7 +20,7 @@ public class Equipo implements Serializable {
         ArrayList<String> nombres = new ArrayList<String>(9);
         nombres.addAll(Arrays.asList("Tom","Ted","Willie","Stan","John","Jackson","Lucas","Charlie","Andrey"));
         for(int i=0; i<9 ; i++){
-            equipo.add(new Jugador(nombres.get(i), i+1));
+            equipo.add(new Jugador(nombres.get(i), i+1, ""));
         }
         return equipo;
     }

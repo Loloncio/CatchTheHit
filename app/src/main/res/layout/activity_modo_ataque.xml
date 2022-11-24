@@ -46,7 +46,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/blue_hitter" />
+                    app:srcCompat="@drawable/red_hitter" />
 
                 <ImageView
                     android:id="@+id/Hitter2"
@@ -59,7 +59,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.47"
-                    app:srcCompat="@drawable/green_hitter" />
+                    app:srcCompat="@drawable/purple_hitter" />
 
                 <ImageView
                     android:id="@+id/Hitter4"
@@ -72,7 +72,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.47"
-                    app:srcCompat="@drawable/red_hitter" />
+                    app:srcCompat="@drawable/green_hitter" />
 
                 <ImageView
                     android:id="@+id/Hitter3"
@@ -86,7 +86,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/purple_hitter" />
+                    app:srcCompat="@drawable/blue_hitter" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -99,6 +99,12 @@
                 android:background="@drawable/border"
                 android:backgroundTint="#6C9F50"
                 android:backgroundTintMode="src_over">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:id="@+id/movimientos"

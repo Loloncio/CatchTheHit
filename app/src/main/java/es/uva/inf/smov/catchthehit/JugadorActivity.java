@@ -15,6 +15,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import es.uva.inf.smov.catchthehit.datos.Partida;
+
 public class JugadorActivity extends AppCompatActivity {
 
     ProgressBar fuerza;
@@ -22,6 +31,11 @@ public class JugadorActivity extends AppCompatActivity {
     ProgressBar resistencia;
     TextView txtNombre;
     ImageView imagen;
+    String codigo;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    Partida partida;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,20 +45,21 @@ public class JugadorActivity extends AppCompatActivity {
         resistencia = (ProgressBar) findViewById(R.id.resistencia);
         txtNombre = (TextView) findViewById(R.id.nombre);
         imagen = (ImageView) findViewById(R.id.iconoJugador);
+        codigo = getIntent().getExtras().getString("codigo");
         setDatos();
     }
 
     public void clickField(View v) {
         //Creamos el intent
         Intent intent = new Intent(JugadorActivity.this, ModoAtaque.class);
-
+        intent.putExtra("codigo", codigo);
         startActivity(intent);
     }
 
     public void clickTeam(View v) {
         //Creamos el intent
         Intent intent = new Intent(JugadorActivity.this, EquipoAtaque.class);
-
+        intent.putExtra("codigo", codigo);
         startActivity(intent);
     }
 
@@ -54,7 +69,6 @@ public class JugadorActivity extends AppCompatActivity {
         velocidad.setProgress(getIntent().getExtras().getInt("velocidad"));
         resistencia.setProgress(getIntent().getExtras().getInt("resistencia"));
         String nombre = getIntent().getExtras().getString("nombre");
-        Log.e("nombre", String.valueOf(f));
         txtNombre.setText(nombre);
         int id;
         switch (nombre){
