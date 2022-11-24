@@ -21,11 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.checkerframework.checker.units.qual.A;
-
-import java.util.ArrayList;
-import java.util.zip.Inflater;
-
 import es.uva.inf.smov.catchthehit.datos.Jugador;
 import es.uva.inf.smov.catchthehit.datos.Partida;
 
@@ -95,11 +90,11 @@ public class ModoAtaque extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         int id = R.layout.movimiento;
         ConstraintLayout mov = (ConstraintLayout) inflater.inflate(id, null, false);
-        TextView movimiento = (TextView) mov.findViewById(R.id.textView);
+        TextView movimiento = (TextView) mov.findViewById(R.id.pregunta);
         movimiento.setText("Avanza " + String.valueOf(avance));
-        TextView fuerza = (TextView) mov.findViewById(R.id.fuerzaMov);
-        TextView velocidad = (TextView) mov.findViewById(R.id.velocidadMov);;
-        TextView energia = (TextView) mov.findViewById(R.id.energiaMov);;
+        TextView fuerza = (TextView) mov.findViewById(R.id.j2);
+        TextView velocidad = (TextView) mov.findViewById(R.id.j1);;
+        TextView energia = (TextView) mov.findViewById(R.id.j4);;
 
         switch (avance){
             case 1:
@@ -131,7 +126,7 @@ public class ModoAtaque extends AppCompatActivity {
         layout.addView(mov);
     }
     public void clickOpcion(View v){
-        TextView avance = (TextView) v.findViewById(R.id.textView);
+        TextView avance = (TextView) v.findViewById(R.id.pregunta);
         /*
         Si se ha seleccionado descansar solo hay que sumar 5 a la resistencia del jugador.
          */
@@ -140,9 +135,9 @@ public class ModoAtaque extends AppCompatActivity {
             Si se ha seleccionado otra cosa tendremos que restar estadisticas y cambiar posición con
             el switch
              */
-            TextView energia = (TextView) v.findViewById(R.id.energiaMov);
-            TextView fuerza = (TextView) v.findViewById(R.id.fuerzaMov);
-            TextView velocidad = (TextView) v.findViewById(R.id.velocidadMov);
+            TextView energia = (TextView) v.findViewById(R.id.j4);
+            TextView fuerza = (TextView) v.findViewById(R.id.j2);
+            TextView velocidad = (TextView) v.findViewById(R.id.j1);
             switch (avance.getText().toString()) {
                 case "Avanza 1":
 
@@ -162,7 +157,7 @@ public class ModoAtaque extends AppCompatActivity {
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         DatabaseReference myRef = database.getReference(partida.getCodigo());
         myRef.setValue(partida);
-        Intent intent = new Intent(ModoAtaque.this, Test.class);
+        Intent intent = new Intent(ModoAtaque.this, ModoDefensa.class);
         intent.putExtra("codigo",partida.getCodigo());
 
         Bundle b = new Bundle();

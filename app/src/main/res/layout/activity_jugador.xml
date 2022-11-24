@@ -96,7 +96,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/TxtFuerza" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/pregunta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -115,7 +115,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintStart_toEndOf="@+id/pregunta"
                 app:layout_constraintTop_toBottomOf="@+id/fuerza"
                 app:srcCompat="@drawable/velocidad" />
 
@@ -132,7 +132,7 @@
                 android:progressDrawable="@drawable/proggres_bar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/pregunta" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -147,7 +147,7 @@
                 app:layout_constraintTop_toBottomOf="@id/velocidad" />
 
             <ImageView
-                android:id="@+id/J3"
+                android:id="@+id/J4"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -172,6 +172,42 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <TextView
+                android:id="@+id/txtFuerza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/fuerza"
+                app:layout_constraintStart_toStartOf="@+id/fuerza"
+                app:layout_constraintTop_toTopOf="@+id/fuerza" />
+
+            <TextView
+                android:id="@+id/txtVelocidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/velocidad"
+                app:layout_constraintStart_toStartOf="@+id/velocidad"
+                app:layout_constraintTop_toTopOf="@+id/velocidad" />
+
+            <TextView
+                android:id="@+id/txtResistencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/resistencia"
+                app:layout_constraintStart_toStartOf="@+id/resistencia"
+                app:layout_constraintTop_toTopOf="@+id/resistencia" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

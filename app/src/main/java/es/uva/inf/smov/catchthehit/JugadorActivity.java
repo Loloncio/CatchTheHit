@@ -31,6 +31,9 @@ public class JugadorActivity extends AppCompatActivity {
     ProgressBar resistencia;
     TextView txtNombre;
     ImageView imagen;
+    TextView txtFuerza;
+    TextView txtVelocidad;
+    TextView txtResistencia;
     String codigo;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
@@ -46,6 +49,9 @@ public class JugadorActivity extends AppCompatActivity {
         txtNombre = (TextView) findViewById(R.id.nombre);
         imagen = (ImageView) findViewById(R.id.iconoJugador);
         codigo = getIntent().getExtras().getString("codigo");
+        txtFuerza = (TextView) findViewById(R.id.txtFuerza);
+        txtVelocidad = (TextView) findViewById(R.id.txtVelocidad);
+        txtResistencia = (TextView) findViewById(R.id.txtResistencia);
         setDatos();
     }
 
@@ -64,10 +70,16 @@ public class JugadorActivity extends AppCompatActivity {
     }
 
     private void setDatos(){
-        int f = getIntent().getExtras().getInt("fuerza");
-        fuerza.setProgress(f);
-        velocidad.setProgress(getIntent().getExtras().getInt("velocidad"));
-        resistencia.setProgress(getIntent().getExtras().getInt("resistencia"));
+        int fuerzaI = getIntent().getExtras().getInt("fuerza");
+        int velocidadI = getIntent().getExtras().getInt("velocidad");
+        int resistenciaI = getIntent().getExtras().getInt("resistencia");
+        fuerza.setProgress(fuerzaI);
+        velocidad.setProgress(velocidadI);
+        resistencia.setProgress(resistenciaI);
+        txtFuerza.setText(String.valueOf(fuerzaI)+"%");
+        txtVelocidad.setText(String.valueOf(velocidadI)+"%");
+        txtResistencia.setText(String.valueOf(resistenciaI)+"%");
+
         String nombre = getIntent().getExtras().getString("nombre");
         txtNombre.setText(nombre);
         int id;
