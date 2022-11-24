@@ -13,7 +13,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/pregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -30,21 +30,21 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/J3"
+        app:layout_constraintEnd_toStartOf="@+id/J4"
         app:layout_constraintStart_toEndOf="@+id/J1"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/pregunta"
         app:srcCompat="@drawable/fuerza" />
 
     <ImageView
-        android:id="@+id/J3"
+        android:id="@+id/J4"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/pregunta"
+        app:layout_constraintTop_toBottomOf="@+id/pregunta"
         app:srcCompat="@drawable/resistencia" />
 
     <ImageView
@@ -56,38 +56,38 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/pregunta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/pregunta"
         app:srcCompat="@drawable/velocidad" />
 
     <TextView
-        android:id="@+id/velocidadMov"
+        android:id="@+id/j1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/J1"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/pregunta" />
 
     <TextView
-        android:id="@+id/fuerzaMov"
+        android:id="@+id/j2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/J2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/pregunta" />
 
     <TextView
-        android:id="@+id/energiaMov"
+        android:id="@+id/j4"
         android:layout_width="62dp"
         android:layout_height="23dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/J3"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/J4"
+        app:layout_constraintTop_toBottomOf="@+id/pregunta" />
 </androidx.constraintlayout.widget.ConstraintLayout>

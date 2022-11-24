@@ -11,103 +11,150 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/pregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:text="TextView"
+        android:layout_marginEnd="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/J1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+    <LinearLayout
+        android:id="@+id/op1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toStartOf="@+id/J2"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="clickOpcion1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/op2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/red_player" />
+        app:layout_constraintTop_toBottomOf="@+id/pregunta"
+        app:layout_constraintVertical_bias="0.5">
 
-    <ImageView
-        android:id="@+id/J2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        <ImageView
+            android:id="@+id/J1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/red_player" />
+
+        <TextView
+            android:id="@+id/j1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/op2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toStartOf="@+id/J3"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="clickOpcion2"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/op3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/J1"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/green_player" />
+        app:layout_constraintStart_toEndOf="@+id/op1"
+        app:layout_constraintTop_toBottomOf="@+id/pregunta"
+        app:layout_constraintVertical_bias="0.5">
 
-    <ImageView
-        android:id="@+id/J3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        <ImageView
+            android:id="@+id/J2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/green_player" />
+
+        <TextView
+            android:id="@+id/j2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/op3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toStartOf="@+id/J4"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="clickOpcion4"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/op4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/J2"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/purple_player" />
+        app:layout_constraintStart_toEndOf="@+id/op2"
+        app:layout_constraintTop_toBottomOf="@+id/pregunta"
+        app:layout_constraintVertical_bias="0.5">
 
-    <TextView
-        android:id="@+id/velocidadMov"
+        <ImageView
+            android:id="@+id/J3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/blue_player" />
+
+        <TextView
+            android:id="@+id/j3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="textStart" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/op4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/J1"
-        app:layout_constraintStart_toStartOf="@+id/J1"
-        app:layout_constraintTop_toBottomOf="@+id/J1" />
-
-    <TextView
-        android:id="@+id/fuerzaMov"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/J2"
-        app:layout_constraintStart_toStartOf="@+id/J2"
-        app:layout_constraintTop_toBottomOf="@+id/J2" />
-
-    <TextView
-        android:id="@+id/energiaMov"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/J3"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/J3"
-        app:layout_constraintTop_toBottomOf="@+id/J3" />
-
-    <ImageView
-        android:id="@+id/J4"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="clickOpcion3"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/J3"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/blue_player" />
+        app:layout_constraintStart_toEndOf="@+id/op3"
+        app:layout_constraintTop_toBottomOf="@+id/pregunta">
+
+        <ImageView
+            android:id="@+id/J4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/purple_player" />
+
+        <TextView
+            android:id="@+id/j4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/nPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/J4"
-        app:layout_constraintStart_toStartOf="@+id/J4"
-        app:layout_constraintTop_toBottomOf="@+id/J4" />
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/pregunta"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

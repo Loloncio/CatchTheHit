@@ -26,8 +26,8 @@ public class Jugador implements Serializable {
     private int posicion;
     private boolean ready;
     private boolean enjuego;
-    private Test test;
     private int id;
+    private ArrayList<Jugador> respuestas;
 
     public Jugador(){
 
@@ -42,8 +42,8 @@ public class Jugador implements Serializable {
         resistencia = 100;
         ready = false;
         enjuego = true;
-        test = new Test();
         id = i;
+        respuestas = new ArrayList<Jugador>();
     }
 
     public String getUsuario(){
@@ -80,10 +80,6 @@ public class Jugador implements Serializable {
 
     public boolean isReady() {
         return ready;
-    }
-
-    public Test getTest() {
-        return test;
     }
 
     public void setFuerza(int valor){
@@ -128,8 +124,21 @@ public class Jugador implements Serializable {
         this.nombre = nombre;
     }
 
-    public void setTest(Test test) {
-        this.test = test;
+
+    public void setRespuesta(int index, Jugador jugador){
+        respuestas.add(index, jugador);
+    }
+
+    public void setRespuestas(ArrayList<Jugador> respuestas) {
+        this.respuestas = respuestas;
+    }
+
+    public Jugador getRespuesta(int index){
+        return respuestas.get(index);
+    }
+
+    public ArrayList<Jugador> getRespuestas(){
+        return respuestas;
     }
 
     /*
