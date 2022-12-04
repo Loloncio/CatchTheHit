@@ -32,7 +32,6 @@
         android:foregroundGravity="center"
         app:layout_constraintBottom_toTopOf="@+id/finalizarSeleccion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -42,7 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingVertical="10dp">
 
             <TextView
                 android:id="@+id/textView7"

@@ -90,11 +90,11 @@ public class ModoAtaque extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         int id = R.layout.movimiento;
         ConstraintLayout mov = (ConstraintLayout) inflater.inflate(id, null, false);
-        TextView movimiento = (TextView) mov.findViewById(R.id.pregunta);
+        TextView movimiento = (TextView) mov.findViewById(R.id.opcion);
         movimiento.setText("Avanza " + String.valueOf(avance));
-        TextView fuerza = (TextView) mov.findViewById(R.id.j2);
-        TextView velocidad = (TextView) mov.findViewById(R.id.j1);;
-        TextView energia = (TextView) mov.findViewById(R.id.j4);;
+        TextView fuerza = (TextView) mov.findViewById(R.id.statFuerza);
+        TextView velocidad = (TextView) mov.findViewById(R.id.statVelocidad);;
+        TextView energia = (TextView) mov.findViewById(R.id.statEnergia);;
 
         switch (avance){
             case 1:
@@ -126,7 +126,7 @@ public class ModoAtaque extends AppCompatActivity {
         layout.addView(mov);
     }
     public void clickOpcion(View v){
-        TextView avance = (TextView) v.findViewById(R.id.pregunta);
+        TextView avance = (TextView) v.findViewById(R.id.opcion);
         /*
         Si se ha seleccionado descansar solo hay que sumar 5 a la resistencia del jugador.
          */
@@ -135,9 +135,9 @@ public class ModoAtaque extends AppCompatActivity {
             Si se ha seleccionado otra cosa tendremos que restar estadisticas y cambiar posición con
             el switch
              */
-            TextView energia = (TextView) v.findViewById(R.id.j4);
-            TextView fuerza = (TextView) v.findViewById(R.id.j2);
-            TextView velocidad = (TextView) v.findViewById(R.id.j1);
+            TextView energia = (TextView) v.findViewById(R.id.statEnergia);
+            TextView fuerza = (TextView) v.findViewById(R.id.statFuerza);
+            TextView velocidad = (TextView) v.findViewById(R.id.statVelocidad);
             switch (avance.getText().toString()) {
                 case "Avanza 1":
 
