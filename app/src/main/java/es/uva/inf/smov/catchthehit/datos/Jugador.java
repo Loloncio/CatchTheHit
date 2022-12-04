@@ -2,6 +2,8 @@ package es.uva.inf.smov.catchthehit.datos;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +29,12 @@ public class Jugador implements Serializable {
     private boolean ready;
     private boolean enjuego;
     private int id;
-    private ArrayList<Jugador> respuestas;
+    private ArrayList<Integer> respuestas;
 
     public Jugador(){
 
     }
+
     public Jugador(String nombre, int i, String user){
         this.nombre = nombre;
         usuario = user;
@@ -43,7 +46,7 @@ public class Jugador implements Serializable {
         ready = false;
         enjuego = true;
         id = i;
-        respuestas = new ArrayList<Jugador>();
+        respuestas = new ArrayList<Integer>();
     }
 
     public String getUsuario(){
@@ -78,8 +81,22 @@ public class Jugador implements Serializable {
         return velocidad;
     }
 
+    public int getId(){ return id; }
+
+    public ArrayList<Integer> getProbabilidad() {
+        return probabilidad;
+    }
+
     public boolean isReady() {
         return ready;
+    }
+
+    public int getRespuesta(int index){
+        return respuestas.get(index);
+    }
+
+    public ArrayList<Integer> getRespuestas(){
+        return respuestas;
     }
 
     public void setFuerza(int valor){
@@ -114,8 +131,6 @@ public class Jugador implements Serializable {
         usuario = user;
     }
 
-    public int getId(){ return id; }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -124,26 +139,20 @@ public class Jugador implements Serializable {
         this.nombre = nombre;
     }
 
+    public void setProbabilidad(ArrayList<Integer> probabilidad) {
+        this.probabilidad = probabilidad;
+    }
 
-    public void setRespuesta(int index, Jugador jugador){
+    public void setRespuesta(int index, int jugador){
         respuestas.add(index, jugador);
     }
-
-    public void setRespuestas(ArrayList<Jugador> respuestas) {
-        this.respuestas = respuestas;
-    }
-
-    public Jugador getRespuesta(int index){
-        return respuestas.get(index);
-    }
-
-    public ArrayList<Jugador> getRespuestas(){
-        return respuestas;
+    public void setRespuestas(ArrayList<Integer> respuesta) {
+        this.respuestas = respuesta;
     }
 
     /*
-            Obtenemos un valor entre 50 y 100 con la probabilidad indicada en llenaProbabilidad.
-             */
+    Obtenemos un valor entre 50 y 100 con la probabilidad indicada en llenaProbabilidad.
+    */
     private int valorRandom(){
         Random random = new Random();
         int valor = probabilidad.get(random.nextInt(probabilidad.size()));
@@ -151,12 +160,12 @@ public class Jugador implements Serializable {
     }
 
     /*
-            Rellenamos el array probabilidad de forma que tengamos
-            20% de valores entre 50 y 60
-            45% entre 60 y 75
-            20% entre 75 y 85
-            15% entre 85 y 100
-             */
+    Rellenamos el array probabilidad de forma que tengamos
+    20% de valores entre 50 y 60
+    45% entre 60 y 75
+    20% entre 75 y 85
+    15% entre 85 y 100
+    */
     private ArrayList llenaProbabilidad(){
         int cont = 0;
         ArrayList<Integer> valores = new ArrayList<Integer>(100);
