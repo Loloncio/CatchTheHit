@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.provider.Settings.Secure;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,26 +34,24 @@ import java.util.Map;
 import java.util.UUID;
 
 import es.uva.inf.smov.catchthehit.R;
+import es.uva.inf.smov.catchthehit.datos.Partida;
 
 
 public class Inicio extends AppCompatActivity {
 
-    private EditText txtNombre;
     private EditText txtEdad;
-    private Button btnCrearGrupo;
-    private Button btnComoJugar;
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
     private Bundle b;
+    private Partida partida;
+    FirebaseUser currentUser;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        //Obtenemos una referencia a los controles de la interfaz
-        btnCrearGrupo = (Button) findViewById(R.id.BtnCrearGrupo);
-        btnComoJugar = (Button) findViewById(R.id.BtnComoJugar);
+
         txtEdad = (EditText) findViewById(R.id.txtEdad);
 
     }
@@ -76,55 +76,70 @@ public class Inicio extends AppCompatActivity {
         //Conexión a la base de datos, habrá que crear un código si no se ha introducido ninguno.
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
-        /*
-        *****Ejemplo de introducción de datos en firebase
-        DatabaseReference myRef = database.getReference("message");
-        myRef.setValue("Hello, World!");
-        *****Ejemplo de actualización de datos, cada vez que hay un cambio se ejecuta onDataChange
-        *****onCancelled es lo que ocurre si hay un fallo.
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                txtEdad.setText(value);
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                txtEdad.setText("Error");
-            }
-        });
-        */
 
-        //Creamos el intent, si no hay sala se va a selección de rondas, si la hay habrá que conectar.
-        Intent intent;
+        //Obtenemos el codigo de la sala
         String sala = String.valueOf(txtEdad.getText());
-        if(sala.equals("")){
-            intent  = new Intent(Inicio.this, CrearGrupos.class);
+
+        if (sala.equals("")) {
+            //Si no se ha introducido sala vamos a crear una
+            Intent intent;
+            intent = new Intent(Inicio.this, CrearGrupos.class);
             startActivity(intent);
-        } else{
-            //Conectar a la sala
+
+        } else {
+            //Si se ha introducido, obtenemos una referencia de la base de datos con ese código
+            DatabaseReference myRef = database.getReference(sala);
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    partida = dataSnapshot.getValue(Partida.class);
+                    //Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.
+                    for (int i = 0; i < 4; i++) {
+                        if (!partida.getEquipo1().elegirJugador(i).isReady()) {
+                            myRef.child("equipo1").child("jugadores").child(String.valueOf(i)).child("usuario").setValue(currentUser.getUid());
+                            myRef.child("equipo1").child("jugadores").child(String.valueOf(i)).child("ready").setValue(true);
+                            Log.e("no_ready",String.valueOf(i));
+                            break;
+                        }
+                    }
+                    //Vamos a la sala de espera.
+                    Intent intent;
+                    intent = new Intent(Inicio.this, SalaEspera.class);
+                    intent.putExtra("codigo",sala);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Mostramos un mensaje si no se encuentra la sala.
+                    CharSequence fail = "Codigo de sala no valido";
+                    Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            });
+
         }
 
     }
-    public void clickCodigoSala(View v){
+
+    public void clickCodigoSala(View v) {
         txtEdad.setText("");
     }
+
     /*
     Logueamos al usuario como usuario anónimo de la base de datos.
      */
     public void login() {
         mAuth = FirebaseAuth.getInstance();
         //Habrá que añadir este usuario en algún sitio, Jugador sería lo mejor creo
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        mAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                    }
-                });
-       currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
+        mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                FirebaseUser user = mAuth.getCurrentUser();
+            }
+        });
+        currentUser = mAuth.getCurrentUser();
     }
 
 
