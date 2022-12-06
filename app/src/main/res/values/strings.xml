@@ -27,4 +27,27 @@
     <string name="evento_special">Evento</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tuto1">¿Cómo jugar Catch The Hit?</string>
+    <string name="tuto2">Bienvenido al tutorial de Catch The Hit!\n Antes de empezar aquí tienes un
+        video en el que podrás ver las características principales del baseball.</string>
+    <string name="tuto3">1. Creación de sala\n Para empezar una partida necesitarás crear una sala,
+        para ello deja el campo código de sala de la pestaña principal vacío y dale a empezar
+        partida. A continuación, selecciona el número de rondas que deseas jugar (Con más rondas el
+        juego durará másy habrá más test con menos preguntas).\n Ahora verás a tu jugador (Recuerda
+        el color) y el código de sala que deberás dar a tus compañeros.</string>
+
+    <string name="tuto4">2. Unirse a una sala\n Si quieres unirte a una sala, deberás introducir el
+        código obtenido por el creador de la sala, introducirlo en el campo &quot;códifo de sala
+        &quot; y tocar en &quot;Empezar Juego&quot;.\n Si la sala existe entrarás a la sala de
+        espera donde verás cual es tu jugador.</string>
+
+    <string name="tuto5">3. Modo ataque\n Una vez comienze la partida los jugadores os ireis
+        turnando para batear (Minijuego) y a continuación el bateador podrá moverse entre 1 y 3
+        bases dependiendo de como lo haya hecho al batear.\n A la hora de avanzar hay que tener en
+        cuenta que solo puede haber más de un jugador en la primera base, si acabas en una base con
+        otro jugador, estarás eliminado durante esta ronda.\n También tendrás que tener en cuenta
+        que cuanto más avances, más posibilidades tienes de que los defensores cojan la bola y te
+        eliminen durante esta ronda.</string>
+    <string name="tuto6"></string>
+
 </resources>
