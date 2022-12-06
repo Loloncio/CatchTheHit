@@ -47,6 +47,7 @@ public class Jugador implements Serializable {
         enjuego = true;
         id = i;
         respuestas = new ArrayList<Integer>();
+        posicion = 1;
     }
 
     public String getUsuario(){

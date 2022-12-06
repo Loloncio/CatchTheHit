@@ -28,7 +28,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout4"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="381dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
@@ -36,38 +36,24 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/attack_field">
 
-                <ImageView
-                    android:id="@+id/Hitter1"
+                <LinearLayout
+                    android:id="@+id/Base1"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginBottom="48dp"
-                    android:clickable="true"
-                    android:onClick="click1"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="200dp"
+                    android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/red_hitter" />
+                    app:layout_constraintTop_toBottomOf="@+id/Base3"></LinearLayout>
 
                 <ImageView
-                    android:id="@+id/Hitter2"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="50dp"
-                    android:clickable="true"
-                    android:onClick="click4"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.47"
-                    app:srcCompat="@drawable/purple_hitter" />
-
-                <ImageView
-                    android:id="@+id/Hitter4"
+                    android:id="@+id/Base2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginEnd="50dp"
                     android:clickable="true"
                     android:onClick="click2"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -75,18 +61,31 @@
                     app:srcCompat="@drawable/green_hitter" />
 
                 <ImageView
-                    android:id="@+id/Hitter3"
+                    android:id="@+id/Base3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="182dp"
                     android:layout_marginTop="35dp"
-                    android:layout_marginEnd="170dp"
                     android:clickable="true"
                     android:onClick="click3"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/blue_hitter" />
+
+                <ImageView
+                    android:id="@+id/Base4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="50dp"
+                    android:clickable="true"
+                    android:onClick="click4"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.47"
+                    app:srcCompat="@drawable/purple_hitter" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
