@@ -12,20 +12,23 @@ public class Partida implements Serializable {
     private String codigo;
     private int rondas;
     private int rondaAct;
+    private int jugadaAct;
     private Equipo Equipo1;
     private Equipo Equipo2;
     private ArrayList<String> preguntas;
 
-    public Partida(){
+    public Partida() {
 
     }
-    public Partida(int noRondas){
+
+    public Partida(int noRondas) {
         codigo = randomString(5);
         rondas = noRondas;
-        rondaAct=1;
+        rondaAct = 1;
         Equipo1 = new Equipo();
         Equipo2 = new Equipo();
         preguntas = new ArrayList<String>();
+        jugadaAct = 0;
         setPreguntas();
     }
 
@@ -57,13 +60,16 @@ public class Partida implements Serializable {
         Equipo2 = equipo2;
     }
 
+    public void setJugadaAct(int jugadaAct) {
+        this.jugadaAct = jugadaAct;
+    }
 
     /*
     Generamos una cadena alfanumérica aleatoria de la longitud indicada
      */
-    String randomString(int len){
+    String randomString(int len) {
         StringBuilder sb = new StringBuilder(len);
-        for(int i = 0; i < len; i++)
+        for (int i = 0; i < len; i++)
             sb.append(AB.charAt(rnd.nextInt(AB.length())));
         return sb.toString();
     }
@@ -88,6 +94,10 @@ public class Partida implements Serializable {
         return Equipo2;
     }
 
+    public int getJugadaAct() {
+        return jugadaAct;
+    }
+
     private void setPreguntas() {
         this.preguntas.add("¿Qué jugador consideras que ha sido el más comunicativo? ¿Quién ha consultado más sus decisiones con el resto del grupo?");
         this.preguntas.add("¿Quién ha sido el más positivo?");
@@ -109,7 +119,7 @@ public class Partida implements Serializable {
         this.preguntas.add("¿ Quién está haciendo la mejor labor por el funcionamiento del equipo? ¿Qué jugador consideras que ha dirigido más al grupo ?");
     }
 
-    public String getPregunta(int index){
+    public String getPregunta(int index) {
         return preguntas.get(index);
     }
 
