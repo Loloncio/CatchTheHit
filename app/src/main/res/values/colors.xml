@@ -12,5 +12,6 @@
     <color name="fondo">#75FFFFFF</color>
     <color name="lightgreen2">#3F7A1F</color>
     <color name="negroTranslucido">#20000000</color>
+    <color name="fondo_tuto">#BCFFFFFF</color>
 
 </resources>
