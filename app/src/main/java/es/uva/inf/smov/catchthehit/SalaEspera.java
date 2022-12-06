@@ -28,23 +28,33 @@ import es.uva.inf.smov.catchthehit.datos.Partida;
 public class SalaEspera extends AppCompatActivity {
 
     private int listos;
-    private ViewGroup layout;
     private Partida partida;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private String codigo;
+    private DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sala_espera);
 
+        carga();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        carga();
+    }
+
+    private void carga(){
         //Conectamos a la base de datos y obtenemos la referencia de la partida.
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         codigo = getIntent().getExtras().getString("codigo");
-        DatabaseReference myRef = database.getReference(codigo);
+        myRef = database.getReference(codigo);
 
         //Referencias a los campos a rellenar, excepto la imagen.
         TextView listosTxt = (TextView) findViewById(R.id.espera);
@@ -68,7 +78,7 @@ public class SalaEspera extends AppCompatActivity {
                     if(partida.getEquipo1().elegirJugador(i).isReady()) {
                         listos = i + 1;
                         if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
-                            miJugador.setText(partida.getEquipo1().elegirJugador(i).getNombre());
+                            miJugador.setText("Tu jugador es: "+partida.getEquipo1().elegirJugador(i).getNombre());
                             setImagen(partida.getEquipo1().elegirJugador(i).getNombre());
                         }
                     }else
@@ -82,7 +92,7 @@ public class SalaEspera extends AppCompatActivity {
                 }
                 //Si no lo estan, ponemos los datos de codigo de partida y jugadores listos.
                 codigoTxt.setText("Código de sala: "+codigo);
-                listosTxt.setText("Esperando jugadores ("+(listos+1)+"/4)");
+                listosTxt.setText("Esperando jugadores ("+(listos)+"/4)");
 
             }
 
@@ -119,8 +129,24 @@ public class SalaEspera extends AppCompatActivity {
 
         }
     }
-
+    /*
+     * Salir de la sala dejando el hueco libre para otros jugadores.
+     */
     public void clickVolver(View v){
+        /*
+         * Esto es para que cuando un jugador salga de la sala se elimine su Uid de la lista de
+         * jugadores y ready de ese jugador se ponga en false. Para hacer pruebas lo dejo comentado
+         * para poder hacer pruebas con solo 2 dispositivos.
+         */
+        /*
+        for(int i = 0; i < 4; i++){
+            if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(mAuth.getUid())) {
+                partida.getEquipo1().elegirJugador(i).setUsuario("");
+                partida.getEquipo1().elegirJugador(i).setReady(false);
+                myRef.setValue(partida);
+                break;
+            }
+        }*/
         Intent intent = new Intent(SalaEspera.this, Inicio.class);
         startActivity(intent);
     }

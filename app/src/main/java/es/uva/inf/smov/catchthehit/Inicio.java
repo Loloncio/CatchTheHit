@@ -56,13 +56,6 @@ public class Inicio extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-
-    }
-
     public void clickBotonComoJugar(View v) {
         //Creamos el intent
         Intent intent = new Intent(Inicio.this, ComoJugar.class);
@@ -94,18 +87,19 @@ public class Inicio extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
                     //Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.
-                    for (int i = 0; i < 4; i++) {
+                    for (int i = 1; i < 4; i++) {
                         if (!partida.getEquipo1().elegirJugador(i).isReady()) {
-                            myRef.child("equipo1").child("jugadores").child(String.valueOf(i)).child("usuario").setValue(currentUser.getUid());
-                            myRef.child("equipo1").child("jugadores").child(String.valueOf(i)).child("ready").setValue(true);
-                            Log.e("no_ready",String.valueOf(i));
+                            partida.getEquipo1().elegirJugador(i).setReady(true);
+                            partida.getEquipo1().elegirJugador(i).setUsuario(currentUser.getUid());
                             break;
                         }
                     }
+                    myRef.removeEventListener(this);
+                    myRef.setValue(partida);
                     //Vamos a la sala de espera.
                     Intent intent;
                     intent = new Intent(Inicio.this, SalaEspera.class);
-                    intent.putExtra("codigo",sala);
+                    intent.putExtra("codigo", sala);
                     startActivity(intent);
                 }
 
@@ -141,6 +135,5 @@ public class Inicio extends AppCompatActivity {
         });
         currentUser = mAuth.getCurrentUser();
     }
-
 
 }
