@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +28,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.*;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
@@ -44,7 +47,10 @@ public class Inicio extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Bundle b;
     private Partida partida;
-    FirebaseUser currentUser;
+    private FirebaseUser currentUser;
+    private ValueEventListener listener;
+    private DatabaseReference myRef;
+    private int asignado;
 
 
     @Override
@@ -53,6 +59,7 @@ public class Inicio extends AppCompatActivity {
         setContentView(R.layout.activity_inicio);
 
         txtEdad = (EditText) findViewById(R.id.txtEdad);
+        asignado = 0;
 
     }
 
@@ -81,12 +88,22 @@ public class Inicio extends AppCompatActivity {
 
         } else {
             //Si se ha introducido, obtenemos una referencia de la base de datos con ese código
-            DatabaseReference myRef = database.getReference(sala);
-            myRef.addValueEventListener(new ValueEventListener() {
+            myRef = database.getReference(sala);
+            listener = myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
-                    //Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.
+                    if(asignado != 0){
+                        if(partida.getEquipo1().elegirJugador(asignado).getUsuario().equals(mAuth.getUid())) {
+                            myRef.removeEventListener(listener);
+                            myRef.child("equipo1").child("jugadores").child(String.valueOf(asignado)).child("ready")
+                                    .setValue(true);
+                            Intent intent = new Intent(Inicio.this, SalaEspera.class);
+                            intent.putExtra("codigo", sala);
+                            startActivity(intent);
+                        }
+                    }
+                    /*Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.
                     for (int i = 1; i < 4; i++) {
                         if (!partida.getEquipo1().elegirJugador(i).isReady()) {
                             partida.getEquipo1().elegirJugador(i).setReady(true);
@@ -95,12 +112,16 @@ public class Inicio extends AppCompatActivity {
                         }
                     }
                     myRef.removeEventListener(this);
-                    myRef.setValue(partida);
-                    //Vamos a la sala de espera.
-                    Intent intent;
-                    intent = new Intent(Inicio.this, SalaEspera.class);
-                    intent.putExtra("codigo", sala);
-                    startActivity(intent);
+                    myRef.setValue(partida);*/
+                    for (int i = 1; i < 4; i++) {
+                        if(partida.getEquipo1().elegirJugador(i).isReady())
+                            continue;
+                        else
+                            asignado = i;
+                            myRef.child("equipo1").child("jugadores").child(String.valueOf(i)).child("usuario")
+                                    .setValue(mAuth.getUid());
+                        break;
+                    }
                 }
 
                 @Override

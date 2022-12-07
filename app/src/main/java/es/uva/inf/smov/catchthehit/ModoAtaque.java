@@ -69,8 +69,9 @@ public class ModoAtaque extends AppCompatActivity {
     }
 
     public void click2(View v) {
-        if((Integer)v.getTag()!=null)
-        aJugador(partida.getEquipo1().elegirJugador((Integer)v.getTag()));
+        if((Integer)v.getTag()!=null) {
+            aJugador(partida.getEquipo1().elegirJugador((Integer)v.getTag()));
+        }
     }
 
     public void click3(View v) {
@@ -150,7 +151,7 @@ public class ModoAtaque extends AppCompatActivity {
             case 1:
                 fuerza.setText("- " + "2");
                 velocidad.setText("- " + "2");
-                energia.setText("- " + "5");
+                energia.setText("-" + "5");
                 break;
 
             case 2:
