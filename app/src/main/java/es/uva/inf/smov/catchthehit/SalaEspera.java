@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -86,9 +87,8 @@ public class SalaEspera extends AppCompatActivity {
                 }
                 //Cuando todos esten listos vamos al modo ataque
                 if(listos == 4){
-                    Intent intent = new Intent(SalaEspera.this, ModoAtaque.class);
-                    intent.putExtra("codigo",partida.getCodigo());
-                    startActivity(intent);
+                    Button boton = (Button) findViewById(R.id.button);
+                    boton.setText("Empezar");
                 }
                 //Si no lo estan, ponemos los datos de codigo de partida y jugadores listos.
                 codigoTxt.setText("Código de sala: "+codigo);
@@ -132,12 +132,13 @@ public class SalaEspera extends AppCompatActivity {
     /*
      * Salir de la sala dejando el hueco libre para otros jugadores.
      */
-    public void clickVolver(View v){
-        /*
-         * Esto es para que cuando un jugador salga de la sala se elimine su Uid de la lista de
-         * jugadores y ready de ese jugador se ponga en false. Para hacer pruebas lo dejo comentado
-         * para poder hacer pruebas con solo 2 dispositivos.
-         */
+    public void clickBoton(View v){
+        if(listos < 4) {
+            /*
+             * Esto es para que cuando un jugador salga de la sala se elimine su Uid de la lista de
+             * jugadores y ready de ese jugador se ponga en false. Para hacer pruebas lo dejo comentado
+             * para poder hacer pruebas con solo 2 dispositivos.
+             */
         /*
         for(int i = 0; i < 4; i++){
             if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(mAuth.getUid())) {
@@ -147,7 +148,12 @@ public class SalaEspera extends AppCompatActivity {
                 break;
             }
         }*/
-        Intent intent = new Intent(SalaEspera.this, Inicio.class);
-        startActivity(intent);
+            Intent intent = new Intent(SalaEspera.this, Inicio.class);
+            startActivity(intent);
+        } else{
+            Intent intent = new Intent(SalaEspera.this, ModoAtaque.class);
+            intent.putExtra("codigo",partida.getCodigo());
+            startActivity(intent);
+        }
     }
 }
