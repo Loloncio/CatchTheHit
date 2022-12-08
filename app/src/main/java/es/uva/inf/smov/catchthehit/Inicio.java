@@ -44,12 +44,9 @@ import es.uva.inf.smov.catchthehit.datos.Partida;
 public class Inicio extends AppCompatActivity {
 
     private EditText txtEdad;
-    private FirebaseDatabase database;
     private FirebaseAuth mAuth;
-    private Bundle b;
     private Partida partida;
     private FirebaseUser currentUser;
-    private ValueEventListener listener;
     private DatabaseReference myRef;
 
 
@@ -69,11 +66,11 @@ public class Inicio extends AppCompatActivity {
     }
 
     public void clickBotonEmpezarJuego(View v) {
-        b = new Bundle();
+        Bundle b = new Bundle();
         //logueamos al usuario como anónimo
         login();
         //Conexión a la base de datos, habrá que crear un código si no se ha introducido ninguno.
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
 
         //Obtenemos el codigo de la sala
@@ -88,17 +85,11 @@ public class Inicio extends AppCompatActivity {
         } else {
             //Si se ha introducido, obtenemos una referencia de la base de datos con ese código
             myRef = database.getReference(sala);
-            listener = myRef.addValueEventListener(new ValueEventListener() {
-                @SuppressLint("SuspiciousIndentation")
+            myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
-                    if(partida == null){
-                        DatabaseError DatabaseError = null;
-                        onCancelled(DatabaseError);
-                    }
-
-                    /*Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.*/
+                    //Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.
                     for (int i = 1; i < 4; i++) {
                         if (!partida.getEquipo1().elegirJugador(i).isReady()) {
                             partida.getEquipo1().elegirJugador(i).setReady(true);
@@ -108,11 +99,13 @@ public class Inicio extends AppCompatActivity {
                     }
                     myRef.removeEventListener(this);
                     myRef.setValue(partida);
-                    Intent intent = new Intent(Inicio.this, SalaEspera.class);
+                    //Vamos a la sala de espera.
+                    Intent intent;
+                    intent = new Intent(Inicio.this, SalaEspera.class);
                     intent.putExtra("codigo", sala);
                     startActivity(intent);
-
                 }
+
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Mostramos un mensaje si no se encuentra la sala.
