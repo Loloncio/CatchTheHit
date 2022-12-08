@@ -151,6 +151,23 @@ public class Jugador implements Serializable {
         this.respuestas = respuesta;
     }
 
+    public int avanza(int avance){
+        avance = posicion+avance;
+        if(avance>3)
+            avance = avance-4;
+        posicion=avance;
+        return posicion;
+    }
+    public void menosRes(int x){
+        resistencia -= x;
+    }
+    public void menosVel(int x){
+        velocidad -= x;
+    }
+    public void menosFue(int x){
+        fuerza -= x;
+    }
+
     /*
     Obtenemos un valor entre 50 y 100 con la probabilidad indicada en llenaProbabilidad.
     */

@@ -5,6 +5,7 @@ import static java.security.AccessController.getContext;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.*;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
@@ -44,7 +48,9 @@ public class Inicio extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Bundle b;
     private Partida partida;
-    FirebaseUser currentUser;
+    private FirebaseUser currentUser;
+    private ValueEventListener listener;
+    private DatabaseReference myRef;
 
 
     @Override
@@ -81,12 +87,14 @@ public class Inicio extends AppCompatActivity {
 
         } else {
             //Si se ha introducido, obtenemos una referencia de la base de datos con ese código
-            DatabaseReference myRef = database.getReference(sala);
-            myRef.addValueEventListener(new ValueEventListener() {
+            myRef = database.getReference(sala);
+            listener = myRef.addValueEventListener(new ValueEventListener() {
+                @SuppressLint("SuspiciousIndentation")
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
-                    //Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.
+
+                    /*Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.*/
                     for (int i = 1; i < 4; i++) {
                         if (!partida.getEquipo1().elegirJugador(i).isReady()) {
                             partida.getEquipo1().elegirJugador(i).setReady(true);
@@ -96,11 +104,10 @@ public class Inicio extends AppCompatActivity {
                     }
                     myRef.removeEventListener(this);
                     myRef.setValue(partida);
-                    //Vamos a la sala de espera.
-                    Intent intent;
-                    intent = new Intent(Inicio.this, SalaEspera.class);
+                    Intent intent = new Intent(Inicio.this, SalaEspera.class);
                     intent.putExtra("codigo", sala);
                     startActivity(intent);
+
                 }
 
                 @Override

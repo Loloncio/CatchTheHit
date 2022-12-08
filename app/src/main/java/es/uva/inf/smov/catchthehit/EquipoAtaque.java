@@ -84,13 +84,21 @@ public class EquipoAtaque extends AppCompatActivity {
     public void clickPlayer(View v) {
         //Creamos el intent
         Intent intent = new Intent(EquipoAtaque.this, JugadorActivity.class);
-        Jugador jugador = partida.getEquipo1().elegirJugador(1);
-        intent.putExtra("nombre",jugador.getNombre());
-        intent.putExtra("fuerza",jugador.getFuerza());
-        intent.putExtra("velocidad",jugador.getVelocidad());
-        intent.putExtra("resistencia",jugador.getResistencia());
-        intent.putExtra("codigo", codigo);
-        startActivity(intent);
+        Jugador jugador;
+        for(int i = 0; i < 4; i++){
+            if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(mAuth.getUid())) {
+                jugador = partida.getEquipo1().elegirJugador(i);
+                intent.putExtra("nombre", jugador.getNombre());
+                intent.putExtra("fuerza", jugador.getFuerza());
+                intent.putExtra("velocidad", jugador.getVelocidad());
+                intent.putExtra("resistencia", jugador.getResistencia());
+                intent.putExtra("codigo", codigo);
+                startActivity(intent);
+            }
+
+        }
+
+
     }
 
     public void click1(View v){
