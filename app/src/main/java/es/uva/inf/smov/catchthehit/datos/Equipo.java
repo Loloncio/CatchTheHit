@@ -18,8 +18,8 @@ public class Equipo implements Serializable {
     public ArrayList creaJugadores(){
         ArrayList<Jugador> equipo = new ArrayList<Jugador>(9);
         ArrayList<String> nombres = new ArrayList<String>(9);
-        nombres.addAll(Arrays.asList("Tom","Ted","Willie","Stan","John","Jackson","Lucas","Charlie","Andrey"));
-        for(int i=0; i<9 ; i++){
+        nombres.addAll(Arrays.asList("Tom","Ted","Willie","Stan","John","Jackson","Lucas","Charlie","Andrey","Babe"));
+        for(int i=0; i<10 ; i++){
             equipo.add(new Jugador(nombres.get(i), i, ""));
         }
         return equipo;

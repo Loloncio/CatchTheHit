@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import es.uva.inf.smov.catchthehit.datos.Jugador;
 import es.uva.inf.smov.catchthehit.datos.Partida;
 
 public class EquipoDefensa extends AppCompatActivity {
@@ -111,13 +112,21 @@ public class EquipoDefensa extends AppCompatActivity {
 
     }
 
-    public void clickField(View v) {
+    public void clickFieldDefensa(View v) {
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
+
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo",partida.getCodigo());
+
+        intent.putExtras(b);
 
         startActivity(intent);
     }
 
+    /*
     public void clickPlayer(View v) {
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, JugadorActivity.class);
@@ -128,9 +137,11 @@ public class EquipoDefensa extends AppCompatActivity {
         intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
-    }
+    }*/
 
     public void clickRedPlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(1));
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -144,10 +155,12 @@ public class EquipoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void clickGreenPlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(9));
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -161,10 +174,12 @@ public class EquipoDefensa extends AppCompatActivity {
         myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void clickBluePlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(2));
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -178,10 +193,12 @@ public class EquipoDefensa extends AppCompatActivity {
         myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void clickPurplePlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(3));
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -195,10 +212,12 @@ public class EquipoDefensa extends AppCompatActivity {
         myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void clickGrayPlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(6));
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -212,10 +231,12 @@ public class EquipoDefensa extends AppCompatActivity {
         myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void clickOrangePlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(4));
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -229,10 +250,12 @@ public class EquipoDefensa extends AppCompatActivity {
         myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void clickPinkPlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(5));
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -246,10 +269,12 @@ public class EquipoDefensa extends AppCompatActivity {
         myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void clickCyanPlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(7));
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -263,10 +288,13 @@ public class EquipoDefensa extends AppCompatActivity {
         myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     public void clickYellowPlayer(View v){
+        aJugador(partida.getEquipo1().elegirJugador(8));
+
+        /*
         //Creamos el intent
         Intent intent = new Intent(EquipoDefensa.this, ModoDefensa.class);
 
@@ -280,6 +308,23 @@ public class EquipoDefensa extends AppCompatActivity {
         myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
+        startActivity(intent);*/
+    }
+
+    private void aJugador(Jugador jugador){
+        Intent intent = new Intent(EquipoDefensa.this, JugadorDefensaActivity.class);
+        intent.putExtra("nombre",jugador.getNombre());
+        intent.putExtra("fuerza",jugador.getFuerza());
+        intent.putExtra("velocidad",jugador.getVelocidad());
+        intent.putExtra("resistencia",jugador.getResistencia());
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference myRef = database.getReference(partida.getCodigo());
+        myRef.setValue(partida);
+        intent.putExtra("codigo", codigo);
+        intent.putExtra("idJugador",jugador.getId());
+        intent.putExtra("casilla",bundle.getString("casilla"));
+        //b.putInt(bundle.getString("casilla"),jugador.getId());
+        intent.putExtras(b);
         startActivity(intent);
     }
 }
