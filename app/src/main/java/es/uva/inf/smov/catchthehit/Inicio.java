@@ -5,6 +5,7 @@ import static java.security.AccessController.getContext;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -50,7 +51,6 @@ public class Inicio extends AppCompatActivity {
     private FirebaseUser currentUser;
     private ValueEventListener listener;
     private DatabaseReference myRef;
-    private int asignado;
 
 
     @Override
@@ -59,7 +59,6 @@ public class Inicio extends AppCompatActivity {
         setContentView(R.layout.activity_inicio);
 
         txtEdad = (EditText) findViewById(R.id.txtEdad);
-        asignado = 0;
 
     }
 
@@ -90,20 +89,12 @@ public class Inicio extends AppCompatActivity {
             //Si se ha introducido, obtenemos una referencia de la base de datos con ese código
             myRef = database.getReference(sala);
             listener = myRef.addValueEventListener(new ValueEventListener() {
+                @SuppressLint("SuspiciousIndentation")
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
-                    if(asignado != 0){
-                        if(partida.getEquipo1().elegirJugador(asignado).getUsuario().equals(mAuth.getUid())) {
-                            myRef.removeEventListener(listener);
-                            myRef.child("equipo1").child("jugadores").child(String.valueOf(asignado)).child("ready")
-                                    .setValue(true);
-                            Intent intent = new Intent(Inicio.this, SalaEspera.class);
-                            intent.putExtra("codigo", sala);
-                            startActivity(intent);
-                        }
-                    }
-                    /*Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.
+
+                    /*Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.*/
                     for (int i = 1; i < 4; i++) {
                         if (!partida.getEquipo1().elegirJugador(i).isReady()) {
                             partida.getEquipo1().elegirJugador(i).setReady(true);
@@ -112,16 +103,11 @@ public class Inicio extends AppCompatActivity {
                         }
                     }
                     myRef.removeEventListener(this);
-                    myRef.setValue(partida);*/
-                    for (int i = 1; i < 4; i++) {
-                        if(partida.getEquipo1().elegirJugador(i).isReady())
-                            continue;
-                        else
-                            asignado = i;
-                            myRef.child("equipo1").child("jugadores").child(String.valueOf(i)).child("usuario")
-                                    .setValue(mAuth.getUid());
-                        break;
-                    }
+                    myRef.setValue(partida);
+                    Intent intent = new Intent(Inicio.this, SalaEspera.class);
+                    intent.putExtra("codigo", sala);
+                    startActivity(intent);
+
                 }
 
                 @Override

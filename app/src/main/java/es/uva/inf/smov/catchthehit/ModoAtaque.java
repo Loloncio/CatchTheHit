@@ -48,7 +48,10 @@ public class ModoAtaque extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 partida = dataSnapshot.getValue(Partida.class);
-                colocaJugadores();
+                for (int i = 0; i < 4; i++)
+                    if (partida.getEquipo1().elegirJugador(i).isEnjuego())
+                        colocaJugador(i);
+
             }
 
             @Override
@@ -60,28 +63,26 @@ public class ModoAtaque extends AppCompatActivity {
     }
 
     public void click1(View v) {
-        ImageView bat = (ImageView) v.findViewById(R.id.Base4);
-        String user = (String) bat.getTag();
-        for (int i = 0; i < 4; i++) {
-            if (partida.getEquipo1().elegirJugador(i).getUsuario().equals(user))
-                aJugador(partida.getEquipo1().elegirJugador(i));
-        }
+        ImageView bat = (ImageView) v.findViewById(R.id.bateador);
+        int user = Integer.parseInt(bat.getTag().toString());
+        aJugador(partida.getEquipo1().elegirJugador(user));
+
     }
 
     public void click2(View v) {
-        if((Integer)v.getTag()!=null) {
-            aJugador(partida.getEquipo1().elegirJugador((Integer)v.getTag()));
+        if ((Integer) v.getTag() != null) {
+            aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
         }
     }
 
     public void click3(View v) {
-        if((Integer)v.getTag()!=null)
-        aJugador(partida.getEquipo1().elegirJugador((Integer)v.getTag()));
+        if ((Integer) v.getTag() != null)
+            aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
     }
 
     public void click4(View v) {
-        if((Integer)v.getTag()!=null)
-        aJugador(partida.getEquipo1().elegirJugador((Integer)v.getTag()));
+        if ((Integer) v.getTag() != null)
+            aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
     }
 
     private void aJugador(Jugador jugador) {
@@ -94,42 +95,38 @@ public class ModoAtaque extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void colocaJugadores() {
+    private void colocaJugador(int i) {
         int base;
-        for (int i = 0; i < 4; i++) {
-            if (!partida.getEquipo1().elegirJugador(i).isEnjuego())
-                continue;
-            base = partida.getEquipo1().elegirJugador(i).getPosicion();
-            ImageView bat;
-            switch (base) {
-                case 1:
-                    layout = (ViewGroup) findViewById(R.id.Base1);
-                    LayoutInflater inflater = LayoutInflater.from(this);
-                    int id = R.layout.bateador;
-                    ConstraintLayout mov = (ConstraintLayout) inflater.inflate(id, null, false);
-                    bat = (ImageView) mov.findViewById(R.id.bateador);
-                    bat.setTag(partida.getEquipo1().elegirJugador(i).getNombre());
-                    layout.addView(mov);
-                    break;
-                case 2:
-                    bat = (ImageView) findViewById(R.id.Base2);
-                    bat.setTag(i);
-                    bat.setImageResource(buscaImagen(i));
-                    bat.setVisibility(View.VISIBLE);
-                    break;
-                case 3:
-                    bat = (ImageView) findViewById(R.id.Base3);
-                    bat.setTag(i);
-                    bat.setImageResource(buscaImagen(i));
-                    bat.setVisibility(View.VISIBLE);
-                    break;
-                default:
-                    bat = (ImageView) findViewById(R.id.Base4);
-                    bat.setTag(i);
-                    bat.setImageResource(buscaImagen(i));
-                    bat.setVisibility(View.VISIBLE);
-                    break;
-            }
+        base = partida.getEquipo1().elegirJugador(i).getPosicion();
+        ImageView bat;
+        switch (base) {
+            case 1:
+                layout = (ViewGroup) findViewById(R.id.Base1);
+                LayoutInflater inflater = LayoutInflater.from(this);
+                int id = R.layout.bateador;
+                ConstraintLayout mov = (ConstraintLayout) inflater.inflate(id, null, false);
+                bat = (ImageView) mov.findViewById(R.id.bateador);
+                bat.setImageResource(buscaImagen(i));
+                bat.setTag(String.valueOf(partida.getEquipo1().elegirJugador(i).getId()));
+                layout.addView(mov);
+                break;
+            case 2:
+                bat = (ImageView) findViewById(R.id.Base2);
+                bat.setTag(i);
+                bat.setImageResource(buscaImagen(i));
+                bat.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                bat = (ImageView) findViewById(R.id.Base3);
+                bat.setTag(i);
+                bat.setImageResource(buscaImagen(i));
+                bat.setVisibility(View.VISIBLE);
+                break;
+            default:
+                bat = (ImageView) findViewById(R.id.Base4);
+                bat.setTag(i);
+                bat.setImageResource(buscaImagen(i));
+                bat.setVisibility(View.VISIBLE);
         }
     }
 
@@ -143,9 +140,9 @@ public class ModoAtaque extends AppCompatActivity {
         movimiento.setText("Avanza " + String.valueOf(avance));
         TextView fuerza = (TextView) mov.findViewById(R.id.statFuerza);
         TextView velocidad = (TextView) mov.findViewById(R.id.statVelocidad);
-        ;
+
         TextView energia = (TextView) mov.findViewById(R.id.statEnergia);
-        ;
+
 
         switch (avance) {
             case 1:
