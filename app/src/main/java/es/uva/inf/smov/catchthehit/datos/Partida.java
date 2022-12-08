@@ -26,8 +26,8 @@ public class Partida implements Serializable {
         codigo = randomString(5);
         rondas = noRondas;
         rondaAct = 1;
-        Equipo1 = new Equipo();
-        Equipo2 = new Equipo();
+        Equipo1 = new Equipo(1);
+        Equipo2 = new Equipo(2);
         preguntas = new ArrayList<String>();
         jugadaAct = 0;
         puntuacion = 90;

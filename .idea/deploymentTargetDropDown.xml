@@ -19,8 +19,26 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="D:\Programas\AndroidStudio\AVDs\Pixel_6_Pro_API_28.avd" />
+          </Key>
+        </deviceKey>
+      </Target>
+      <Target>
+        <type value="RUNNING_DEVICE_TARGET" />
+        <deviceKey>
+          <Key>
             <type value="SERIAL_NUMBER" />
-            <value value="adb-48a3caea-7kTlIx._adb-tls-connect._tcp" />
+            <value value="LGH930d9a05efa" />
+          </Key>
+        </deviceKey>
+      </Target>
+      <Target>
+        <type value="RUNNING_DEVICE_TARGET" />
+        <deviceKey>
+          <Key>
+            <type value="SERIAL_NUMBER" />
+            <value value="11160bb4a6673703" />
           </Key>
         </deviceKey>
       </Target>
