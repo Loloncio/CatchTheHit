@@ -40,4 +40,7 @@ public class Equipo implements Serializable {
     public List<Jugador> getJugadores() {
         return jugadores;
     }
+    public void incrementaPuntos(){
+        puntos++;
+    }
 }
