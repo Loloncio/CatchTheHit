@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,11 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Random;
 
 import es.uva.inf.smov.catchthehit.datos.Jugador;
 import es.uva.inf.smov.catchthehit.datos.Partida;
@@ -29,10 +33,10 @@ public class ModoAtaque extends AppCompatActivity {
 
     private ViewGroup layout;
     private String codigo;
-    private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private Partida partida;
     private DatabaseReference myRef;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,8 @@ public class ModoAtaque extends AppCompatActivity {
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(codigo);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -109,8 +115,9 @@ public class ModoAtaque extends AppCompatActivity {
 
     private void colocaJugador(int i) {
         int base;
-        base = partida.getEquipo1().elegirJugador(i).getPosicion();
+        base = partida.getEquipo1().elegirJugador(i).getPosicionAtaque();
         ImageView bat;
+
         switch (base) {
             case 1:
                 layout = (ViewGroup) findViewById(R.id.Base1);
@@ -191,13 +198,17 @@ public class ModoAtaque extends AppCompatActivity {
         /*
         Si se ha seleccionado descansar solo hay que sumar 5 a la resistencia del jugador.
          */
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference(codigo);
         if (!avance.getText().toString().equals("Descansa")) {
             /*
             Si se ha seleccionado otra cosa tendremos que restar estadisticas y cambiar posición con
             el switch
              */
-            int posOr = partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getPosicion();
+            int posOr = partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getPosicionAtaque();
             int pos;
+
             switch (avance.getText().toString()) {
                 case "Avanza 1":
                     pos = partida.getEquipo1().elegirJugador(partida.getJugadaAct()).avanza(1);
@@ -207,10 +218,22 @@ public class ModoAtaque extends AppCompatActivity {
                     for (int i = 0; i < 4; i++) {
                         if (i == partida.getJugadaAct()) {
                             continue;
-                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicion()) {
+                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque()) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
+                            Dialog mensaje = new Dialog(this);
+                            mensaje.setContentView(R.layout.eliminado);
+                            mensaje.show();
+                            myRef.setValue(partida);
+                            break;
                         }
                     }
+                    /*if(defensa(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getFuerza())
+                        > 90){
+                        partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
+                        myRef.setValue(partida);
+                        break;
+                    }*/
+
                     if (pos < posOr) partida.getEquipo1().incrementaPuntos();
                     partida.siguienteJugada();
                     myRef.setValue(partida);
@@ -224,7 +247,7 @@ public class ModoAtaque extends AppCompatActivity {
                     for (int i = 0; i < 4; i++) {
                         if (i == partida.getJugadaAct()) {
                             continue;
-                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicion()) {
+                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque()) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         }
                     }
@@ -241,7 +264,7 @@ public class ModoAtaque extends AppCompatActivity {
                     for (int i = 0; i < 4; i++) {
                         if (i == partida.getJugadaAct()) {
                             continue;
-                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicion()) {
+                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque()) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         }
                     }
@@ -276,9 +299,21 @@ public class ModoAtaque extends AppCompatActivity {
     }
 
     private void juego() {
+        ImageView bat;
+        bat = (ImageView) findViewById(R.id.Base2);
+        bat.setVisibility(View.INVISIBLE);
+        bat = (ImageView) findViewById(R.id.Base3);
+        bat.setVisibility(View.INVISIBLE);
+        bat = (ImageView) findViewById(R.id.Base4);
+        bat.setVisibility(View.INVISIBLE);
+        layout = (ViewGroup) findViewById(R.id.Base1);
+        layout.removeAllViews();
+        layout = (ViewGroup) findViewById(R.id.movimientos);
+        layout.removeAllViews();
+
         for (int i = 0; i < 4; i++) {
             if (partida.getEquipo1().elegirJugador(i).isEnjuego()) colocaJugador(i);
-            if (i == partida.getJugadaAct() && partida.getEquipo1().elegirJugador(i).getUsuario().equals(mAuth.getUid())) {
+            if (i == partida.getJugadaAct() && partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
                 if (partida.getPuntuacion() > 85) {
                     addTirada(1);
                     addTirada(2);
@@ -299,6 +334,71 @@ public class ModoAtaque extends AppCompatActivity {
             }
 
         }
+    }
+
+    private int defensa(int fuerza){
+        Random random = new Random();
+        int zona = random.nextInt(4);
+        int sumaRes = 0;
+        int sumaVel = 0;
+        int sumaRef = 0;
+        int media = 0;
+        switch (zona){
+            case 1:
+                for(int i = 0; i < 4;i++){
+                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==0 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==1) {
+                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
+                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
+                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
+                        partida.getEquipo2().elegirJugador(i).menosRes(5);
+                        partida.getEquipo2().elegirJugador(i).menosVel(2);
+                        partida.getEquipo2().elegirJugador(i).menosRef(2);
+                    }
+                }
+                sumaRes /= 2;
+                sumaVel /= 2;
+                sumaRef /= 2;
+                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
+                return media;
+            case 2:
+                for(int i = 0; i < 4;i++){
+                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==2 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==3) {
+                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
+                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
+                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
+                        partida.getEquipo2().elegirJugador(i).menosRes(5);
+                        partida.getEquipo2().elegirJugador(i).menosVel(2);
+                        partida.getEquipo2().elegirJugador(i).menosRef(2);
+                    }
+                }
+                sumaRes /= 2;
+                sumaVel /= 2;
+                sumaRef /= 2;
+                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
+                return media;
+            case 3:
+                for(int i = 0; i < 4;i++){
+                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==4 ||
+                            partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==5 ||
+                            partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==6) {
+                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
+                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
+                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
+                        partida.getEquipo2().elegirJugador(i).menosRes(5);
+                        partida.getEquipo2().elegirJugador(i).menosVel(2);
+                        partida.getEquipo2().elegirJugador(i).menosRef(2);
+                    }
+                }
+                sumaRes /= 3;
+                sumaVel /= 3;
+                sumaRef /= 3;
+                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
+                return media;
+            default:
+                break;
+
+        }
+        return 0;
     }
 
 }

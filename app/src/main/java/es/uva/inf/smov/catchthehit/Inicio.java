@@ -93,6 +93,10 @@ public class Inicio extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
+                    if(partida == null){
+                        DatabaseError DatabaseError = null;
+                        onCancelled(DatabaseError);
+                    }
 
                     /*Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.*/
                     for (int i = 1; i < 4; i++) {
@@ -109,7 +113,6 @@ public class Inicio extends AppCompatActivity {
                     startActivity(intent);
 
                 }
-
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Mostramos un mensaje si no se encuentra la sala.
