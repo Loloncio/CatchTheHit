@@ -16,6 +16,7 @@ public class Partida implements Serializable {
     private Equipo Equipo1;
     private Equipo Equipo2;
     private ArrayList<String> preguntas;
+    private int puntuacion;
 
     public Partida() {
 
@@ -29,6 +30,7 @@ public class Partida implements Serializable {
         Equipo2 = new Equipo();
         preguntas = new ArrayList<String>();
         jugadaAct = 0;
+        puntuacion = 90;
         setPreguntas();
     }
 
@@ -62,6 +64,17 @@ public class Partida implements Serializable {
 
     public void setJugadaAct(int jugadaAct) {
         this.jugadaAct = jugadaAct;
+    }
+    public int getPuntuacion() {
+        return puntuacion;
+    }
+
+    public void setPuntuacion(int puntuacion) {
+        this.puntuacion = puntuacion;
+    }
+
+    public void siguienteJugada(){
+        jugadaAct++;
     }
 
     /*
