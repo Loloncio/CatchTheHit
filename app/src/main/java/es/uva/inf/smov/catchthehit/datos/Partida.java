@@ -17,6 +17,7 @@ public class Partida implements Serializable {
     private Equipo Equipo2;
     private ArrayList<String> preguntas;
     private int puntuacion;
+    private int puntosRonda;
 
     public Partida() {
 
@@ -26,6 +27,7 @@ public class Partida implements Serializable {
         codigo = randomString(5);
         rondas = noRondas;
         rondaAct = 1;
+        puntosRonda = 0;
         Equipo1 = new Equipo(1);
         Equipo2 = new Equipo(2);
         preguntas = new ArrayList<String>();
@@ -109,6 +111,18 @@ public class Partida implements Serializable {
 
     public int getJugadaAct() {
         return jugadaAct;
+    }
+
+    public void otroPunto(){
+        puntosRonda++;
+    }
+
+    public int getPuntosRonda() {
+        return puntosRonda;
+    }
+
+    public void setPuntosRonda(int puntosRonda) {
+        this.puntosRonda = puntosRonda;
     }
 
     private void setPreguntas() {

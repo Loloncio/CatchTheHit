@@ -42,22 +42,33 @@ public class ModoAtaque extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo_ataque);
-
+        //Creación de la referencia a la base de datos y recolección de datos del usuario.
         codigo = getIntent().getExtras().getString("codigo");
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(codigo);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
+
+        //Cojemos los datos de la partida.
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
                 partida = dataSnapshot.getValue(Partida.class);
+                //Comprobamos cuantos jugadores estan eliminados.
+                int eliminados = 0;
+                for(int i = 0; i < 4; i++){
+                    if(!partida.getEquipo1().elegirJugador(i).isEnjuego())
+                        eliminados++;
+                }
 
-                if (partida.getJugadaAct() == 4) {
+                /*
+                Si se han eliminado 3 jugadores o se llega a 3 puntos, vamos al modo defensa y
+                reiniciamos los puntos conseguidos en la ronda y jugadaAct.
+                 */
+                if (partida.getPuntosRonda() == 3 || eliminados >=3) {
                     myRef.removeEventListener(this);
+                    partida.setPuntosRonda(0);
                     partida.setJugadaAct(0);
                     myRef.setValue(partida);
                     Intent intent = new Intent(ModoAtaque.this, ModoDefensa.class);
@@ -69,6 +80,7 @@ public class ModoAtaque extends AppCompatActivity {
                     intent.putExtras(b);
 
                     startActivity(intent);
+                    //Si no se han eliminado 3 jugadores o se llega a 3 puntos, sigue el juego.
                 } else juego();
             }
 
@@ -80,14 +92,19 @@ public class ModoAtaque extends AppCompatActivity {
         });
     }
 
+    /*
+    Metodos para ver las estadísticas de los jugadores.
+     */
     public void click1(View v) {
         ImageView bat = v.findViewById(R.id.bateador);
+        //Dato almacenado en el xml para saber a que jugador de la base 1 se ha pulsado.
         int user = Integer.parseInt(bat.getTag().toString());
         aJugador(partida.getEquipo1().elegirJugador(user));
 
     }
 
     public void click2(View v) {
+        //Aqui se usa el tag para comprobar que hay algún jugador en esa base.
         if (v.getTag() != null) {
             aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
         }
@@ -101,6 +118,9 @@ public class ModoAtaque extends AppCompatActivity {
         if (v.getTag() != null) aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
     }
 
+    /*
+    Se mandan los datos del jugador seleccionado a la vista de Jugador y se muestra.
+     */
     private void aJugador(Jugador jugador) {
         Intent intent = new Intent(ModoAtaque.this, JugadorActivity.class);
         intent.putExtra("nombre", jugador.getNombre());
@@ -111,6 +131,11 @@ public class ModoAtaque extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*
+    Coloca el jugador dado en el tablero. Si va en la primera base usamos inflate, si no, ponemos
+    la base correcta como visible y lo colocamos. En todos los casos ponemos en el tag del xml el
+    id correspondiente.
+     */
     private void colocaJugador(int i) {
         int base;
         base = partida.getEquipo1().elegirJugador(i).getPosicionAtaque();
@@ -147,7 +172,11 @@ public class ModoAtaque extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("InlinedApi")
+    /*
+    Colocamos las opciones de avance del jugador en función de la puntuación obtenida en el minijuego.
+    Para esto usamos inflate. Los valores de perdida/ganancia de estadísticas de cada jugador son
+    estáticos (en todas las tiradas es igual).
+     */
     private void addTirada(int avance) {
         layout = findViewById(R.id.movimientos);
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -190,32 +219,38 @@ public class ModoAtaque extends AppCompatActivity {
 
         layout.addView(mov);
     }
-
+    /*
+    Cuando un jugador selecciona una opción tenemos que identificar que opción es, restar las estadísticas,
+    comprobar si los defensores cogen la bola, comprobar que la base donde acaba está vacío y apntar
+    el progreso. El proceso es el siguiente:
+    1. Diferenciamos avance o descanso (Para simplificar el switch) y guardamos la posición original
+    (Por si pasamos de la 4 a la 2).
+    2. Restamos las estadísticas y generamos el resultado de la defensa.
+    3. Si nos da 1 es que el jugador esta eliminado, 2, es un home run, 0 es que se sigue normal.
+    4. Comprobamos si la base objetivo está ocupada o no.
+    5. Comprobamos si se ha dado una vuelta y pasamos el turno.
+     */
     public void clickOpcion(View v) {
         TextView avance = v.findViewById(R.id.opcion);
-        /*
-        Si se ha seleccionado descansar solo hay que sumar 5 a la resistencia del jugador.
-         */
+
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference(codigo);
+        //*****Paso 1*****//
         if (!avance.getText().toString().equals("Descansa")) {
-            /*
-            Si se ha seleccionado otra cosa tendremos que restar estadisticas y cambiar posición con
-            el switch
-             */
             int posOr = partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getPosicionAtaque();
             int pos;
             int defensa;
 
             switch (avance.getText().toString()) {
                 case "Avanza 1":
+                    //*****Paso 2*****//
                     pos = partida.getEquipo1().elegirJugador(partida.getJugadaAct()).avanza(1);
                     partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosFue(2);
                     partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(5);
                     partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosVel(2);
                     defensa = defensa(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getFuerza(), 1);
-
+                    //*****Paso 3*****//
                     if (defensa == 1) {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
@@ -224,6 +259,7 @@ public class ModoAtaque extends AppCompatActivity {
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
+                        partida.otroPunto();
                         partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
                         Dialog mensaje = new Dialog(this);
@@ -233,6 +269,7 @@ public class ModoAtaque extends AppCompatActivity {
                         mensaje.show();
                         myRef.setValue(partida);
                     }
+                    //*****Paso 4*****//
                     for (int i = 0; i < 4; i++) {
                         if (i == partida.getJugadaAct()) {
                             continue;
@@ -245,8 +282,11 @@ public class ModoAtaque extends AppCompatActivity {
                             break;
                         }
                     }
-
-                    if (pos < posOr) partida.getEquipo1().incrementaPuntos();
+                    //*****Paso 5*****//
+                    if (pos < posOr) {
+                        partida.getEquipo1().incrementaPuntos();
+                        partida.otroPunto();
+                    }
                     partida.siguienteJugada();
                     myRef.setValue(partida);
 
@@ -266,6 +306,7 @@ public class ModoAtaque extends AppCompatActivity {
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
+                        partida.otroPunto();
                         partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
                         Dialog mensaje = new Dialog(this);
@@ -282,7 +323,10 @@ public class ModoAtaque extends AppCompatActivity {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         }
                     }
-                    if (pos < posOr) partida.getEquipo1().incrementaPuntos();
+                    if (pos < posOr){
+                        partida.getEquipo1().incrementaPuntos();
+                        partida.otroPunto();
+                    }
                     partida.siguienteJugada();
                     myRef.setValue(partida);
 
@@ -302,6 +346,7 @@ public class ModoAtaque extends AppCompatActivity {
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
+                        partida.otroPunto();
                         partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
                         Dialog mensaje = new Dialog(this);
@@ -318,7 +363,10 @@ public class ModoAtaque extends AppCompatActivity {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         }
                     }
-                    if (pos < posOr) partida.getEquipo1().incrementaPuntos();
+                    if (pos < posOr){
+                        partida.getEquipo1().incrementaPuntos();
+                        partida.otroPunto();
+                    }
                     partida.siguienteJugada();
                     myRef.setValue(partida);
 
@@ -327,6 +375,10 @@ public class ModoAtaque extends AppCompatActivity {
 
             }
         } else {
+            /*
+            Si se ha seleccionado descansar solo hay que sumar 5 a la resistencia del jugador,
+            siempre que la energía actual no supere 95 (si no tendría más de 100).
+             */
             if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getResistencia() <= 95) ;
             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(-5);
             partida.siguienteJugada();
@@ -334,7 +386,9 @@ public class ModoAtaque extends AppCompatActivity {
         }
 
     }
-
+    /*
+    Obtenemos el identificador numérico de la imagen del jugador deseado.
+     */
     private int buscaImagen(int i) {
         switch (i) {
             default:
@@ -348,21 +402,32 @@ public class ModoAtaque extends AppCompatActivity {
 
         }
     }
-
+    /*
+    Inicia la partida cada ronda.
+    1. Pone invisibles o elimina las views actuales de los jugadores.
+    2. Coloca los jugadores en juego.
+    3. Crea las opciones de avance es función de la puntuación obtenida en el minijuego para el
+    jugador que le toque avanzar.
+     */
     private void juego() {
+        //*****Paso 1*****//
         ImageView bat;
         bat = findViewById(R.id.Base2);
         bat.setVisibility(View.INVISIBLE);
+        bat.setTag(null);
         bat = findViewById(R.id.Base3);
         bat.setVisibility(View.INVISIBLE);
+        bat.setTag(null);
         bat = findViewById(R.id.Base4);
         bat.setVisibility(View.INVISIBLE);
+        bat.setTag(null);
         layout = findViewById(R.id.Base1);
         layout.removeAllViews();
         layout = findViewById(R.id.movimientos);
         layout.removeAllViews();
 
         for (int i = 0; i < 4; i++) {
+            //*****Paso 2*****//
             if (partida.getEquipo1().elegirJugador(i).isEnjuego()) colocaJugador(i);
             if (i == partida.getJugadaAct() && partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
                 if (partida.getPuntuacion() > 85) {
@@ -386,7 +451,17 @@ public class ModoAtaque extends AppCompatActivity {
 
         }
     }
-
+    /*
+    Simulación de la defensa. Elige la zona de caida de la bola de forma aleatoria, despues, calcula
+    la media de las estadísticas de los jugadores de esa zona. Finalmente, en función de cuanto
+    quiera avanzar el defensor y la media calculada se da un valor de defensa.
+    Si la media es superior a 90, se elimina al jugador.
+    Media entre 75 y 90, solo se puede avanzar una base.
+    Media entre 50 y 75, se puede avanzar hasta 2.
+    Media entre 25 y 50, Se puede avanzar 3.
+    Media por debajo de 25, home run.
+    También se resta alguna estadística a los defensores.
+     */
     private int defensa(int fuerza, int avance) {
         int eliminado = 0;
         Random random = new Random();
