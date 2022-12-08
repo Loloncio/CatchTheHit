@@ -44,12 +44,9 @@ import es.uva.inf.smov.catchthehit.datos.Partida;
 public class Inicio extends AppCompatActivity {
 
     private EditText txtEdad;
-    private FirebaseDatabase database;
     private FirebaseAuth mAuth;
-    private Bundle b;
     private Partida partida;
     private FirebaseUser currentUser;
-    private ValueEventListener listener;
     private DatabaseReference myRef;
 
 
@@ -69,11 +66,11 @@ public class Inicio extends AppCompatActivity {
     }
 
     public void clickBotonEmpezarJuego(View v) {
-        b = new Bundle();
-        //logueamos al usuario como anÛnimo
+        Bundle b = new Bundle();
+        //logueamos al usuario como an√≥nimo
         login();
-        //ConexiÛn a la base de datos, habr· que crear un cÛdigo si no se ha introducido ninguno.
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        //Conexi√≥n a la base de datos, habr√° que crear un c√≥digo si no se ha introducido ninguno.
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
 
         //Obtenemos el codigo de la sala
@@ -86,19 +83,14 @@ public class Inicio extends AppCompatActivity {
             startActivity(intent);
 
         } else {
-            //Si se ha introducido, obtenemos una referencia de la base de datos con ese cÛdigo
+            //Si se ha introducido, obtenemos una referencia de la base de datos con ese c√≥digo
             myRef = database.getReference(sala);
-            listener = myRef.addValueEventListener(new ValueEventListener() {
-                @SuppressLint("SuspiciousIndentation")
+            myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
-                    if(partida == null){
-                        DatabaseError DatabaseError = null;
-                        onCancelled(DatabaseError);
-                    }
 
-                    /*Guardamos el Uid del usuario en el primero vacÌo y ponemos Ready a true.*/
+                    /*Guardamos el Uid del usuario en el primero vac√≠o y ponemos Ready a true.*/
                     for (int i = 1; i < 4; i++) {
                         if (!partida.getEquipo1().elegirJugador(i).isReady()) {
                             partida.getEquipo1().elegirJugador(i).setReady(true);
@@ -108,10 +100,11 @@ public class Inicio extends AppCompatActivity {
                     }
                     myRef.removeEventListener(this);
                     myRef.setValue(partida);
-                    Intent intent = new Intent(Inicio.this, SalaEspera.class);
+                    //Vamos a la sala de espera.
+                    Intent intent;
+                    intent = new Intent(Inicio.this, SalaEspera.class);
                     intent.putExtra("codigo", sala);
                     startActivity(intent);
-
                 }
                 @Override
                 public void onCancelled(DatabaseError error) {
@@ -131,11 +124,11 @@ public class Inicio extends AppCompatActivity {
     }
 
     /*
-    Logueamos al usuario como usuario anÛnimo de la base de datos.
+    Logueamos al usuario como usuario an√≥nimo de la base de datos.
      */
     public void login() {
         mAuth = FirebaseAuth.getInstance();
-        //Habr· que aÒadir este usuario en alg˙n sitio, Jugador serÌa lo mejor creo
+        //Habr√° que a√±adir este usuario en alg√∫n sitio, Jugador ser√≠a lo mejor creo
         currentUser = mAuth.getCurrentUser();
         mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
