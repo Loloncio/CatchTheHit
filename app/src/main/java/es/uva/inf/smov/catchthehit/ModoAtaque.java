@@ -42,7 +42,7 @@ public class ModoAtaque extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo_ataque);
-        //CreaciÛn de la referencia a la base de datos y recolecciÛn de datos del usuario.
+        //Creaci√≥n de la referencia a la base de datos y recolecci√≥n de datos del usuario.
         codigo = getIntent().getExtras().getString("codigo");
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
@@ -93,7 +93,7 @@ public class ModoAtaque extends AppCompatActivity {
     }
 
     /*
-    Metodos para ver las estadÌsticas de los jugadores.
+    Metodos para ver las estad√≠sticas de los jugadores.
      */
     public void click1(View v) {
         ImageView bat = v.findViewById(R.id.bateador);
@@ -104,7 +104,7 @@ public class ModoAtaque extends AppCompatActivity {
     }
 
     public void click2(View v) {
-        //Aqui se usa el tag para comprobar que hay alg˙n jugador en esa base.
+        //Aqui se usa el tag para comprobar que hay alg√∫n jugador en esa base.
         if (v.getTag() != null) {
             aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
         }
@@ -173,9 +173,9 @@ public class ModoAtaque extends AppCompatActivity {
     }
 
     /*
-    Colocamos las opciones de avance del jugador en funciÛn de la puntuaciÛn obtenida en el minijuego.
-    Para esto usamos inflate. Los valores de perdida/ganancia de estadÌsticas de cada jugador son
-    est·ticos (en todas las tiradas es igual).
+    Colocamos las opciones de avance del jugador en funci√≥n de la puntuaci√≥n obtenida en el minijuego.
+    Para esto usamos inflate. Los valores de perdida/ganancia de estad√≠sticas de cada jugador son
+    est√°ticos (en todas las tiradas es igual).
      */
     private void addTirada(int avance) {
         layout = findViewById(R.id.movimientos);
@@ -220,19 +220,19 @@ public class ModoAtaque extends AppCompatActivity {
         layout.addView(mov);
     }
     /*
-    Cuando un jugador selecciona una opciÛn tenemos que identificar que opciÛn es, restar las estadÌsticas,
-    comprobar si los defensores cogen la bola, comprobar que la base donde acaba est· vacÌo y apntar
+    Cuando un jugador selecciona una opci√≥n tenemos que identificar que opci√≥n es, restar las estad√≠sticas,
+    comprobar si los defensores cogen la bola, comprobar que la base donde acaba est√° vac√≠o y apntar
     el progreso. El proceso es el siguiente:
-    1. Diferenciamos avance o descanso (Para simplificar el switch) y guardamos la posiciÛn original
+    1. Diferenciamos avance o descanso (Para simplificar el switch) y guardamos la posici√≥n original
     (Por si pasamos de la 4 a la 2).
-    2. Restamos las estadÌsticas y generamos el resultado de la defensa.
+    2. Restamos las estad√≠sticas y generamos el resultado de la defensa.
     3. Si nos da 1 es que el jugador esta eliminado, 2, es un home run, 0 es que se sigue normal.
-    4. Comprobamos si la base objetivo est· ocupada o no.
+    4. Comprobamos si la base objetivo est√° ocupada o no.
     5. Comprobamos si se ha dado una vuelta y pasamos el turno.
      */
     public void clickOpcion(View v) {
+    
         TextView avance = v.findViewById(R.id.opcion);
-
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference(codigo);
@@ -377,7 +377,7 @@ public class ModoAtaque extends AppCompatActivity {
         } else {
             /*
             Si se ha seleccionado descansar solo hay que sumar 5 a la resistencia del jugador,
-            siempre que la energÌa actual no supere 95 (si no tendrÌa m·s de 100).
+            siempre que la energ√≠a actual no supere 95 (si no tendr√≠a m√°s de 100).
              */
             if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getResistencia() <= 95) ;
             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(-5);
@@ -387,7 +387,7 @@ public class ModoAtaque extends AppCompatActivity {
 
     }
     /*
-    Obtenemos el identificador numÈrico de la imagen del jugador deseado.
+    Obtenemos el identificador num√©rico de la imagen del jugador deseado.
      */
     private int buscaImagen(int i) {
         switch (i) {
@@ -406,7 +406,7 @@ public class ModoAtaque extends AppCompatActivity {
     Inicia la partida cada ronda.
     1. Pone invisibles o elimina las views actuales de los jugadores.
     2. Coloca los jugadores en juego.
-    3. Crea las opciones de avance es funciÛn de la puntuaciÛn obtenida en el minijuego para el
+    3. Crea las opciones de avance es funci√≥n de la puntuaci√≥n obtenida en el minijuego para el
     jugador que le toque avanzar.
      */
     private void juego() {
@@ -452,15 +452,15 @@ public class ModoAtaque extends AppCompatActivity {
         }
     }
     /*
-    SimulaciÛn de la defensa. Elige la zona de caida de la bola de forma aleatoria, despues, calcula
-    la media de las estadÌsticas de los jugadores de esa zona. Finalmente, en funciÛn de cuanto
+    Simulaci√≥n de la defensa. Elige la zona de caida de la bola de forma aleatoria, despues, calcula
+    la media de las estad√≠sticas de los jugadores de esa zona. Finalmente, en funci√≥n de cuanto
     quiera avanzar el defensor y la media calculada se da un valor de defensa.
     Si la media es superior a 90, se elimina al jugador.
     Media entre 75 y 90, solo se puede avanzar una base.
     Media entre 50 y 75, se puede avanzar hasta 2.
     Media entre 25 y 50, Se puede avanzar 3.
     Media por debajo de 25, home run.
-    TambiÈn se resta alguna estadÌstica a los defensores.
+    Tambi√©n se resta alguna estad√≠stica a los defensores.
      */
     private int defensa(int fuerza, int avance) {
         int eliminado = 0;
@@ -534,6 +534,71 @@ public class ModoAtaque extends AppCompatActivity {
             eliminado = 2;
         }
         return eliminado;
+    }
+
+    private int defensa(int fuerza){
+        Random random = new Random();
+        int zona = random.nextInt(4);
+        int sumaRes = 0;
+        int sumaVel = 0;
+        int sumaRef = 0;
+        int media = 0;
+        switch (zona){
+            case 1:
+                for(int i = 0; i < 4;i++){
+                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==0 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==1) {
+                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
+                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
+                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
+                        partida.getEquipo2().elegirJugador(i).menosRes(5);
+                        partida.getEquipo2().elegirJugador(i).menosVel(2);
+                        partida.getEquipo2().elegirJugador(i).menosRef(2);
+                    }
+                }
+                sumaRes /= 2;
+                sumaVel /= 2;
+                sumaRef /= 2;
+                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
+                return media;
+            case 2:
+                for(int i = 0; i < 4;i++){
+                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==2 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==3) {
+                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
+                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
+                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
+                        partida.getEquipo2().elegirJugador(i).menosRes(5);
+                        partida.getEquipo2().elegirJugador(i).menosVel(2);
+                        partida.getEquipo2().elegirJugador(i).menosRef(2);
+                    }
+                }
+                sumaRes /= 2;
+                sumaVel /= 2;
+                sumaRef /= 2;
+                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
+                return media;
+            case 3:
+                for(int i = 0; i < 4;i++){
+                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==4 ||
+                            partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==5 ||
+                            partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==6) {
+                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
+                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
+                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
+                        partida.getEquipo2().elegirJugador(i).menosRes(5);
+                        partida.getEquipo2().elegirJugador(i).menosVel(2);
+                        partida.getEquipo2().elegirJugador(i).menosRef(2);
+                    }
+                }
+                sumaRes /= 3;
+                sumaVel /= 3;
+                sumaRef /= 3;
+                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
+                return media;
+            default:
+                break;
+
+        }
+        return 0;
     }
 
 }
