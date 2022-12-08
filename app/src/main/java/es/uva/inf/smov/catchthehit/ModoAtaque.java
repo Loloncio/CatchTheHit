@@ -94,13 +94,11 @@ public class ModoAtaque extends AppCompatActivity {
     }
 
     public void click3(View v) {
-        if (v.getTag() != null)
-            aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
+        if (v.getTag() != null) aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
     }
 
     public void click4(View v) {
-        if (v.getTag() != null)
-            aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
+        if (v.getTag() != null) aJugador(partida.getEquipo1().elegirJugador((Integer) v.getTag()));
     }
 
     private void aJugador(Jugador jugador) {
@@ -218,13 +216,13 @@ public class ModoAtaque extends AppCompatActivity {
                     partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosVel(2);
                     defensa = defensa(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getFuerza(), 1);
 
-                    if( defensa == 1){
+                    if (defensa == 1) {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
                         mensaje.show();
                         myRef.setValue(partida);
-                    } else if(defensa == 2){
+                    } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
                         partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
@@ -260,13 +258,13 @@ public class ModoAtaque extends AppCompatActivity {
                     partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosVel(4);
                     defensa = defensa(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getFuerza(), 2);
 
-                    if( defensa == 1){
+                    if (defensa == 1) {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
                         mensaje.show();
                         myRef.setValue(partida);
-                    } else if(defensa == 2){
+                    } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
                         partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
@@ -296,13 +294,13 @@ public class ModoAtaque extends AppCompatActivity {
                     partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosVel(6);
                     defensa = defensa(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getFuerza(), 3);
 
-                    if( defensa == 1){
+                    if (defensa == 1) {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
                         mensaje.show();
                         myRef.setValue(partida);
-                    } else if(defensa == 2){
+                    } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
                         partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
@@ -329,8 +327,8 @@ public class ModoAtaque extends AppCompatActivity {
 
             }
         } else {
-            if(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getResistencia()<=95);
-                partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(-5);
+            if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getResistencia() <= 95) ;
+            partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(-5);
             partida.siguienteJugada();
             myRef.setValue(partida);
         }
@@ -433,9 +431,7 @@ public class ModoAtaque extends AppCompatActivity {
                 break;
             case 3:
                 for (int i = 0; i < 4; i++) {
-                    if (partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 4 ||
-                            partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 5 ||
-                            partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 6) {
+                    if (partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 4 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 5 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 6) {
                         sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
                         sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
                         sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
