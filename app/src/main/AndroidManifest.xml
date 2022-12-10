@@ -23,6 +23,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".espera_test"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SalaEspera"
             android:exported="false" >
             <meta-data
@@ -126,13 +133,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
     </application>
 
 </manifest>

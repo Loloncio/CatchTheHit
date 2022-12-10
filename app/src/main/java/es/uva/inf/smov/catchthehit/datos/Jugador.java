@@ -43,7 +43,10 @@ public class Jugador implements Serializable {
         ready = false;
         enjuego = true;
         id = i;
-        respuestas = new ArrayList<Integer>();
+        respuestas = new ArrayList<Integer>(18);
+        for(int j = 0; j<18;j++){
+            respuestas.add(null);
+        }
         posicionAtaque = 1;
     }
 
