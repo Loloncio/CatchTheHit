@@ -255,13 +255,17 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
+                        TextView txt = (TextView) mensaje.findViewById((R.id.txtEliminado));
+                        txt.setText("Los defensas han atrapado la bola, estas out!!");
                         mensaje.show();
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
-                        partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
+                        if(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId()!=3) {
+                            partida.siguienteJugada();
+                        } else partida.setJugadaAct(0);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
                         TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
@@ -275,8 +279,11 @@ public class ModoAtaque extends AppCompatActivity {
                             continue;
                         } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque()) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
+                            partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(0);
                             Dialog mensaje = new Dialog(this);
                             mensaje.setContentView(R.layout.eliminado);
+                            TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                            txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
                             mensaje.show();
                             myRef.setValue(partida);
                             break;
@@ -287,7 +294,9 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                     }
-                    partida.siguienteJugada();
+                    if(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId()!=3) {
+                        partida.siguienteJugada();
+                    } else partida.setJugadaAct(0);
                     myRef.setValue(partida);
 
                     break;
@@ -302,13 +311,17 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
+                        TextView txt = (TextView) mensaje.findViewById((R.id.txtEliminado));
+                        txt.setText("Los defensas han atrapado la bola, estas out!!");
                         mensaje.show();
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
-                        partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
+                        if(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId()!=3) {
+                            partida.siguienteJugada();
+                        } else partida.setJugadaAct(0);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
                         TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
@@ -321,13 +334,22 @@ public class ModoAtaque extends AppCompatActivity {
                             continue;
                         } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque()) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
+                            partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(0);
+                            Dialog mensaje = new Dialog(this);
+                            mensaje.setContentView(R.layout.eliminado);
+                            TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                            txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
+                            mensaje.show();
+                            myRef.setValue(partida);
                         }
                     }
                     if (pos < posOr){
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                     }
-                    partida.siguienteJugada();
+                    if(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId()!=3) {
+                        partida.siguienteJugada();
+                    } else partida.setJugadaAct(0);
                     myRef.setValue(partida);
 
                     break;
@@ -342,13 +364,17 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
+                        TextView txt = (TextView) mensaje.findViewById((R.id.txtEliminado));
+                        txt.setText("Los defensas han atrapado la bola, estas out!!");
                         mensaje.show();
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
-                        partida.siguienteJugada();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
+                        if(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId()!=3) {
+                            partida.siguienteJugada();
+                        } else partida.setJugadaAct(0);
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.eliminado);
                         TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
@@ -361,13 +387,22 @@ public class ModoAtaque extends AppCompatActivity {
                             continue;
                         } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque()) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
+                            partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(0);
+                            Dialog mensaje = new Dialog(this);
+                            mensaje.setContentView(R.layout.eliminado);
+                            TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                            txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
+                            mensaje.show();
+                            myRef.setValue(partida);
                         }
                     }
                     if (pos < posOr){
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                     }
-                    partida.siguienteJugada();
+                    if(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId()!=3) {
+                        partida.siguienteJugada();
+                    } else partida.setJugadaAct(0);
                     myRef.setValue(partida);
 
                     break;
@@ -381,10 +416,11 @@ public class ModoAtaque extends AppCompatActivity {
              */
             if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getResistencia() <= 95) ;
             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(-5);
-            partida.siguienteJugada();
+            if(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId()!=3) {
+                partida.siguienteJugada();
+            } else partida.setJugadaAct(0);
             myRef.setValue(partida);
         }
-
     }
     /*
     Obtenemos el identificador numérico de la imagen del jugador deseado.
@@ -465,15 +501,14 @@ public class ModoAtaque extends AppCompatActivity {
     private int defensa(int fuerza, int avance) {
         int eliminado = 0;
         Random random = new Random();
-        int zona = random.nextInt(4);
+        int zona = random.nextInt(3)+1;
         int sumaRes = 0;
         int sumaVel = 0;
         int sumaRef = 0;
         int media = 0;
         switch (zona) {
             case 1:
-                for (int i = 0; i < 4; i++) {
-                    if (partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 0 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 1) {
+                for (int i = 0; i < 2; i++) {
                         sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
                         sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
                         sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
@@ -481,16 +516,15 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo2().elegirJugador(i).menosVel(2);
                         partida.getEquipo2().elegirJugador(i).menosRef(2);
                     }
-                }
+
                 sumaRes /= 2;
                 sumaVel /= 2;
                 sumaRef /= 2;
-                media = (sumaRes + sumaRef + sumaVel - fuerza) / 3;
+                media = (sumaRes + sumaRef + sumaVel - (fuerza/2)) / 3;
                 break;
 
             case 2:
-                for (int i = 0; i < 4; i++) {
-                    if (partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 2 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 3) {
+                for (int i = 2; i < 4; i++) {
                         sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
                         sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
                         sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
@@ -498,15 +532,14 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo2().elegirJugador(i).menosVel(2);
                         partida.getEquipo2().elegirJugador(i).menosRef(2);
                     }
-                }
+
                 sumaRes /= 2;
                 sumaVel /= 2;
                 sumaRef /= 2;
-                media = (sumaRes + sumaRef + sumaVel - fuerza) / 3;
+                media = (sumaRes + sumaRef + sumaVel - (fuerza/2)) / 3;
                 break;
             case 3:
-                for (int i = 0; i < 4; i++) {
-                    if (partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 4 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 5 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa() == 6) {
+                for (int i = 4; i < 7; i++) {
                         sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
                         sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
                         sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
@@ -514,16 +547,23 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo2().elegirJugador(i).menosVel(2);
                         partida.getEquipo2().elegirJugador(i).menosRef(2);
                     }
-                }
+
                 sumaRes /= 3;
                 sumaVel /= 3;
                 sumaRef /= 3;
-                media = (sumaRes + sumaRef + sumaVel - fuerza) / 3;
+                media = (sumaRes + sumaRef + sumaVel - (fuerza/2)) / 3;
                 break;
             default:
                 break;
 
         }
+        Log.e("DefensaRef", String.valueOf(sumaRef));
+        Log.e("DefensaVel", String.valueOf(sumaVel));
+        Log.e("DefensaRes", String.valueOf(sumaRes));
+        Log.e("DefensaFuer", String.valueOf(fuerza));
+        Log.e("DefensaMed", String.valueOf(media));
+        Log.e("DefensaZona", String.valueOf(zona));
+        Log.e("DefensaJugador",String.valueOf(partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId()));
         if (media > 90) {
             eliminado = 1;
         } else if (media > 75 && avance > 1) {
@@ -536,69 +576,6 @@ public class ModoAtaque extends AppCompatActivity {
         return eliminado;
     }
 
-    private int defensa(int fuerza){
-        Random random = new Random();
-        int zona = random.nextInt(4);
-        int sumaRes = 0;
-        int sumaVel = 0;
-        int sumaRef = 0;
-        int media = 0;
-        switch (zona){
-            case 1:
-                for(int i = 0; i < 4;i++){
-                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==0 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==1) {
-                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
-                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
-                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
-                        partida.getEquipo2().elegirJugador(i).menosRes(5);
-                        partida.getEquipo2().elegirJugador(i).menosVel(2);
-                        partida.getEquipo2().elegirJugador(i).menosRef(2);
-                    }
-                }
-                sumaRes /= 2;
-                sumaVel /= 2;
-                sumaRef /= 2;
-                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
-                return media;
-            case 2:
-                for(int i = 0; i < 4;i++){
-                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==2 || partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==3) {
-                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
-                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
-                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
-                        partida.getEquipo2().elegirJugador(i).menosRes(5);
-                        partida.getEquipo2().elegirJugador(i).menosVel(2);
-                        partida.getEquipo2().elegirJugador(i).menosRef(2);
-                    }
-                }
-                sumaRes /= 2;
-                sumaVel /= 2;
-                sumaRef /= 2;
-                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
-                return media;
-            case 3:
-                for(int i = 0; i < 4;i++){
-                    if(partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==4 ||
-                            partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==5 ||
-                            partida.getEquipo2().elegirJugador(i).getPosicionDefensa()==6) {
-                        sumaRes += partida.getEquipo2().elegirJugador(i).getResistencia();
-                        sumaRef += partida.getEquipo2().elegirJugador(i).getReflejos();
-                        sumaVel += partida.getEquipo2().elegirJugador(i).getVelocidad();
-                        partida.getEquipo2().elegirJugador(i).menosRes(5);
-                        partida.getEquipo2().elegirJugador(i).menosVel(2);
-                        partida.getEquipo2().elegirJugador(i).menosRef(2);
-                    }
-                }
-                sumaRes /= 3;
-                sumaVel /= 3;
-                sumaRef /= 3;
-                media = (sumaRes+sumaRef+sumaVel-fuerza)/3;
-                return media;
-            default:
-                break;
 
-        }
-        return 0;
-    }
 
 }
