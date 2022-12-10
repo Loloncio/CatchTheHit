@@ -56,12 +56,7 @@ public class Test extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-        for(int i = 0; i < 4; i++){
-            if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
-                jugador = i;
-                break;
-            }
-        }
+
 
 
         layout = (ViewGroup) findViewById(R.id.preguntas);
@@ -75,6 +70,12 @@ public class Test extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 partida = dataSnapshot.getValue(Partida.class);
+                for(int i = 0; i < 4; i++){
+                    if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
+                        jugador = i;
+                        break;
+                    }
+                }
                 IntroducePreguntas();
             }
 
@@ -101,7 +102,7 @@ public class Test extends AppCompatActivity {
         for(int i : preguntas()) {
             LayoutInflater inflater = LayoutInflater.from(this);
             int id = R.layout.pregunta;
-            
+
             ConstraintLayout constraint = (ConstraintLayout) inflater.inflate(id, null, false);
             TextView pregunta = (TextView) constraint.findViewById(R.id.pregunta);
             TextView nPregunta = (TextView) constraint.findViewById(R.id.nPregunta);

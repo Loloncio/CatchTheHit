@@ -72,6 +72,8 @@ public class SalaEspera extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 partida = dataSnapshot.getValue(Partida.class);
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                user = mAuth.getCurrentUser();
                 /*
                  * Comprobamos cuantos jugadores hay listos.
                  * Ademas si uno de esos listos somos nosotros, actualizamos los campos con nuestra
@@ -90,6 +92,10 @@ public class SalaEspera extends AppCompatActivity {
                 //Cuando todos esten listos vamos al modo ataque
                 if(listos == 4){
                     myRef.removeEventListener(this);
+                    for(int i = 0; i < 4; i++){
+                        partida.getEquipo1().elegirJugador(i).setReady(false);
+                    }
+                    myRef.setValue(partida);
                     Button boton = (Button) findViewById(R.id.button);
                     boton.setText("Empezar");
                 }
