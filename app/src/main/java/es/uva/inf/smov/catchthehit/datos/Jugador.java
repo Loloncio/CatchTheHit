@@ -34,6 +34,7 @@ public class Jugador implements Serializable {
     public Jugador(String nombre, int i, String user) {
         this.nombre = nombre;
         usuario = user;
+
         probabilidad = llenaProbabilidad();
         fuerza = valorRandom();
         reflejos = valorRandom();
