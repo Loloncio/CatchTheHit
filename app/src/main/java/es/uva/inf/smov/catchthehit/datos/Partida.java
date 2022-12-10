@@ -17,6 +17,7 @@ public class Partida implements Serializable {
     private Equipo Equipo2;
     private ArrayList<String> preguntas;
     private int puntuacion;
+    private int puntosRonda;
 
     public Partida() {
 
@@ -26,8 +27,9 @@ public class Partida implements Serializable {
         codigo = randomString(5);
         rondas = noRondas;
         rondaAct = 1;
-        Equipo1 = new Equipo();
-        Equipo2 = new Equipo();
+        puntosRonda = 0;
+        Equipo1 = new Equipo(1);
+        Equipo2 = new Equipo(2);
         preguntas = new ArrayList<String>();
         jugadaAct = 0;
         puntuacion = 90;
@@ -78,7 +80,7 @@ public class Partida implements Serializable {
     }
 
     /*
-    Generamos una cadena alfanumérica aleatoria de la longitud indicada
+    Generamos una cadena alfanumÃ©rica aleatoria de la longitud indicada
      */
     String randomString(int len) {
         StringBuilder sb = new StringBuilder(len);
@@ -111,25 +113,37 @@ public class Partida implements Serializable {
         return jugadaAct;
     }
 
+    public void otroPunto(){
+        puntosRonda++;
+    }
+
+    public int getPuntosRonda() {
+        return puntosRonda;
+    }
+
+    public void setPuntosRonda(int puntosRonda) {
+        this.puntosRonda = puntosRonda;
+    }
+
     private void setPreguntas() {
-        this.preguntas.add("¿Qué jugador consideras que ha sido el más comunicativo? ¿Quién ha consultado más sus decisiones con el resto del grupo?");
-        this.preguntas.add("¿Quién ha sido el más positivo?");
-        this.preguntas.add("¿Qué jugador ha sido el que más te ha apoyado con tus decisiones?");
-        this.preguntas.add("¿Quién crees que ha tenido más iniciativa?¿ Qué jugador consideras que ha tenido más confianza en sí mismo?");
-        this.preguntas.add("¿Qué jugador ha motivado más al resto con la decisión tomada?");
-        this.preguntas.add("¿Con quién te ha resultado más fácil tomar la decisión?");
-        this.preguntas.add("¿ Quién consideras que ha motivado más a tu equipo?");
-        this.preguntas.add("¿ Qué jugador ha sido el que más se ha expresado?");
-        this.preguntas.add("¿Quién se ha preocupado más por conseguir los objetivos individuales?");
-        this.preguntas.add("¿ Quién se ha preocupado más por conseguir los objetivos comunes?");
-        this.preguntas.add("¿ Quién ha sido el que más ha tratado de negociar sobre las posibles soluciones?");
-        this.preguntas.add("¿Quién ha sido el más persuasivo racionalmente?");
-        this.preguntas.add("¿ Quién ha sido el jugador que más ha escuchado y tenido en cuenta las decisiones del resto?");
-        this.preguntas.add("¿Quién ha sido el más inspirador?");
-        this.preguntas.add("¿ Qué jugador crees que ha sido el que más ha arriesgado? ¿ Quién ha sido más firme con sus decisiones?");
-        this.preguntas.add("¿ Quién tiene cualidades diferenciales sobre el resto del equipo? ¿ Qué jugador consideras que ha destacado con respecto al resto?");
-        this.preguntas.add("¿Quién consideras que presenta más conocimientos sobre las decisiones que toma?");
-        this.preguntas.add("¿ Quién está haciendo la mejor labor por el funcionamiento del equipo? ¿Qué jugador consideras que ha dirigido más al grupo ?");
+        this.preguntas.add("Â¿QuÃ© jugador consideras que ha sido el mÃ¡s comunicativo? Â¿QuiÃ©n ha consultado mÃ¡s sus decisiones con el resto del grupo?");
+        this.preguntas.add("Â¿QuiÃ©n ha sido el mÃ¡s positivo?");
+        this.preguntas.add("Â¿QuÃ© jugador ha sido el que mÃ¡s te ha apoyado con tus decisiones?");
+        this.preguntas.add("Â¿QuiÃ©n crees que ha tenido mÃ¡s iniciativa?Â¿ QuÃ© jugador consideras que ha tenido mÃ¡s confianza en sÃ­ mismo?");
+        this.preguntas.add("Â¿QuÃ© jugador ha motivado mÃ¡s al resto con la decisiÃ³n tomada?");
+        this.preguntas.add("Â¿Con quiÃ©n te ha resultado mÃ¡s fÃ¡cil tomar la decisiÃ³n?");
+        this.preguntas.add("Â¿ QuiÃ©n consideras que ha motivado mÃ¡s a tu equipo?");
+        this.preguntas.add("Â¿ QuÃ© jugador ha sido el que mÃ¡s se ha expresado?");
+        this.preguntas.add("Â¿QuiÃ©n se ha preocupado mÃ¡s por conseguir los objetivos individuales?");
+        this.preguntas.add("Â¿ QuiÃ©n se ha preocupado mÃ¡s por conseguir los objetivos comunes?");
+        this.preguntas.add("Â¿ QuiÃ©n ha sido el que mÃ¡s ha tratado de negociar sobre las posibles soluciones?");
+        this.preguntas.add("Â¿QuiÃ©n ha sido el mÃ¡s persuasivo racionalmente?");
+        this.preguntas.add("Â¿ QuiÃ©n ha sido el jugador que mÃ¡s ha escuchado y tenido en cuenta las decisiones del resto?");
+        this.preguntas.add("Â¿QuiÃ©n ha sido el mÃ¡s inspirador?");
+        this.preguntas.add("Â¿ QuÃ© jugador crees que ha sido el que mÃ¡s ha arriesgado? Â¿ QuiÃ©n ha sido mÃ¡s firme con sus decisiones?");
+        this.preguntas.add("Â¿ QuiÃ©n tiene cualidades diferenciales sobre el resto del equipo? Â¿ QuÃ© jugador consideras que ha destacado con respecto al resto?");
+        this.preguntas.add("Â¿QuiÃ©n consideras que presenta mÃ¡s conocimientos sobre las decisiones que toma?");
+        this.preguntas.add("Â¿ QuiÃ©n estÃ¡ haciendo la mejor labor por el funcionamiento del equipo? Â¿QuÃ© jugador consideras que ha dirigido mÃ¡s al grupo ?");
     }
 
     public String getPregunta(int index) {

@@ -10,18 +10,25 @@ public class Equipo implements Serializable {
     private int puntos;
     private ArrayList<Jugador> jugadores;
 
-    public Equipo(){
+    public Equipo(int x){
         puntos = 0;
-        jugadores = creaJugadores();
+        jugadores = creaJugadores(x);
+    }
+    public Equipo(){
+
     }
 
-    public ArrayList creaJugadores(){
+    public ArrayList creaJugadores(int x){
         ArrayList<Jugador> equipo = new ArrayList<Jugador>(9);
         ArrayList<String> nombres = new ArrayList<String>(9);
         nombres.addAll(Arrays.asList("Tom","Ted","Willie","Stan","John","Jackson","Lucas","Charlie","Andrey","Babe"));
         for(int i=0; i<10 ; i++){
             equipo.add(new Jugador(nombres.get(i), i, ""));
+            if(x == 2){
+                equipo.get(i).setPosicionDefensa(i);
+            }
         }
+
         return equipo;
     }
 

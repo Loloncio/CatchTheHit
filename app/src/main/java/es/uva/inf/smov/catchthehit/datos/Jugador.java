@@ -1,12 +1,7 @@
 package es.uva.inf.smov.catchthehit.datos;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /*
@@ -25,19 +20,21 @@ public class Jugador implements Serializable {
     private int velocidad;
     private int resistencia;
     private int reflejos;
-    private int posicion;
+    private int posicionAtaque;
+    private int posicionDefensa;
     private boolean ready;
     private boolean enjuego;
     private int id;
     private ArrayList<Integer> respuestas;
 
-    public Jugador(){
+    public Jugador() {
 
     }
 
-    public Jugador(String nombre, int i, String user){
+    public Jugador(String nombre, int i, String user) {
         this.nombre = nombre;
         usuario = user;
+
         probabilidad = llenaProbabilidad();
         fuerza = valorRandom();
         reflejos = valorRandom();
@@ -47,10 +44,10 @@ public class Jugador implements Serializable {
         enjuego = true;
         id = i;
         respuestas = new ArrayList<Integer>();
-        posicion = 1;
+        posicionAtaque = 1;
     }
 
-    public String getUsuario(){
+    public String getUsuario() {
         return usuario;
     }
 
@@ -66,8 +63,8 @@ public class Jugador implements Serializable {
         return fuerza;
     }
 
-    public int getPosicion() {
-        return posicion;
+    public int getPosicionAtaque() {
+        return posicionAtaque;
     }
 
     public int getReflejos() {
@@ -82,7 +79,13 @@ public class Jugador implements Serializable {
         return velocidad;
     }
 
-    public int getId(){ return id; }
+    public int getId() {
+        return id;
+    }
+
+    public int getPosicionDefensa() {
+        return posicionDefensa;
+    }
 
     public ArrayList<Integer> getProbabilidad() {
         return probabilidad;
@@ -92,48 +95,52 @@ public class Jugador implements Serializable {
         return ready;
     }
 
-    public int getRespuesta(int index){
+    public int getRespuesta(int index) {
         return respuestas.get(index);
     }
 
-    public ArrayList<Integer> getRespuestas(){
+    public ArrayList<Integer> getRespuestas() {
         return respuestas;
     }
 
-    public void setFuerza(int valor){
+    public void setFuerza(int valor) {
         fuerza = valor;
     }
 
-    public void setResistencia(int valor){
+    public void setResistencia(int valor) {
         resistencia = valor;
     }
 
-    public void setPosicion(int valor){
-        posicion = valor;
+    public void setPosicionAtaque(int valor) {
+        posicionAtaque = valor;
     }
 
-    public void setReflejos(int valor){
+    public void setReflejos(int valor) {
         reflejos = valor;
     }
 
-    public void setVelocidad(int valor){
+    public void setVelocidad(int valor) {
         velocidad = valor;
     }
 
-    public void setReady(boolean valor){
+    public void setReady(boolean valor) {
         ready = valor;
     }
 
-    public void setEnjuego(boolean valor){
+    public void setEnjuego(boolean valor) {
         enjuego = valor;
     }
 
-    public void setUsuario(String user){
+    public void setUsuario(String user) {
         usuario = user;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setPosicionDefensa(int posicionDefensa) {
+        this.posicionDefensa = posicionDefensa;
     }
 
     public void setNombre(String nombre) {
@@ -144,34 +151,41 @@ public class Jugador implements Serializable {
         this.probabilidad = probabilidad;
     }
 
-    public void setRespuesta(int index, int jugador){
+    public void setRespuesta(int index, int jugador) {
         respuestas.add(index, jugador);
     }
+
     public void setRespuestas(ArrayList<Integer> respuesta) {
         this.respuestas = respuesta;
     }
 
-    public int avanza(int avance){
-        avance = posicion+avance;
-        if(avance>3)
-            avance = avance-4;
-        posicion=avance;
-        return posicion;
+    public int avanza(int avance) {
+        avance = posicionAtaque + avance;
+        if (avance > 3) avance = avance - 4;
+        posicionAtaque = avance;
+        return posicionAtaque;
     }
-    public void menosRes(int x){
+
+    public void menosRes(int x) {
         resistencia -= x;
     }
-    public void menosVel(int x){
+
+    public void menosVel(int x) {
         velocidad -= x;
     }
-    public void menosFue(int x){
+
+    public void menosFue(int x) {
         fuerza -= x;
+    }
+
+    public void menosRef(int x) {
+        reflejos -= x;
     }
 
     /*
     Obtenemos un valor entre 50 y 100 con la probabilidad indicada en llenaProbabilidad.
     */
-    private int valorRandom(){
+    private int valorRandom() {
         Random random = new Random();
         int valor = probabilidad.get(random.nextInt(probabilidad.size()));
         return valor;
@@ -184,27 +198,24 @@ public class Jugador implements Serializable {
     20% entre 75 y 85
     15% entre 85 y 100
     */
-    private ArrayList llenaProbabilidad(){
+    private ArrayList llenaProbabilidad() {
         int cont = 0;
         ArrayList<Integer> valores = new ArrayList<Integer>(100);
-        for(int i = 51; i<=100; i++){
-            if (i<=60)
-                for(int j=0;j<2;j++){
-                    valores.add(cont,i);
-                    cont++;
-                }
-            else if (i<=75 && i>60)
-                for(int j=0;j<3;j++){
-                    valores.add(cont,i);
-                    cont++;
-                }
-            else if (i>75 && i<=85)
-                for(int j=0;j<2;j++){
-                    valores.add(cont,i);
-                    cont++;
-                }
+        for (int i = 51; i <= 100; i++) {
+            if (i <= 60) for (int j = 0; j < 2; j++) {
+                valores.add(cont, i);
+                cont++;
+            }
+            else if (i <= 75 && i > 60) for (int j = 0; j < 3; j++) {
+                valores.add(cont, i);
+                cont++;
+            }
+            else if (i > 75 && i <= 85) for (int j = 0; j < 2; j++) {
+                valores.add(cont, i);
+                cont++;
+            }
             else {
-                valores.add(cont,i);
+                valores.add(cont, i);
                 cont++;
             }
         }
