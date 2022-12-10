@@ -258,7 +258,7 @@
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toEndOf="@+id/player"
       app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-      app:srcCompat="@drawable/field_icon" />
+      app:srcCompat="@drawable/player_icon" />
 
   <ImageView
       android:id="@+id/player"

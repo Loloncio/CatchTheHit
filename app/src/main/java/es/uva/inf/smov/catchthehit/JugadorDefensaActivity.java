@@ -44,7 +44,7 @@ public class JugadorDefensaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jugador);
+        setContentView(R.layout.activity_jugador_defensa);
         fuerza = (ProgressBar) findViewById(R.id.fuerza);
         velocidad = (ProgressBar) findViewById(R.id.velocidad);
         resistencia = (ProgressBar) findViewById(R.id.resistencia);
