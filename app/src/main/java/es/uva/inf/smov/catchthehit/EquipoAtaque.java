@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +37,8 @@ public class EquipoAtaque extends AppCompatActivity {
     private String codigo;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
-    Partida partida;
+    private Partida partida;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class EquipoAtaque extends AppCompatActivity {
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(codigo);
+        user = mAuth.getCurrentUser();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -85,8 +88,8 @@ public class EquipoAtaque extends AppCompatActivity {
         //Creamos el intent
         Intent intent = new Intent(EquipoAtaque.this, JugadorActivity.class);
         Jugador jugador;
-        for(int i = 0; i < 4; i++){
-            if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(mAuth.getUid())) {
+        for (int i = 0; i < 4; i++) {
+            if (partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
                 jugador = partida.getEquipo1().elegirJugador(i);
                 intent.putExtra("nombre", jugador.getNombre());
                 intent.putExtra("fuerza", jugador.getFuerza());
@@ -97,33 +100,33 @@ public class EquipoAtaque extends AppCompatActivity {
             }
 
         }
-
-
     }
 
-    public void click1(View v){
+    public void click1(View v) {
         aJugador(partida.getEquipo1().elegirJugador(0));
     }
-    public void click2(View v){
+
+    public void click2(View v) {
         aJugador(partida.getEquipo1().elegirJugador(1));
     }
-    public void click3(View v){
+
+    public void click3(View v) {
         aJugador(partida.getEquipo1().elegirJugador(2));
     }
-    public void click4(View v){
+
+    public void click4(View v) {
         aJugador(partida.getEquipo1().elegirJugador(3));
     }
 
-    private void aJugador(Jugador jugador){
+    private void aJugador(Jugador jugador) {
         Intent intent = new Intent(EquipoAtaque.this, JugadorActivity.class);
-        intent.putExtra("nombre",jugador.getNombre());
-        intent.putExtra("fuerza",jugador.getFuerza());
-        intent.putExtra("velocidad",jugador.getVelocidad());
-        intent.putExtra("resistencia",jugador.getResistencia());
+        intent.putExtra("nombre", jugador.getNombre());
+        intent.putExtra("fuerza", jugador.getFuerza());
+        intent.putExtra("velocidad", jugador.getVelocidad());
+        intent.putExtra("resistencia", jugador.getResistencia());
         intent.putExtra("codigo", codigo);
         startActivity(intent);
     }
-
 
 
 }

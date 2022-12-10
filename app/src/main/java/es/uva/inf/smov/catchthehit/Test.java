@@ -130,7 +130,7 @@ public class Test extends AppCompatActivity {
         LinearLayout op1 = (LinearLayout) v.findViewById(R.id.op1);
         //respuestas.add(numero-1,partida.getEquipo1().elegirJugador(0));
 
-        op1.setBackground(ContextCompat.getDrawable(this, R.drawable.borde_jugador));
+        op1.setBackground(ContextCompat.getDrawable(this, R.drawable.border_test));
         op1.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.negroTranslucido)));
 
         ConstraintLayout padre = (ConstraintLayout) (ViewGroup) v.getParent();
@@ -148,7 +148,7 @@ public class Test extends AppCompatActivity {
         LinearLayout op2 = (LinearLayout) v.findViewById(R.id.op2);
         //respuestas.add(numero-1,partida.getEquipo1().elegirJugador(1));
 
-        op2.setBackground(ContextCompat.getDrawable(this, R.drawable.borde_jugador));
+        op2.setBackground(ContextCompat.getDrawable(this, R.drawable.border_test));
         op2.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.negroTranslucido)));
 
         ConstraintLayout padre = (ConstraintLayout) (ViewGroup) v.getParent();
@@ -166,7 +166,7 @@ public class Test extends AppCompatActivity {
         LinearLayout op3 = (LinearLayout) v.findViewById(R.id.op3);
         //
 
-        op3.setBackground(ContextCompat.getDrawable(this, R.drawable.borde_jugador));
+        op3.setBackground(ContextCompat.getDrawable(this, R.drawable.border_test));
         op3.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.negroTranslucido)));
 
         ConstraintLayout padre = (ConstraintLayout) (ViewGroup) v.getParent();
