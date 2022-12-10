@@ -25,7 +25,7 @@ public class ComoJugar extends AppCompatActivity implements View.OnClickListener
 
         //Inicializamos la clase VideoView asociandole el fichero de Video
         video=(VideoView) findViewById(R.id.videoView);
-        String path = "android.resource://" + getPackageName() + "/" + R.raw.prueba;
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.video;
         video.setVideoURI(Uri.parse(path));
 
         //Obtenemos los tres botones de la interfaz

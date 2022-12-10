@@ -84,3 +84,5 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
+app/src/main/res/raw/prueba.mp4
+app/src/main/res/raw/prueba.mp4

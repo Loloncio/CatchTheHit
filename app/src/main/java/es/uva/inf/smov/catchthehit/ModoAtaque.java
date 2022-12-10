@@ -71,15 +71,18 @@ public class ModoAtaque extends AppCompatActivity {
                     partida.setPuntosRonda(0);
                     partida.setJugadaAct(0);
                     myRef.setValue(partida);
-                    Intent intent = new Intent(ModoAtaque.this, ModoDefensa.class);
-                    intent.putExtra("codigo", partida.getCodigo());
-
-                    Bundle b = new Bundle();
-
-                    b.putString("modo_ataque", "modo_ataque");
-                    intent.putExtras(b);
-
-                    startActivity(intent);
+                    if(partida.getEquipo1().elegirJugador(0).getUsuario().equals(user.getUid())) {
+                        Intent intent = new Intent(ModoAtaque.this, ModoDefensa.class);
+                        intent.putExtra("codigo", partida.getCodigo());
+                        Bundle b = new Bundle();
+                        b.putString("modo_ataque", "modo_ataque");
+                        intent.putExtras(b);
+                        startActivity(intent);
+                    } else{
+                        Intent intent = new Intent(ModoAtaque.this, espera_defensa.class);
+                        intent.putExtra("codigo", partida.getCodigo());
+                        startActivity(intent);
+                    }
                     //Si no se han eliminado 3 jugadores o se llega a 3 puntos, sigue el juego.
                 } else juego();
             }
