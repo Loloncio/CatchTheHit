@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,9 +36,11 @@ public class JugadorActivity extends AppCompatActivity {
     TextView txtVelocidad;
     TextView txtResistencia;
     String codigo;
+    private TextView titulo;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     Partida partida;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +55,36 @@ public class JugadorActivity extends AppCompatActivity {
         txtFuerza = (TextView) findViewById(R.id.txtFuerza);
         txtVelocidad = (TextView) findViewById(R.id.txtVelocidad);
         txtResistencia = (TextView) findViewById(R.id.txtResistencia);
-        setDatos();
+        titulo = (TextView) findViewById(R.id.titulo);
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(codigo);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                partida = dataSnapshot.getValue(Partida.class);
+                String nombre = getIntent().getExtras().getString("nombre");
+                for(int i = 0; i < 4;i++){
+                    if(partida.getEquipo1().elegirJugador(i).getNombre().equals(nombre) && partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
+                        setDatos(true, nombre);
+                        break;
+                    } else
+                        setDatos(false, nombre);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.d(TAG, "Failed to read value.");
+            }
+        });
+
     }
 
     public void clickField(View v) {
@@ -69,7 +101,7 @@ public class JugadorActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void setDatos(){
+    private void setDatos(boolean jugando, String nombre){
         int fuerzaI = getIntent().getExtras().getInt("fuerza");
         int velocidadI = getIntent().getExtras().getInt("velocidad");
         int resistenciaI = getIntent().getExtras().getInt("resistencia");
@@ -80,8 +112,13 @@ public class JugadorActivity extends AppCompatActivity {
         txtVelocidad.setText(String.valueOf(velocidadI)+"%");
         txtResistencia.setText(String.valueOf(resistenciaI)+"%");
 
-        String nombre = getIntent().getExtras().getString("nombre");
+        if(jugando)
+            titulo.setText("Tu Jugador:");
+        else
+            titulo.setText("Jugador:");
+
         txtNombre.setText(nombre);
+
         int id;
         switch (nombre){
             case "Tom":

@@ -1,25 +1,15 @@
 package es.uva.inf.smov.catchthehit;
 
-import static java.security.AccessController.getContext;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.provider.Settings.Secure;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,16 +18,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.*;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
-import es.uva.inf.smov.catchthehit.R;
 import es.uva.inf.smov.catchthehit.datos.Partida;
 
 
@@ -89,7 +71,12 @@ public class Inicio extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
-
+                    if (partida == null) {
+                        CharSequence fail = "Codigo de sala no valido";
+                        Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
+                        toast.show();
+                        return;
+                    }
                     /*Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.*/
                     for (int i = 1; i < 4; i++) {
                         if (!partida.getEquipo1().elegirJugador(i).isReady()) {
@@ -106,12 +93,11 @@ public class Inicio extends AppCompatActivity {
                     intent.putExtra("codigo", sala);
                     startActivity(intent);
                 }
+
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Mostramos un mensaje si no se encuentra la sala.
-                    CharSequence fail = "Codigo de sala no valido";
-                    Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
-                    toast.show();
+
                 }
             });
 

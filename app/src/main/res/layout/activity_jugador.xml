@@ -230,11 +230,11 @@
             app:layout_constraintTop_toBottomOf="@+id/iconoJugador" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Tu Jugador:"
+            android:text="Jugador:"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

@@ -34,11 +34,20 @@ public class SalaEspera extends AppCompatActivity {
     private FirebaseDatabase database;
     private String codigo;
     private DatabaseReference myRef;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sala_espera);
+        //Conectamos a la base de datos y obtenemos la referencia de la partida.
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        codigo = getIntent().getExtras().getString("codigo");
+        myRef = database.getReference(codigo);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
 
         carga();
     }
@@ -50,18 +59,11 @@ public class SalaEspera extends AppCompatActivity {
     }
 
     private void carga(){
-        //Conectamos a la base de datos y obtenemos la referencia de la partida.
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        codigo = getIntent().getExtras().getString("codigo");
-        myRef = database.getReference(codigo);
 
         //Referencias a los campos a rellenar, excepto la imagen.
         TextView listosTxt = (TextView) findViewById(R.id.espera);
         TextView codigoTxt = (TextView) findViewById(R.id.codigo);
         TextView miJugador = (TextView) findViewById(R.id.miJugador);
-
 
         //listener para obtener los datos de la partida cuando haya cambios.
         myRef.addValueEventListener(new ValueEventListener() {
@@ -70,6 +72,8 @@ public class SalaEspera extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 partida = dataSnapshot.getValue(Partida.class);
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                user = mAuth.getCurrentUser();
                 /*
                  * Comprobamos cuantos jugadores hay listos.
                  * Ademas si uno de esos listos somos nosotros, actualizamos los campos con nuestra
@@ -87,6 +91,11 @@ public class SalaEspera extends AppCompatActivity {
                 }
                 //Cuando todos esten listos vamos al modo ataque
                 if(listos == 4){
+                    myRef.removeEventListener(this);
+                    for(int i = 0; i < 4; i++){
+                        partida.getEquipo1().elegirJugador(i).setReady(false);
+                    }
+                    myRef.setValue(partida);
                     Button boton = (Button) findViewById(R.id.button);
                     boton.setText("Empezar");
                 }
@@ -136,21 +145,25 @@ public class SalaEspera extends AppCompatActivity {
         if(listos < 4) {
             /*
              * Esto es para que cuando un jugador salga de la sala se elimine su Uid de la lista de
-             * jugadores y ready de ese jugador se ponga en false. Para hacer pruebas lo dejo comentado
-             * para poder hacer pruebas con solo 2 dispositivos.
+             * jugadores y ready de ese jugador se ponga en false.
              */
-        /*
+
         for(int i = 0; i < 4; i++){
-            if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(mAuth.getUid())) {
+            if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
                 partida.getEquipo1().elegirJugador(i).setUsuario("");
                 partida.getEquipo1().elegirJugador(i).setReady(false);
                 myRef.setValue(partida);
                 break;
             }
-        }*/
+        }
             Intent intent = new Intent(SalaEspera.this, Inicio.class);
             startActivity(intent);
         } else{
+            if(partida.getEquipo1().elegirJugador(0).getUsuario().equals(user.getUid())){
+                for(int i = 0; i < 4; i++){
+                    partida.getEquipo1().elegirJugador(i).setReady(false);
+                }
+            }
             Intent intent = new Intent(SalaEspera.this, ModoAtaque.class);
             intent.putExtra("codigo",partida.getCodigo());
             startActivity(intent);

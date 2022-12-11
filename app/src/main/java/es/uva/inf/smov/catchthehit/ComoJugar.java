@@ -1,18 +1,16 @@
 package es.uva.inf.smov.catchthehit;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
 
-import es.uva.inf.smov.catchthehit.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 
-public class ComoJugar extends AppCompatActivity implements View.OnClickListener{
+public class ComoJugar extends AppCompatActivity implements View.OnClickListener {
     private Button btnPlay;
     private Button btnPause;
     private Button btnStop;
@@ -24,14 +22,14 @@ public class ComoJugar extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_como_jugar);
 
         //Inicializamos la clase VideoView asociandole el fichero de Video
-        video=(VideoView) findViewById(R.id.videoView);
-        String path = "android.resource://" + getPackageName() + "/" + R.raw.prueba;
+        video = (VideoView) findViewById(R.id.videoView);
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.video2;
         video.setVideoURI(Uri.parse(path));
 
         //Obtenemos los tres botones de la interfaz
-        btnPlay= (Button)findViewById(R.id.botonPlay);
-        btnStop= (Button)findViewById(R.id.botonStop);
-        btnPause= (Button)findViewById(R.id.botonPause);
+        btnPlay = (Button) findViewById(R.id.botonPlay);
+        btnStop = (Button) findViewById(R.id.botonStop);
+        btnPause = (Button) findViewById(R.id.botonPause);
 
         //Se les asigna el controlador de eventos
         btnPlay.setOnClickListener(this);
@@ -44,7 +42,7 @@ public class ComoJugar extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         //Comprobamos el identificador del boton que ha llamado al evento para ver
         //cual de los botones es y ejecutar la acción correspondiente
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.botonPlay:
                 //Iniciamos el video
                 video.start();
