@@ -58,9 +58,10 @@
                     android:id="@+id/imageView1"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
-                    android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_10"
                     android:onClick="clickRedPlayer"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/red_player" />
@@ -92,9 +93,10 @@
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
-                    android:layout_marginEnd="@dimen/players_20"
                     android:onClick="clickGreenPlayer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView1"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/green_player" />
 
@@ -102,9 +104,10 @@
                     android:id="@+id/imageView3"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
-                    android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
                     android:onClick="clickBluePlayer"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_red"
                     app:srcCompat="@drawable/blue_player" />
@@ -125,9 +128,10 @@
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
-                    android:layout_marginEnd="@dimen/players_20"
                     android:onClick="clickPurplePlayer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/name_green"
                     app:srcCompat="@drawable/purple_player" />
 
@@ -135,9 +139,10 @@
                     android:id="@+id/imageView5"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
-                    android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
                     android:onClick="clickGrayPlayer"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_blue"
                     app:srcCompat="@drawable/gray_player" />
@@ -158,9 +163,10 @@
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
-                    android:layout_marginEnd="@dimen/players_20"
                     android:onClick="clickOrangePlayer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/name_purple"
                     app:srcCompat="@drawable/orange_player" />
 
@@ -179,9 +185,10 @@
                     android:id="@+id/imageView7"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
-                    android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
                     android:onClick="clickPinkPlayer"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView8"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_gray"
                     app:srcCompat="@drawable/pink_player" />
@@ -202,9 +209,10 @@
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
-                    android:layout_marginEnd="@dimen/players_20"
                     android:onClick="clickCyanPlayer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView7"
                     app:layout_constraintTop_toBottomOf="@+id/name_orange"
                     app:srcCompat="@drawable/cyan_player" />
 
