@@ -68,6 +68,14 @@ public class JugadorActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 partida = dataSnapshot.getValue(Partida.class);
+                String nombre = getIntent().getExtras().getString("nombre");
+                for(int i = 0; i < 4;i++){
+                    if(partida.getEquipo1().elegirJugador(i).getNombre().equals(nombre) && partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
+                        setDatos(true, nombre);
+                        break;
+                    } else
+                        setDatos(false, nombre);
+                }
             }
 
             @Override
@@ -76,7 +84,7 @@ public class JugadorActivity extends AppCompatActivity {
                 Log.d(TAG, "Failed to read value.");
             }
         });
-        setDatos();
+
     }
 
     public void clickField(View v) {
@@ -93,7 +101,7 @@ public class JugadorActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void setDatos(){
+    private void setDatos(boolean jugando, String nombre){
         int fuerzaI = getIntent().getExtras().getInt("fuerza");
         int velocidadI = getIntent().getExtras().getInt("velocidad");
         int resistenciaI = getIntent().getExtras().getInt("resistencia");
@@ -104,15 +112,13 @@ public class JugadorActivity extends AppCompatActivity {
         txtVelocidad.setText(String.valueOf(velocidadI)+"%");
         txtResistencia.setText(String.valueOf(resistenciaI)+"%");
 
+        if(jugando)
+            titulo.setText("Tu Jugador:");
+        else
+            titulo.setText("Jugador:");
 
-        String nombre = getIntent().getExtras().getString("nombre");
         txtNombre.setText(nombre);
-        for(int i = 0; i < 4;i++){
-            if(partida.getEquipo1().elegirJugador(i).getNombre().equals(nombre) && partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
-                titulo.setText("Tu Jugador:");
-                break;
-            }
-        }
+
         int id;
         switch (nombre){
             case "Tom":

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/borde_jugador"
+    android:backgroundTintMode="add">
+
+    <ImageView
+        android:id="@+id/iconoJugador"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
+        app:srcCompat="@drawable/blue_player" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/border"
+        android:backgroundTint="#70FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iconoJugador"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/TxtFuerza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="Fuerza"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/fuerza"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView11"
+            app:layout_constraintStart_toStartOf="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/fuerza" />
+
+        <ProgressBar
+            android:id="@+id/fuerza"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:indeterminate="false"
+            android:progress="50"
+            android:progressDrawable="@drawable/proggres_bar"
+            app:layout_constraintBottom_toTopOf="@+id/imageView11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView1"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/opcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="Velocidad"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/velocidad"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fuerza"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/iconEnergia"
+            app:layout_constraintStart_toStartOf="@+id/iconEnergia"
+            app:layout_constraintTop_toBottomOf="@+id/fuerza"
+            app:srcCompat="@drawable/velocidad" />
+
+        <ProgressBar
+            android:id="@+id/velocidad"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:indeterminate="false"
+            android:progress="50"
+            android:progressDrawable="@drawable/proggres_bar"
+            app:layout_constraintBottom_toTopOf="@+id/iconEnergia"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView11"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="Resistencia"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/resistencia"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/velocidad"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <ImageView
+            android:id="@+id/iconEnergia"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/velocidad"
+            app:srcCompat="@drawable/resistencia" />
+
+        <ProgressBar
+            android:id="@+id/resistencia"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:indeterminate="false"
+            android:progress="50"
+            android:progressDrawable="@drawable/proggres_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconEnergia"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/txtFuerza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/fuerza"
+            app:layout_constraintStart_toStartOf="@+id/fuerza"
+            app:layout_constraintTop_toTopOf="@+id/fuerza" />
+
+        <TextView
+            android:id="@+id/txtVelocidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/velocidad"
+            app:layout_constraintStart_toStartOf="@+id/velocidad"
+            app:layout_constraintTop_toTopOf="@+id/velocidad" />
+
+        <TextView
+            android:id="@+id/txtResistencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/resistencia"
+            app:layout_constraintStart_toStartOf="@+id/resistencia"
+            app:layout_constraintTop_toTopOf="@+id/resistencia" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Ted"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/iconoJugador"
+        app:layout_constraintStart_toStartOf="@+id/iconoJugador"
+        app:layout_constraintTop_toBottomOf="@+id/iconoJugador" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

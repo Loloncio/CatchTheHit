@@ -1,95 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fondo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_inicio"
+    android:gravity="center_horizontal|center_vertical"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/LinearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/fondo_inicio"
-        android:foreground="@color/black"
-        android:foregroundTint="#00FFFFFF"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context="es.uva.inf.smov.catchthehit.MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="CATCH THE HIT"
+        android:textColor="@color/white"
+        android:textSize="50dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="100dp"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="CATCH THE HIT"
-            android:textColor="@color/white"
-            android:textSize="50dp" />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:backgroundTint="#85FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:text="Elige el número de rondas a jugar"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="35dp" />
 
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:background="@color/black"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="Elige el número de rondas a jugar"
-            android:textColor="@color/white"
-            android:textSize="35dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:background="#73bbee"
+        android:onClick="clickBoton1"
+        android:text="@string/boton_1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:background="#73bbee"
-            android:onClick="clickBoton1"
-            android:text="@string/boton_1" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="#73bbee"
+        android:onClick="clickBoton2"
+        android:text="@string/boton_2" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:background="#73bbee"
-            android:onClick="clickBoton2"
-            android:text="@string/boton_2" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="#73bbee"
+        android:onClick="clickBoton3"
+        android:text="@string/boton_3" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:background="#73bbee"
-            android:onClick="clickBoton3"
-            android:text="@string/boton_3" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="#73bbee"
+        android:onClick="clickBoton4"
+        android:text="@string/boton_4" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:background="#73bbee"
-            android:onClick="clickBoton4"
-            android:text="@string/boton_4" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:background="#73bbee"
-            android:onClick="clickBoton5"
-            android:text="@string/boton_5" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="#73bbee"
+        android:onClick="clickBoton5"
+        android:text="@string/boton_5" />
 
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
 
