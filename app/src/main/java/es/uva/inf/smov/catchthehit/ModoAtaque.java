@@ -2,9 +2,10 @@ package es.uva.inf.smov.catchthehit;
 
 import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -257,9 +258,10 @@ public class ModoAtaque extends AppCompatActivity {
                     if (defensa == 1) {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
-                        mensaje.setContentView(R.layout.eliminado);
-                        TextView txt = (TextView) mensaje.findViewById((R.id.txtEliminado));
+                        mensaje.setContentView(R.layout.pop_mensaje);
+                        TextView txt = (TextView) mensaje.findViewById((R.id.txtMensaje));
                         txt.setText("Los defensas han atrapado la bola, estas out!!");
+                        mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
@@ -270,9 +272,10 @@ public class ModoAtaque extends AppCompatActivity {
                             partida.siguienteJugada();
                         } else partida.setJugadaAct(0);
                         Dialog mensaje = new Dialog(this);
-                        mensaje.setContentView(R.layout.eliminado);
-                        TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                        mensaje.setContentView(R.layout.pop_mensaje);
+                        TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
                         txt.setText("HOME RUN!!!");
+                        mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
                         myRef.setValue(partida);
                     }
@@ -284,9 +287,10 @@ public class ModoAtaque extends AppCompatActivity {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(0);
                             Dialog mensaje = new Dialog(this);
-                            mensaje.setContentView(R.layout.eliminado);
-                            TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                            mensaje.setContentView(R.layout.pop_mensaje);
+                            TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
                             txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
+                            mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             mensaje.show();
                             myRef.setValue(partida);
                             break;
@@ -313,9 +317,10 @@ public class ModoAtaque extends AppCompatActivity {
                     if (defensa == 1) {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
-                        mensaje.setContentView(R.layout.eliminado);
-                        TextView txt = (TextView) mensaje.findViewById((R.id.txtEliminado));
+                        mensaje.setContentView(R.layout.pop_mensaje);
+                        TextView txt = (TextView) mensaje.findViewById((R.id.txtMensaje));
                         txt.setText("Los defensas han atrapado la bola, estas out!!");
+                        mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
@@ -326,9 +331,10 @@ public class ModoAtaque extends AppCompatActivity {
                             partida.siguienteJugada();
                         } else partida.setJugadaAct(0);
                         Dialog mensaje = new Dialog(this);
-                        mensaje.setContentView(R.layout.eliminado);
-                        TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                        mensaje.setContentView(R.layout.pop_mensaje);
+                        TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
                         txt.setText("HOME RUN!!!");
+                        mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
                         myRef.setValue(partida);
                     }
@@ -339,9 +345,10 @@ public class ModoAtaque extends AppCompatActivity {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(0);
                             Dialog mensaje = new Dialog(this);
-                            mensaje.setContentView(R.layout.eliminado);
-                            TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                            mensaje.setContentView(R.layout.pop_mensaje);
+                            TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
                             txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
+                            mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             mensaje.show();
                             myRef.setValue(partida);
                         }
@@ -366,9 +373,10 @@ public class ModoAtaque extends AppCompatActivity {
                     if (defensa == 1) {
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                         Dialog mensaje = new Dialog(this);
-                        mensaje.setContentView(R.layout.eliminado);
-                        TextView txt = (TextView) mensaje.findViewById((R.id.txtEliminado));
+                        mensaje.setContentView(R.layout.pop_mensaje);
+                        TextView txt = (TextView) mensaje.findViewById((R.id.txtMensaje));
                         txt.setText("Los defensas han atrapado la bola, estas out!!");
+                        mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
                         myRef.setValue(partida);
                     } else if (defensa == 2) {
@@ -379,9 +387,10 @@ public class ModoAtaque extends AppCompatActivity {
                             partida.siguienteJugada();
                         } else partida.setJugadaAct(0);
                         Dialog mensaje = new Dialog(this);
-                        mensaje.setContentView(R.layout.eliminado);
-                        TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                        mensaje.setContentView(R.layout.pop_mensaje);
+                        TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
                         txt.setText("HOME RUN!!!");
+                        mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
                         myRef.setValue(partida);
                     }
@@ -392,9 +401,10 @@ public class ModoAtaque extends AppCompatActivity {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(0);
                             Dialog mensaje = new Dialog(this);
-                            mensaje.setContentView(R.layout.eliminado);
-                            TextView txt = (TextView) mensaje.findViewById(R.id.txtEliminado);
+                            mensaje.setContentView(R.layout.pop_mensaje);
+                            TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
                             txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
+                            mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             mensaje.show();
                             myRef.setValue(partida);
                         }

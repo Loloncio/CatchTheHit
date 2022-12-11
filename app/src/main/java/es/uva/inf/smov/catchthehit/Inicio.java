@@ -89,7 +89,13 @@ public class Inicio extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
-
+                    if(partida==null){
+                        try {
+                            this.finalize();
+                        } catch (Throwable e) {
+                            e.printStackTrace();
+                        }
+                    }
                     /*Guardamos el Uid del usuario en el primero vacío y ponemos Ready a true.*/
                     for (int i = 1; i < 4; i++) {
                         if (!partida.getEquipo1().elegirJugador(i).isReady()) {
