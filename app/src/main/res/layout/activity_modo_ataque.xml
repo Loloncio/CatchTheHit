@@ -88,6 +88,18 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.47"
                     app:srcCompat="@drawable/purple_hitter" />
+
+                <Button
+                    android:id="@+id/color"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border"
+                    android:backgroundTint="#00000000"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

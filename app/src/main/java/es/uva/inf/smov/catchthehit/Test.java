@@ -56,13 +56,8 @@ public class Test extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-
-
-
         layout = (ViewGroup) findViewById(R.id.preguntas);
-        String pregunta = "1. Pregunta prueba";
         respuestas = new ArrayList<Integer>(18);
-
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -71,9 +66,12 @@ public class Test extends AppCompatActivity {
                 // whenever data at this location is updated.
                 partida = dataSnapshot.getValue(Partida.class);
                 for(int i = 0; i < 4; i++){
+
+                }
+                for(int i = 0; i < 4; i++){
+                    partida.getEquipo1().elegirJugador(i).setReady(false);
                     if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
                         jugador = i;
-                        break;
                     }
                 }
                 IntroducePreguntas();
@@ -87,7 +85,6 @@ public class Test extends AppCompatActivity {
         });
     }
 
-    @SuppressLint("InlinedApi")
     private void IntroducePreguntas() {
         int jugadores[];
         if(jugador==0)
@@ -98,8 +95,9 @@ public class Test extends AppCompatActivity {
             jugadores = new int[]{0, 1, 3};
         else
             jugadores = new int[]{0, 1, 2};
-
-        for(int i : preguntas()) {
+        ArrayList<Integer> preguntas = preguntas();
+        for(int i : preguntas) {
+            Log.e("PreguntasNumero", String.valueOf(i));
             LayoutInflater inflater = LayoutInflater.from(this);
             int id = R.layout.pregunta;
 
@@ -108,7 +106,7 @@ public class Test extends AppCompatActivity {
             TextView nPregunta = (TextView) constraint.findViewById(R.id.nPregunta);
             nPregunta.setText(String.valueOf(i+1));
             pregunta.setText(partida.getPregunta(i));
-
+            Log.e("PreguntasNumero", partida.getPregunta(i));
             TextView j1 = (TextView) constraint.findViewById(R.id.j1);
             TextView j2 = (TextView) constraint.findViewById(R.id.j2);
             TextView j3 = (TextView) constraint.findViewById(R.id.j3);
@@ -239,6 +237,7 @@ public class Test extends AppCompatActivity {
                 if(partida.getRondaAct() == i)
                     preguntasTest++;
         }
+        Log.e("TestPreguntas", String.valueOf(preguntasTest));
 
         if (size%partida.getRondas() != 0)
             for (int i = 0;i<partida.getRondas();i++)
@@ -248,9 +247,11 @@ public class Test extends AppCompatActivity {
                     inicio = preguntasTest * partida.getRondaAct() + resto;
         else
             inicio=size*partida.getRondaAct();
+        Log.e("TestInicio", String.valueOf(preguntasTest));
 
         for(int i = 0; i < size; i++ ) {
             preguntas.add(i + inicio);
+            Log.e("TestArray", String.valueOf(i+inicio));
         }
 
         return preguntas;
