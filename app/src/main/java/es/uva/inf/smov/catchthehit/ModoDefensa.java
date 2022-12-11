@@ -119,9 +119,6 @@ public class ModoDefensa extends AppCompatActivity {
 
         b.putString("casilla","primera_base");
 
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference(partida.getCodigo());
-        myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
         intent.putExtras(b);
@@ -137,9 +134,6 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference(partida.getCodigo());
-        myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
@@ -153,9 +147,6 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference(partida.getCodigo());
-        myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
@@ -169,9 +160,6 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference(partida.getCodigo());
-        myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
@@ -185,9 +173,6 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference(partida.getCodigo());
-        myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
@@ -201,9 +186,6 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference(partida.getCodigo());
-        myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
@@ -217,9 +199,6 @@ public class ModoDefensa extends AppCompatActivity {
 
         intent.putExtras(b);
 
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference(partida.getCodigo());
-        myRef.setValue(partida);
         intent.putExtra("codigo",partida.getCodigo());
 
         startActivity(intent);
@@ -244,41 +223,32 @@ public class ModoDefensa extends AppCompatActivity {
             while(puntosRival<3 && eliminadosRival<3) {
                 zonaBola = (int)Math.floor(Math.random()*3+1);
                 if(zonaBola==1) {
-                    System.out.println("Bola en zona derecha");
                     fuerzaZona = (partida.getEquipo1().elegirJugador(b.getInt("primera_base")).getFuerza() + partida.getEquipo1().elegirJugador(b.getInt("segunda_base")).getFuerza() - partida.getEquipo2().elegirJugador(i).getFuerza()) / 3;
                     velocidadZona = (partida.getEquipo1().elegirJugador(b.getInt("primera_base")).getVelocidad() + partida.getEquipo1().elegirJugador(b.getInt("segunda_base")).getVelocidad() - partida.getEquipo2().elegirJugador(i).getVelocidad()) / 3;
                     probabilidadEliminar = (fuerzaZona+velocidadZona)/2;
                     if((Math.random()*100)<probabilidadEliminar){
-                        System.out.println("Eliminas un rival");
                         eliminadosRival++;
                     }else{
                         casillasAvanzaRival = casillasAvanzaRival + (int)Math.floor(Math.random()*3+1);
-                        System.out.println("Rival avanza "+casillasAvanzaRival);
                     }
                 }
                 if(zonaBola==2) {
-                    System.out.println("Bola en zona izquierda");
                     fuerzaZona = (partida.getEquipo1().elegirJugador(b.getInt("tercera_base")).getFuerza() + partida.getEquipo1().elegirJugador(b.getInt("short_stop")).getFuerza() - partida.getEquipo2().elegirJugador(i).getFuerza()) / 3;
                     velocidadZona = (partida.getEquipo1().elegirJugador(b.getInt("tercera_base")).getVelocidad() + partida.getEquipo1().elegirJugador(b.getInt("short_stop")).getVelocidad() - partida.getEquipo2().elegirJugador(i).getVelocidad()) / 3;
                     probabilidadEliminar = (fuerzaZona+velocidadZona)/2;
                     if((Math.random()*100)<probabilidadEliminar){
-                        System.out.println("Eliminas un rival");
                         eliminadosRival++;
                     }else{
                         casillasAvanzaRival = casillasAvanzaRival + (int)Math.floor(Math.random()*3+1);
-                        System.out.println("Rival avanza "+casillasAvanzaRival);
                     }
                 }if(zonaBola==3) {
-                    System.out.println("Bola en zona superior");
                     fuerzaZona = (partida.getEquipo1().elegirJugador(b.getInt("jardinero_derecho")).getFuerza() + partida.getEquipo1().elegirJugador(b.getInt("jardinero_centro")).getFuerza() + partida.getEquipo1().elegirJugador(b.getInt("jardinero_izquierdo")).getFuerza() - partida.getEquipo2().elegirJugador(i).getFuerza()) / 4;
                     velocidadZona = (partida.getEquipo1().elegirJugador(b.getInt("jardinero_derecho")).getVelocidad() + partida.getEquipo1().elegirJugador(b.getInt("jardinero_centro")).getVelocidad() + partida.getEquipo1().elegirJugador(b.getInt("jardinero_izquierdo")).getVelocidad() - partida.getEquipo2().elegirJugador(i).getVelocidad()) / 4;
                     probabilidadEliminar = (fuerzaZona+velocidadZona)/2;
                     if((Math.random()*100)<probabilidadEliminar){
-                        System.out.println("Eliminas un rival");
                         eliminadosRival++;
                     }else{
                         casillasAvanzaRival = casillasAvanzaRival + (int)Math.floor(Math.random()*3+1);
-                        System.out.println("Rival avanza "+casillasAvanzaRival);
                     }
                 }
                 puntosRival = (int)Math.floor(casillasAvanzaRival / 4);
@@ -294,14 +264,14 @@ public class ModoDefensa extends AppCompatActivity {
 
             database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
             DatabaseReference myRef = database.getReference(partida.getCodigo());
+            partida.getEquipo1().elegirJugador(0).setReady(true);
+            partida.getEquipo2().setPuntos(partida.getEquipo2().getPuntos()+puntosRival);
             myRef.setValue(partida);
             intent.putExtra("codigo", partida.getCodigo());
-            intent.putExtra("puntos_rival",puntosRival);
 
             b.putString("modo_defensa", "modo_defensa");
 
             intent.putExtras(b);
-
 
             startActivity(intent);
         }
