@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,16 +59,9 @@ public class ModoAtaque extends AppCompatActivity {
                 partida = dataSnapshot.getValue(Partida.class);
                 //Comprobamos cuantos jugadores estan eliminados.
                 int eliminados = 0;
-                Button color = (Button) findViewById(R.id.color);
+
                 for (int i = 0; i < 4; i++) {
-                    if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid()))
-                        color.setBackgroundTintList(getBaseContext().getColorStateList(R.color.red));
-                    else if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid()))
-                        color.setBackgroundTintList(getBaseContext().getColorStateList(R.color.green));
-                    else if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid()))
-                        color.setBackgroundTintList(getBaseContext().getColorStateList(R.color.blue));
-                    else if(partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid()))
-                        color.setBackgroundTintList(getBaseContext().getColorStateList(R.color.purple));
+
                     if (!partida.getEquipo1().elegirJugador(i).isEnjuego()) eliminados++;
                 }
 
@@ -295,7 +287,7 @@ public class ModoAtaque extends AppCompatActivity {
                     for (int i = 0; i < 4; i++) {
                         if (i == partida.getJugadaAct()) {
                             continue;
-                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque() && pos !=1) {
+                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque() && pos != 1) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
                             Dialog mensaje = new Dialog(this);
@@ -354,7 +346,7 @@ public class ModoAtaque extends AppCompatActivity {
                     for (int i = 0; i < 4; i++) {
                         if (i == partida.getJugadaAct()) {
                             continue;
-                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque() && pos !=1) {
+                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque() && pos != 1) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
                             Dialog mensaje = new Dialog(this);
@@ -411,7 +403,7 @@ public class ModoAtaque extends AppCompatActivity {
                     for (int i = 0; i < 4; i++) {
                         if (i == partida.getJugadaAct()) {
                             continue;
-                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque() && pos !=1) {
+                        } else if (pos == partida.getEquipo1().elegirJugador(i).getPosicionAtaque() && pos != 1) {
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setEnjuego(false);
                             partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
                             Dialog mensaje = new Dialog(this);
@@ -441,8 +433,8 @@ public class ModoAtaque extends AppCompatActivity {
             Si se ha seleccionado descansar solo hay que sumar 5 a la resistencia del jugador,
             siempre que la energía actual no supere 95 (si no tendría más de 100).
              */
-            if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getResistencia() <= 95) ;
-            partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(-5);
+            if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getResistencia() <= 95)
+                partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(-5);
             if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId() != 3) {
                 partida.siguienteJugada();
             } else partida.setJugadaAct(0);
@@ -490,6 +482,16 @@ public class ModoAtaque extends AppCompatActivity {
         layout.removeAllViews();
         layout = findViewById(R.id.movimientos);
         layout.removeAllViews();
+
+        Button color = (Button) findViewById(R.id.color);
+        if (partida.getEquipo1().elegirJugador(0).getUsuario().equals(user.getUid()))
+            color.setBackgroundTintList(this.getColorStateList(R.color.red));
+        else if (partida.getEquipo1().elegirJugador(1).getUsuario().equals(user.getUid()))
+            color.setBackgroundTintList(this.getColorStateList(R.color.green));
+        else if (partida.getEquipo1().elegirJugador(2).getUsuario().equals(user.getUid()))
+            color.setBackgroundTintList(this.getColorStateList(R.color.blue));
+        else if (partida.getEquipo1().elegirJugador(3).getUsuario().equals(user.getUid()))
+            color.setBackgroundTintList(this.getColorStateList(R.color.purple));
 
 
         for (int i = 0; i < 4; i++) {
