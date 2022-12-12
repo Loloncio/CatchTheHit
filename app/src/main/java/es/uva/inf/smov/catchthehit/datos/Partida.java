@@ -76,7 +76,11 @@ public class Partida implements Serializable {
     }
 
     public void siguienteJugada(){
-        jugadaAct++;
+
+        if(jugadaAct!=3)
+            jugadaAct++;
+        else
+            jugadaAct = 0;
     }
 
     /*

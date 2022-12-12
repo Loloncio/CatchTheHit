@@ -26,11 +26,7 @@ public class espera_test extends AppCompatActivity {
 
     private int listos;
     private Partida partida;
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
-    private String codigo;
     private DatabaseReference myRef;
-    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +34,14 @@ public class espera_test extends AppCompatActivity {
         setContentView(R.layout.activity_espera_test);
 
         //Conectamos a la base de datos y obtenemos la referencia de la partida.
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        codigo = getIntent().getExtras().getString("codigo");
-        myRef = database.getReference(codigo);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
+        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+        String codigo = getIntent().getExtras().getString("codigo");
+        myRef = database.getReference(codigo);
 
-        //Referencias a los campos a rellenar, excepto la imagen.
+        //Referencias a los campos a rellenar.
         TextView listosTxt = (TextView) findViewById(R.id.espera);
-        Button boton = (Button) findViewById(R.id.verResultados);
 
         //listener para obtener los datos de la partida cuando haya cambios.
         myRef.addValueEventListener(new ValueEventListener() {
@@ -59,8 +52,6 @@ public class espera_test extends AppCompatActivity {
                 partida = dataSnapshot.getValue(Partida.class);
                 /*
                  * Comprobamos cuantos jugadores hay listos.
-                 * Ademas si uno de esos listos somos nosotros, actualizamos los campos con nuestra
-                 * info.
                  */
                 for (int i = 0; i < 4; i++) {
                     if (partida.getEquipo1().elegirJugador(i).isReady()) {
@@ -69,8 +60,9 @@ public class espera_test extends AppCompatActivity {
                     //Cuando todos esten listos vamos aresultados.
                     if (listos == 4) {
                         myRef.removeEventListener(this);
-                        boton.setVisibility(View.VISIBLE);
-                        boton.setClickable(true);
+                        Intent intent = new Intent(espera_test.this, Resultados.class);
+                        intent.putExtra("codigo", partida.getCodigo());
+                        startActivity(intent);
                     }
                     else{
                         listosTxt.setText("Espera que tus compañeros finalicen el test ("+listos+"/4)");
@@ -82,9 +74,5 @@ public class espera_test extends AppCompatActivity {
             }
             });
     }
-    public void clickBoton(View v){
-        Intent intent = new Intent(espera_test.this, Resultados.class);
-        intent.putExtra("codigo", partida.getCodigo());
-        startActivity(intent);
-    }
+
 }
