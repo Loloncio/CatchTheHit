@@ -134,26 +134,11 @@ public class Test extends AppCompatActivity {
             database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
             database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference(codigo);
+            myRef.setValue(partida);
+            Intent intent = new Intent(Test.this, espera_test.class);
+            intent.putExtra("codigo", codigo);
 
-            if(partida.getRondaAct()== partida.getRondaAct()) {
-                myRef.setValue(partida);
-                Intent intent = new Intent(Test.this, espera_test.class);
-                intent.putExtra("codigo", codigo);
-                startActivity(intent);
-            }else{
-                for(int i = 0; i < 4; i++){
-                    partida.getEquipo1().elegirJugador(i).setEnjuego(true);
-                    if( partida.getEquipo1().elegirJugador(i).getResistencia()<80)
-                        partida.getEquipo1().elegirJugador(i).menosRes(-20);
-                    partida.siguienteRonda();
-                }
-                myRef.setValue(partida);
-                Intent intent = new Intent(Test.this, ModoAtaque.class);
-                intent.putExtra("codigo", codigo);
-                startActivity(intent);
-            }
-
-
+            startActivity(intent);
         }
 
     }
