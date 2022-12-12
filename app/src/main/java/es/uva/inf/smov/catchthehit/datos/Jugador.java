@@ -43,9 +43,9 @@ public class Jugador implements Serializable {
         ready = false;
         enjuego = true;
         id = i;
-        respuestas = new ArrayList<Integer>(18);
-        for(int x = 0; x < 18;x++){
-            respuestas.add(4);
+        respuestas = new ArrayList<>();
+        for(int x = 0;x < 18; x++){
+            respuestas.add(-1);
         }
         posicionAtaque = 1;
     }
@@ -224,5 +224,10 @@ public class Jugador implements Serializable {
         }
 
         return valores;
+    }
+    private void iniciaRespuestas(){
+        for(int x = 0; x < 18;x++){
+            respuestas.add(4);
+        }
     }
 }
