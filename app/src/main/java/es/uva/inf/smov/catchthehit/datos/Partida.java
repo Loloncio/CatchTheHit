@@ -129,6 +129,10 @@ public class Partida implements Serializable {
         this.puntosRonda = puntosRonda;
     }
 
+    public void siguienteRonda(){
+        rondaAct++;
+    }
+
     private void setPreguntas() {
         this.preguntas.add("¿Qué jugador consideras que ha sido el más comunicativo? ¿Quién ha consultado más sus decisiones con el resto del grupo?");
         this.preguntas.add("¿Quién ha sido el más positivo?");

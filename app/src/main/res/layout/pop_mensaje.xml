@@ -6,14 +6,22 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/border"
-    android:backgroundTint="#80FFFFFF">
+    android:backgroundTint="#85FFFFFF">
+
+    <ImageView
+        android:id="@+id/iconMensaje"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtMensaje"
+        app:layout_constraintEnd_toEndOf="@+id/txtMensaje"
+        app:layout_constraintStart_toStartOf="@+id/txtMensaje"
+        app:srcCompat="@drawable/home_run" />
 
     <TextView
         android:id="@+id/txtMensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/border"
-        android:backgroundTint="#85FFFFFF"
         android:backgroundTintMode="add"
         android:gravity="center"
         android:paddingHorizontal="10dp"
