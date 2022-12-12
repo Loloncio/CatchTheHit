@@ -72,7 +72,7 @@ public class Inicio extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     partida = dataSnapshot.getValue(Partida.class);
                     if (partida == null) {
-                        CharSequence fail = "Codigo de sala no valido";
+                        CharSequence fail = "Codigo de sala no valido, I puede ser una i mayuscula o una L minuscula ";
                         Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
                         toast.show();
                         return;

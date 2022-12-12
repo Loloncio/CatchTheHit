@@ -7,6 +7,15 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
+            <type value="SERIAL_NUMBER" />
+            <value value="adb-11160bb4a6673703-SrSsFO._adb-tls-connect._tcp" />
+          </Key>
+        </deviceKey>
+      </Target>
+      <Target>
+        <type value="RUNNING_DEVICE_TARGET" />
+        <deviceKey>
+          <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
             <value value="D:\Programas\AndroidStudio\AVDs\Pixel_6_Pro_API_28.avd" />
           </Key>
@@ -26,7 +35,7 @@
         <deviceKey>
           <Key>
             <type value="SERIAL_NUMBER" />
-            <value value="11160bb4a6673703" />
+            <value value="48a3caea" />
           </Key>
         </deviceKey>
       </Target>

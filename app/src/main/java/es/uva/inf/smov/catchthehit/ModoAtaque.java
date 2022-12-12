@@ -61,9 +61,9 @@ public class ModoAtaque extends AppCompatActivity {
                 int eliminados = 0;
 
                 for (int i = 0; i < 4; i++) {
-
                     if (!partida.getEquipo1().elegirJugador(i).isEnjuego()) eliminados++;
                 }
+
 
                 /*
                 Si se han eliminado 3 jugadores o se llega a 3 puntos, vamos al modo defensa y
@@ -87,7 +87,17 @@ public class ModoAtaque extends AppCompatActivity {
                         startActivity(intent);
                     }
                     //Si no se han eliminado 3 jugadores o se llega a 3 puntos, sigue el juego.
-                } else juego();
+                } else {
+                    while (true) {
+                        if (!partida.getEquipo1().elegirJugador(partida.getJugadaAct()).isEnjuego())
+                            partida.siguienteJugada();
+                        else {
+                            juego();
+                            break;
+                        }
+                    }
+
+                }
             }
 
             @Override
@@ -272,9 +282,7 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
-                        if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId() != 3) {
-                            partida.siguienteJugada();
-                        } else partida.setJugadaAct(0);
+                        partida.siguienteJugada();
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.pop_mensaje);
                         TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
@@ -305,9 +313,7 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                     }
-                    if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId() != 3) {
-                        partida.siguienteJugada();
-                    } else partida.setJugadaAct(0);
+                    partida.siguienteJugada();
                     myRef.setValue(partida);
 
                     break;
@@ -332,9 +338,7 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
-                        if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId() != 3) {
-                            partida.siguienteJugada();
-                        } else partida.setJugadaAct(0);
+                        partida.siguienteJugada();
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.pop_mensaje);
                         TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
@@ -362,9 +366,7 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                     }
-                    if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId() != 3) {
-                        partida.siguienteJugada();
-                    } else partida.setJugadaAct(0);
+                    partida.siguienteJugada();
                     myRef.setValue(partida);
 
                     break;
@@ -389,9 +391,7 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                         partida.getEquipo1().elegirJugador(partida.getJugadaAct()).setPosicionAtaque(1);
-                        if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId() != 3) {
-                            partida.siguienteJugada();
-                        } else partida.setJugadaAct(0);
+                        partida.siguienteJugada();
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.pop_mensaje);
                         TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
@@ -419,9 +419,7 @@ public class ModoAtaque extends AppCompatActivity {
                         partida.getEquipo1().incrementaPuntos();
                         partida.otroPunto();
                     }
-                    if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId() != 3) {
-                        partida.siguienteJugada();
-                    } else partida.setJugadaAct(0);
+                    partida.siguienteJugada();
                     myRef.setValue(partida);
 
                     break;
@@ -435,9 +433,7 @@ public class ModoAtaque extends AppCompatActivity {
              */
             if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getResistencia() <= 95)
                 partida.getEquipo1().elegirJugador(partida.getJugadaAct()).menosRes(-5);
-            if (partida.getEquipo1().elegirJugador(partida.getJugadaAct()).getId() != 3) {
-                partida.siguienteJugada();
-            } else partida.setJugadaAct(0);
+            partida.siguienteJugada();
             myRef.setValue(partida);
         }
     }
@@ -496,8 +492,8 @@ public class ModoAtaque extends AppCompatActivity {
 
         for (int i = 0; i < 4; i++) {
             //*****Paso 2*****//
-
             if (partida.getEquipo1().elegirJugador(i).isEnjuego()) colocaJugador(i);
+
             if (i == partida.getJugadaAct() && partida.getEquipo1().elegirJugador(i).getUsuario().equals(user.getUid())) {
                 if (partida.getPuntuacion() > 85) {
                     addTirada(1);
@@ -513,12 +509,13 @@ public class ModoAtaque extends AppCompatActivity {
                     addTirada(0);
                 } else {
                     partida.getEquipo1().elegirJugador(i).setEnjuego(false);
-                    partida.setJugadaAct(i + 1);
+                    partida.siguienteJugada();
                     myRef.setValue(partida);
                 }
             }
 
         }
+
     }
 
     /*

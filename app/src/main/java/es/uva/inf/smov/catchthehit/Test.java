@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import es.uva.inf.smov.catchthehit.datos.Partida;
@@ -34,10 +36,8 @@ public class Test extends AppCompatActivity {
 
     private ViewGroup layout;
     private String codigo;
-    private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private Partida partida;
-    private int sinRespuesta;
     private ArrayList<Integer> respuestas;
     private int jugador;
     private FirebaseUser user;
@@ -55,6 +55,9 @@ public class Test extends AppCompatActivity {
 
         layout = findViewById(R.id.preguntas);
         respuestas = new ArrayList<Integer>(18);
+        for(int i = 0; i < 18; i++){
+            respuestas.add(i, null);
+        }
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -69,6 +72,7 @@ public class Test extends AppCompatActivity {
                         jugador = i;
                     }
                 }
+                myRef.removeEventListener(this);
                 IntroducePreguntas();
             }
 
@@ -95,7 +99,7 @@ public class Test extends AppCompatActivity {
             TextView pregunta = constraint.findViewById(R.id.pregunta);
             TextView nPregunta = constraint.findViewById(R.id.nPregunta);
             nPregunta.setText(String.valueOf(i + 1));
-            pregunta.setText(partida.getPregunta(i));
+            pregunta.setText(toUTF8(partida.getPregunta(i)));
             TextView j1 = constraint.findViewById(R.id.j1);
             TextView j2 = constraint.findViewById(R.id.j2);
             TextView j3 = constraint.findViewById(R.id.j3);
@@ -113,13 +117,12 @@ public class Test extends AppCompatActivity {
             i2.setTag(jugadores[1]);
             i3.setTag(jugadores[2]);
 
-
             layout.addView(constraint);
         }
     }
 
     public void clickFinalizarTest(View v) {
-        sinRespuesta = 0;
+        int sinRespuesta = 0;
         for (int i = 0; i < 18; i++) {
             if (respuestas.get(i) == null) {
                 sinRespuesta++;
@@ -128,7 +131,9 @@ public class Test extends AppCompatActivity {
         if (sinRespuesta == 0) {
             partida.getEquipo1().elegirJugador(jugador).setRespuestas(respuestas);
             partida.getEquipo1().elegirJugador(jugador).setReady(true);
-            DatabaseReference myRef = database.getReference(partida.getCodigo());
+            database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
+            database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference(codigo);
             myRef.setValue(partida);
             Intent intent = new Intent(Test.this, espera_test.class);
             intent.putExtra("codigo", codigo);
@@ -149,16 +154,19 @@ public class Test extends AppCompatActivity {
         op1.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.negroTranslucido)));
 
         ConstraintLayout padre = (ConstraintLayout) v.getParent();
+
+        ImageView imagen = (ImageView) v.findViewById(R.id.J1);
+        TextView nPregunta = padre.findViewById(R.id.nPregunta);
+        int numero = Integer.parseInt(nPregunta.getText().toString());
+        respuestas.add(numero - 1, Integer.parseInt(imagen.getTag().toString()));
+
+
         LinearLayout op2 = padre.findViewById(R.id.op2);
         LinearLayout op3 = padre.findViewById(R.id.op3);
         op2.setBackgroundColor(0x00FFFFFF);
         op3.setBackgroundColor(0x00FFFFFF);
-
-        TextView nPregunta = padre.findViewById(R.id.nPregunta);
-        int numero = Integer.parseInt(nPregunta.getText().toString());
-        Log.e("numero", String.valueOf(numero));
-        respuestas.add(numero - 1, Integer.parseInt(op1.getTag().toString()));
     }
+
 
     public void clickOpcion2(View v) {
         LinearLayout op2 = v.findViewById(R.id.op2);
@@ -167,15 +175,16 @@ public class Test extends AppCompatActivity {
         op2.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.negroTranslucido)));
 
         ConstraintLayout padre = (ConstraintLayout) v.getParent();
+        ImageView imagen = (ImageView) v.findViewById(R.id.J2);
+        TextView nPregunta = padre.findViewById(R.id.nPregunta);
+        int numero = Integer.parseInt(nPregunta.getText().toString());
+        respuestas.add(numero - 1, Integer.parseInt(imagen.getTag().toString()));
+
         LinearLayout op1 = padre.findViewById(R.id.op1);
         LinearLayout op3 = padre.findViewById(R.id.op3);
         op1.setBackgroundColor(0x00FFFFFF);
         op3.setBackgroundColor(0x00FFFFFF);
 
-        TextView nPregunta = padre.findViewById(R.id.nPregunta);
-        int numero = Integer.parseInt(nPregunta.getText().toString());
-        Log.e("numero", String.valueOf(numero));
-        respuestas.add(numero - 1, Integer.parseInt(op1.getTag().toString()));
     }
 
     public void clickOpcion3(View v) {
@@ -185,15 +194,17 @@ public class Test extends AppCompatActivity {
         op3.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.negroTranslucido)));
 
         ConstraintLayout padre = (ConstraintLayout) v.getParent();
+
+        ImageView imagen = (ImageView) v.findViewById(R.id.J3);
+        TextView nPregunta = padre.findViewById(R.id.nPregunta);
+        int numero = Integer.parseInt(nPregunta.getText().toString());
+        respuestas.add(numero - 1, Integer.parseInt(imagen.getTag().toString()));
+
         LinearLayout op1 = padre.findViewById(R.id.op1);
         LinearLayout op2 = padre.findViewById(R.id.op2);
         op1.setBackgroundColor(0x00FFFFFF);
         op2.setBackgroundColor(0x00FFFFFF);
 
-        TextView nPregunta = padre.findViewById(R.id.nPregunta);
-        int numero = Integer.parseInt(nPregunta.getText().toString());
-        Log.e("numero", String.valueOf(numero));
-        respuestas.add(numero - 1, Integer.parseInt(op1.getTag().toString()));
     }
 
     private int getImagen(int id) {
@@ -233,6 +244,24 @@ public class Test extends AppCompatActivity {
         }
 
         return preguntas;
+    }
+
+    private String toUTF8(String s) {
+
+        if (s != null) {
+
+            String ss;
+
+            ss = new String(s.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+
+            return ss;
+
+        } else {
+
+            return "";
+
+        }
+
     }
 
 }
