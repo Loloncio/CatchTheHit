@@ -139,10 +139,6 @@ public class Test extends AppCompatActivity {
             intent.putExtra("codigo", codigo);
 
             startActivity(intent);
-        } else {
-            CharSequence fail = "Selecciona un jugador en todas las preguntas";
-            Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
-            toast.show();
         }
 
     }

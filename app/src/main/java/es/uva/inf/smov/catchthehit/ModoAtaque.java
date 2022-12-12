@@ -274,6 +274,8 @@ public class ModoAtaque extends AppCompatActivity {
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.pop_mensaje);
                         TextView txt = (TextView) mensaje.findViewById((R.id.txtMensaje));
+                        ImageView icon = (ImageView) mensaje.findViewById(R.id.iconMensaje);
+                        icon.setImageResource(getResources().getIdentifier("es.uva.inf.smov.catchthehit:drawable/triste", null, null));
                         txt.setText("Los defensas han atrapado la bola, estas out!!");
                         mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
@@ -301,6 +303,8 @@ public class ModoAtaque extends AppCompatActivity {
                             Dialog mensaje = new Dialog(this);
                             mensaje.setContentView(R.layout.pop_mensaje);
                             TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
+                            ImageView icon = (ImageView) mensaje.findViewById(R.id.iconMensaje);
+                            icon.setImageResource(getResources().getIdentifier("es.uva.inf.smov.catchthehit:drawable/triste", null, null));
                             txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
                             mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             mensaje.show();
@@ -330,6 +334,8 @@ public class ModoAtaque extends AppCompatActivity {
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.pop_mensaje);
                         TextView txt = (TextView) mensaje.findViewById((R.id.txtMensaje));
+                        ImageView icon = (ImageView) mensaje.findViewById(R.id.iconMensaje);
+                        icon.setImageResource(getResources().getIdentifier("es.uva.inf.smov.catchthehit:drawable/triste", null, null));
                         txt.setText("Los defensas han atrapado la bola, estas out!!");
                         mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
@@ -356,6 +362,8 @@ public class ModoAtaque extends AppCompatActivity {
                             Dialog mensaje = new Dialog(this);
                             mensaje.setContentView(R.layout.pop_mensaje);
                             TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
+                            ImageView icon = (ImageView) mensaje.findViewById(R.id.iconMensaje);
+                            icon.setImageResource(getResources().getIdentifier("es.uva.inf.smov.catchthehit:drawable/triste", null, null));
                             txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
                             mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             mensaje.show();
@@ -383,6 +391,8 @@ public class ModoAtaque extends AppCompatActivity {
                         Dialog mensaje = new Dialog(this);
                         mensaje.setContentView(R.layout.pop_mensaje);
                         TextView txt = (TextView) mensaje.findViewById((R.id.txtMensaje));
+                        ImageView icon = (ImageView) mensaje.findViewById(R.id.iconMensaje);
+                        icon.setImageResource(getResources().getIdentifier("es.uva.inf.smov.catchthehit:drawable/triste", null, null));
                         txt.setText("Los defensas han atrapado la bola, estas out!!");
                         mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         mensaje.show();
@@ -409,6 +419,8 @@ public class ModoAtaque extends AppCompatActivity {
                             Dialog mensaje = new Dialog(this);
                             mensaje.setContentView(R.layout.pop_mensaje);
                             TextView txt = (TextView) mensaje.findViewById(R.id.txtMensaje);
+                            ImageView icon = (ImageView) mensaje.findViewById(R.id.iconMensaje);
+                            icon.setImageResource(getResources().getIdentifier("es.uva.inf.smov.catchthehit:drawable/triste", null, null));
                             txt.setText("Un jugador ocupaba esa base, has sido eliminado!");
                             mensaje.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             mensaje.show();

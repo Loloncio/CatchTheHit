@@ -32,7 +32,7 @@ public class Resultados extends AppCompatActivity {
     private String codigo;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
-    Partida partida;
+    private Partida partida;
     private ViewGroup layout;
     private ArrayList<Integer> respuestas;
 
@@ -46,13 +46,26 @@ public class Resultados extends AppCompatActivity {
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(codigo);
-
+        respuestas = new ArrayList<Integer>(18);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 partida = dataSnapshot.getValue(Partida.class);
+
+                TextView ganador = (TextView) findViewById(R.id.ganador);
+                TextView puntuacion = (TextView) findViewById(R.id.puntuacion);
+                if(partida.getEquipo1().getPuntos()>partida.getEquipo2().getPuntos()){
+                    ganador.setText("Sois los ganadores!!!");
+                    puntuacion.setText("Habeis conseguido: "+partida.getEquipo1().getPuntos()+" puntos\n"+
+                            "El equipo contrario ha conseguido: "+partida.getEquipo2().getPuntos()+"puntos");
+                } else{
+                    ganador.setText("Habeis perdido!!");
+                    puntuacion.setText("Habeis conseguido: "+partida.getEquipo1().getPuntos()+" puntos\n"+
+                            "El equipo contrario ha conseguido: "+partida.getEquipo2().getPuntos()+"puntos");
+                }
+
                 addResultado(0);
                 addResultado(1);
                 addResultado(2);
@@ -105,7 +118,9 @@ public class Resultados extends AppCompatActivity {
 
         for(int i = 0; i<4;i++){
             respuestas = partida.getEquipo1().elegirJugador(i).getRespuestas();
+
             for(int j = 0;j<18;j++){
+                Log.d("ResultadoRecuento",String.valueOf(respuestas.get(j)));
                 if((j==0)||(j==1)||(j==4)||(j==6)||(j==7)||(j==10)) {
                     if (respuestas.get(j) == jugador)
                         recuentoComunicacion++;
@@ -122,6 +137,10 @@ public class Resultados extends AppCompatActivity {
                 }
             }
         }
+        Log.d("ResultadoRecuento1",String.valueOf(recuentoComunicacion));
+        Log.d("ResultadoRecuento2",String.valueOf(recuentoEquipo));
+        Log.d("ResultadoRecuento3",String.valueOf(recuentoLiderT));
+        Log.d("ResultadoRecuento4",String.valueOf(recuentoLiderC));
         recuentoComunicacion = (recuentoComunicacion/24)*100;
         recuentoEquipo = (recuentoEquipo/24)*100;
         recuentoLiderT = (recuentoLiderT/12)*100;
