@@ -13,7 +13,7 @@
 
 
     <TextView
-        android:id="@+id/opcion"
+        android:id="@+id/tVelocidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -32,20 +32,20 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/opcion"
-        app:layout_constraintTop_toBottomOf="@+id/opcion"
+        app:layout_constraintStart_toStartOf="@+id/tVelocidad"
+        app:layout_constraintTop_toBottomOf="@+id/tVelocidad"
         app:srcCompat="@drawable/fuerza" />
 
     <ImageView
-        android:id="@+id/iconEnergia"
+        android:id="@+id/iEnergia"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/opcion"
-        app:layout_constraintTop_toBottomOf="@+id/opcion"
+        app:layout_constraintStart_toEndOf="@+id/tVelocidad"
+        app:layout_constraintTop_toBottomOf="@+id/tVelocidad"
         app:srcCompat="@drawable/resistencia" />
 
     <ImageView
@@ -56,8 +56,8 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/opcion"
-        app:layout_constraintTop_toBottomOf="@+id/opcion"
+        app:layout_constraintEnd_toStartOf="@+id/tVelocidad"
+        app:layout_constraintTop_toBottomOf="@+id/tVelocidad"
         app:srcCompat="@drawable/velocidad" />
 
     <TextView
@@ -86,7 +86,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="5dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/iconEnergia"
-        app:layout_constraintStart_toEndOf="@+id/iconEnergia"
-        app:layout_constraintTop_toTopOf="@+id/iconEnergia" />
+        app:layout_constraintBottom_toBottomOf="@+id/iEnergia"
+        app:layout_constraintStart_toEndOf="@+id/iEnergia"
+        app:layout_constraintTop_toTopOf="@+id/iEnergia" />
 </androidx.constraintlayout.widget.ConstraintLayout>

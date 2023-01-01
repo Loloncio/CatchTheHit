@@ -5,9 +5,6 @@ import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
