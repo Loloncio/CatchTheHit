@@ -70,6 +70,7 @@ public class ModoAtaque extends AppCompatActivity {
                 reiniciamos los puntos conseguidos en la ronda y jugadaAct.
                  */
                 if (partida.getPuntosRonda() == 3 || eliminados >= 3) {
+                    Log.e("Debug","Puntos: "+partida.getPuntosRonda()+"Eliminados: "+ eliminados);
                     myRef.removeEventListener(this);
                     partida.setPuntosRonda(0);
                     partida.setJugadaAct(0);
@@ -198,13 +199,12 @@ public class ModoAtaque extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         int id = R.layout.movimiento;
         ConstraintLayout mov = (ConstraintLayout) inflater.inflate(id, null, false);
-        TextView movimiento = mov.findViewById(R.id.opcion);
+        TextView movimiento = mov.findViewById(R.id.tVelocidad);
         movimiento.setText("Avanza " + avance);
         TextView fuerza = mov.findViewById(R.id.statFuerza);
         TextView velocidad = mov.findViewById(R.id.statVelocidad);
 
         TextView energia = mov.findViewById(R.id.statEnergia);
-
 
         switch (avance) {
             case 1:
@@ -249,7 +249,7 @@ public class ModoAtaque extends AppCompatActivity {
      */
     public void clickOpcion(View v) {
 
-        TextView avance = v.findViewById(R.id.opcion);
+        TextView avance = v.findViewById(R.id.tVelocidad);
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference(codigo);
@@ -521,6 +521,7 @@ public class ModoAtaque extends AppCompatActivity {
                     addTirada(0);
                 } else {
                     partida.getEquipo1().elegirJugador(i).setEnjuego(false);
+                    partida.getEquipo1().elegirJugador(i).setPosicionAtaque(1);
                     partida.siguienteJugada();
                     myRef.setValue(partida);
                 }

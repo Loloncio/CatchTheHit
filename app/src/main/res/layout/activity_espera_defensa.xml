@@ -43,7 +43,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/iFuerza"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginStart="@dimen/players_20"
@@ -104,9 +104,9 @@
                     android:layout_marginTop="@dimen/players_10"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView1"
-                    app:layout_constraintStart_toStartOf="@+id/imageView1"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView1" />
+                    app:layout_constraintEnd_toEndOf="@+id/iFuerza"
+                    app:layout_constraintStart_toStartOf="@+id/iFuerza"
+                    app:layout_constraintTop_toBottomOf="@+id/iFuerza" />
 
                 <ImageView
                     android:id="@+id/imageView4"

@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/TxtFuerza"
+            android:id="@+id/tReflejos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -42,23 +42,23 @@
             android:text="Fuerza"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/fuerza"
+            app:layout_constraintBottom_toTopOf="@+id/reflejos"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5" />
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/iFuerza"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView11"
-            app:layout_constraintStart_toStartOf="@+id/imageView11"
+            app:layout_constraintEnd_toEndOf="@+id/iVelocidad"
+            app:layout_constraintStart_toStartOf="@+id/iVelocidad"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/fuerza" />
 
         <ProgressBar
-            android:id="@+id/fuerza"
+            android:id="@+id/reflejos"
             style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
             android:layout_width="0dp"
             android:layout_height="30dp"
@@ -68,15 +68,15 @@
             android:indeterminate="false"
             android:progress="50"
             android:progressDrawable="@drawable/proggres_bar"
-            app:layout_constraintBottom_toTopOf="@+id/imageView11"
+            app:layout_constraintBottom_toTopOf="@+id/iVelocidad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView1"
+            app:layout_constraintTop_toBottomOf="@+id/iFuerza"
             app:layout_constraintVertical_bias="0.5" />
 
         <TextView
-            android:id="@+id/opcion"
+            android:id="@+id/tVelocidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -86,17 +86,17 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/velocidad"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fuerza"
+            app:layout_constraintTop_toBottomOf="@+id/reflejos"
             app:layout_constraintVertical_bias="0.5" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/iVelocidad"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/iconEnergia"
-            app:layout_constraintStart_toStartOf="@+id/iconEnergia"
-            app:layout_constraintTop_toBottomOf="@+id/fuerza"
+            app:layout_constraintEnd_toEndOf="@+id/iEnergia"
+            app:layout_constraintStart_toStartOf="@+id/iEnergia"
+            app:layout_constraintTop_toBottomOf="@+id/reflejos"
             app:srcCompat="@drawable/velocidad" />
 
         <ProgressBar
@@ -110,14 +110,14 @@
             android:indeterminate="false"
             android:progress="50"
             android:progressDrawable="@drawable/proggres_bar"
-            app:layout_constraintBottom_toTopOf="@+id/iconEnergia"
+            app:layout_constraintBottom_toTopOf="@+id/iEnergia"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11"
+            app:layout_constraintTop_toBottomOf="@+id/iVelocidad"
             app:layout_constraintVertical_bias="0.5" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tResistencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -131,14 +131,14 @@
             app:layout_constraintVertical_bias="0.5" />
 
         <ImageView
-            android:id="@+id/iconEnergia"
+            android:id="@+id/iEnergia"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintStart_toEndOf="@+id/tResistencia"
             app:layout_constraintTop_toBottomOf="@+id/velocidad"
             app:srcCompat="@drawable/resistencia" />
 
@@ -157,20 +157,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconEnergia"
+            app:layout_constraintTop_toBottomOf="@+id/iEnergia"
             app:layout_constraintVertical_bias="0.5" />
 
         <TextView
-            android:id="@+id/txtFuerza"
+            android:id="@+id/txtReflejos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/fuerza"
-            app:layout_constraintStart_toStartOf="@+id/fuerza"
-            app:layout_constraintTop_toTopOf="@+id/fuerza" />
+            app:layout_constraintBottom_toBottomOf="@+id/reflejos"
+            app:layout_constraintStart_toStartOf="@+id/reflejos"
+            app:layout_constraintTop_toTopOf="@+id/reflejos" />
 
         <TextView
             android:id="@+id/txtVelocidad"

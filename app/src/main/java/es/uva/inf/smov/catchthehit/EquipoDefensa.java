@@ -112,7 +112,7 @@ public class EquipoDefensa extends AppCompatActivity {
         b = new Bundle();
 
         jugadores = new HashMap<>();
-        jugadores.put(1,R.id.imageView1);
+        jugadores.put(1,R.id.iFuerza);
         jugadores.put(9,R.id.imageView2);
         jugadores.put(2,R.id.imageView3);
         jugadores.put(3,R.id.imageView4);
@@ -315,7 +315,7 @@ public class EquipoDefensa extends AppCompatActivity {
     private void aJugador(Jugador jugador){
         Intent intent = new Intent(EquipoDefensa.this, JugadorDefensaActivity.class);
         intent.putExtra("nombre",jugador.getNombre());
-        intent.putExtra("fuerza",jugador.getFuerza());
+        intent.putExtra("reflejos",jugador.getReflejos());
         intent.putExtra("velocidad",jugador.getVelocidad());
         intent.putExtra("resistencia",jugador.getResistencia());
         database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");

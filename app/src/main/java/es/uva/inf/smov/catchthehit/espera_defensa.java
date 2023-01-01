@@ -83,7 +83,7 @@ public class espera_defensa extends AppCompatActivity {
         b = new Bundle();
 
         jugadores = new HashMap<>();
-        jugadores.put(1, R.id.imageView1);
+        jugadores.put(1, R.id.iFuerza);
         jugadores.put(9, R.id.imageView2);
         jugadores.put(2, R.id.imageView3);
         jugadores.put(3, R.id.imageView4);
@@ -227,7 +227,7 @@ public class espera_defensa extends AppCompatActivity {
     private void aJugador(Jugador jugador) {
         Dialog player = new Dialog(this);
         player.setContentView(R.layout.pop_jugador);
-        TextView txtReflejos = (TextView) player.findViewById((R.id.txtFuerza));
+        TextView txtReflejos = (TextView) player.findViewById((R.id.txtReflejos));
         TextView txtVelocidad = (TextView) player.findViewById((R.id.txtVelocidad));
         TextView txtResistencia = (TextView) player.findViewById((R.id.txtResistencia));
         TextView txtNombre = (TextView) player.findViewById((R.id.nombre));
@@ -236,7 +236,7 @@ public class espera_defensa extends AppCompatActivity {
         txtVelocidad.setText(String.valueOf(jugador.getVelocidad())+"%");
         txtNombre.setText(jugador.getNombre());
 
-        ProgressBar progReflejos = (ProgressBar) player.findViewById(R.id.fuerza);
+        ProgressBar progReflejos = (ProgressBar) player.findViewById(R.id.reflejos);
         ProgressBar progVelocidad = (ProgressBar) player.findViewById(R.id.velocidad);
         ProgressBar progResistencia = (ProgressBar) player.findViewById(R.id.resistencia);
         progReflejos.setProgress(jugador.getReflejos());
