@@ -4,43 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_inicio"
-    >
+    android:background="@drawable/fondo_inicio">
 
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="CATCH THE HIT"
         android:textColor="@color/white"
-        android:fontFamily="sans-serif-medium"/>
-
-    <EditText
-        android:id="@+id/TxtEdad"
-        android:layout_marginTop="175dp"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:gravity="center_horizontal"
-        android:inputType="text"
-        android:text="CÃ³digo de partida" />
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
-        android:id="@+id/BtnCrearGrupo"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
         android:id="@+id/BtnDemoJuego"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="154dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="155dp"
+        android:layout_marginTop="20dp"
         android:background="#73bbee"
         android:onClick="clickDemoJuego"
         android:text="@string/botonDemoJuego"
@@ -48,38 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
-    <Button
-        android:id="@+id/BtnComoJugar"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="#8f989e"
-        android:onClick="clickBotonEmpezarJuego"
-        android:text="@string/boton_empezar" />
-        android:textSize="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/BtnComoJugar"
-        android:layout_marginTop="150dp"
-        android:layout_gravity="center_horizontal"
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="154dp"
-        android:layout_marginTop="145dp"
-        android:layout_marginEnd="155dp"
-        android:background="#73bbee"
-        android:onClick="clickBotonComoJugar"
-        android:text="@string/botonComoJugar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -90,7 +45,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <EditText
             android:id="@+id/txtEdad"
