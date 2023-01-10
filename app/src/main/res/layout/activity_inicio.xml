@@ -31,18 +31,45 @@
         android:text="CÃ³digo de partida" />
 
     <Button
+<<<<<<< Updated upstream
         android:id="@+id/BtnCrearGrupo"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
+=======
+        android:id="@+id/BtnDemoJuego"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="155dp"
+        android:background="#73bbee"
+        android:onClick="clickDemoJuego"
+        android:text="@string/botonDemoJuego"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <Button
+        android:id="@+id/BtnComoJugar"
+        android:layout_width="150dp"
+>>>>>>> Stashed changes
         android:layout_height="wrap_content"
         android:background="#8f989e"
         android:onClick="clickBotonEmpezarJuego"
         android:text="@string/boton_empezar" />
 
+<<<<<<< Updated upstream
     <Button
         android:id="@+id/BtnComoJugar"
         android:layout_marginTop="150dp"
         android:layout_gravity="center_horizontal"
+=======
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+>>>>>>> Stashed changes
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#73bbee"
