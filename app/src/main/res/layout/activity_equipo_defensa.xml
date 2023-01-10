@@ -1,64 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_cesped"
     >
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/titulo"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-    <ImageView
-        android:id="@+id/player"
-        android:layout_width="@dimen/icon_width"
-        android:layout_height="@dimen/icon_heigth"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/border"
-        android:backgroundTint="#36FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@drawable/player_icon" />
-
     <ImageView
         android:id="@+id/field"
         android:layout_width="@dimen/icon_width"
         android:layout_height="@dimen/icon_heigth"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/border"
-        android:backgroundTint="#36FFFFFF"
+        android:backgroundTint="@color/fondo"
+        android:onClick="clickFieldDefensa"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/field_icon" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="350dp"
-        android:layout_height="450dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="153dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/border"
-        android:backgroundTint="#36FFFFFF"
+        android:backgroundTint="@color/fondo"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.217">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -80,11 +55,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/iFuerza"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
-                    android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_10"
+                    android:onClick="clickRedPlayer"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/red_player" />
@@ -116,8 +93,10 @@
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
-                    android:layout_marginEnd="@dimen/players_20"
+                    android:onClick="clickGreenPlayer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/iFuerza"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/green_player" />
 
@@ -125,8 +104,10 @@
                     android:id="@+id/imageView3"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
-                    android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
+                    android:onClick="clickBluePlayer"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_red"
                     app:srcCompat="@drawable/blue_player" />
@@ -138,17 +119,19 @@
                     android:layout_marginTop="@dimen/players_10"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView1"
-                    app:layout_constraintStart_toStartOf="@+id/imageView1"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView1" />
+                    app:layout_constraintEnd_toEndOf="@+id/iFuerza"
+                    app:layout_constraintStart_toStartOf="@+id/iFuerza"
+                    app:layout_constraintTop_toBottomOf="@+id/iFuerza" />
 
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
-                    android:layout_marginEnd="@dimen/players_20"
+                    android:onClick="clickPurplePlayer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/name_green"
                     app:srcCompat="@drawable/purple_player" />
 
@@ -156,8 +139,10 @@
                     android:id="@+id/imageView5"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
-                    android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
+                    android:onClick="clickGrayPlayer"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_blue"
                     app:srcCompat="@drawable/gray_player" />
@@ -178,8 +163,10 @@
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
-                    android:layout_marginEnd="@dimen/players_20"
+                    android:onClick="clickOrangePlayer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/name_purple"
                     app:srcCompat="@drawable/orange_player" />
 
@@ -198,8 +185,10 @@
                     android:id="@+id/imageView7"
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
-                    android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
+                    android:onClick="clickPinkPlayer"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView8"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_gray"
                     app:srcCompat="@drawable/pink_player" />
@@ -220,8 +209,10 @@
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginTop="@dimen/players_20"
-                    android:layout_marginEnd="@dimen/players_20"
+                    android:onClick="clickCyanPlayer"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView7"
                     app:layout_constraintTop_toBottomOf="@+id/name_orange"
                     app:srcCompat="@drawable/cyan_player" />
 
@@ -242,6 +233,7 @@
                     android:layout_height="@dimen/icon_heigth"
                     android:layout_marginStart="@dimen/players_20"
                     android:layout_marginTop="@dimen/players_20"
+                    android:onClick="clickYellowPlayer"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_pink"
                     app:srcCompat="@drawable/yellow_player" />
@@ -256,8 +248,6 @@
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
                     app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

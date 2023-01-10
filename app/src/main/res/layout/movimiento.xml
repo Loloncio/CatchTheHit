@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/attack_option1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/border"
+    android:backgroundTint="#75FFFFFF"
+    android:clickable="true"
+    android:onClick="clickOpcion">
+
+
+    <TextView
+        android:id="@+id/tVelocidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/IconFuerza"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tVelocidad"
+        app:layout_constraintTop_toBottomOf="@+id/tVelocidad"
+        app:srcCompat="@drawable/fuerza" />
+
+    <ImageView
+        android:id="@+id/iEnergia"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tVelocidad"
+        app:layout_constraintTop_toBottomOf="@+id/tVelocidad"
+        app:srcCompat="@drawable/resistencia" />
+
+    <ImageView
+        android:id="@+id/iconVelocidad"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tVelocidad"
+        app:layout_constraintTop_toBottomOf="@+id/tVelocidad"
+        app:srcCompat="@drawable/velocidad" />
+
+    <TextView
+        android:id="@+id/statVelocidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/iconVelocidad"
+        app:layout_constraintStart_toEndOf="@+id/iconVelocidad"
+        app:layout_constraintTop_toTopOf="@+id/iconVelocidad" />
+
+    <TextView
+        android:id="@+id/statFuerza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/IconFuerza"
+        app:layout_constraintStart_toEndOf="@+id/IconFuerza"
+        app:layout_constraintTop_toTopOf="@+id/IconFuerza" />
+
+    <TextView
+        android:id="@+id/statEnergia"
+        android:layout_width="62dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="5dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/iEnergia"
+        app:layout_constraintStart_toEndOf="@+id/iEnergia"
+        app:layout_constraintTop_toTopOf="@+id/iEnergia" />
+</androidx.constraintlayout.widget.ConstraintLayout>

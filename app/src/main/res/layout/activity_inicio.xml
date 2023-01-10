@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@drawable/fondo_inicio">
+    android:background="@drawable/fondo_inicio"
+    >
+
 
     <TextView
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:layout_marginLeft="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="26dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
         android:text="CATCH THE HIT"
-        android:textSize="50dp"
         android:textColor="@color/white"
         android:fontFamily="sans-serif-medium"/>
 
@@ -31,11 +31,9 @@
         android:text="CÃ³digo de partida" />
 
     <Button
-<<<<<<< Updated upstream
         android:id="@+id/BtnCrearGrupo"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
-=======
         android:id="@+id/BtnDemoJuego"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -53,28 +51,79 @@
     <Button
         android:id="@+id/BtnComoJugar"
         android:layout_width="150dp"
->>>>>>> Stashed changes
         android:layout_height="wrap_content"
         android:background="#8f989e"
         android:onClick="clickBotonEmpezarJuego"
         android:text="@string/boton_empezar" />
+        android:textSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< Updated upstream
     <Button
         android:id="@+id/BtnComoJugar"
         android:layout_marginTop="150dp"
         android:layout_gravity="center_horizontal"
-=======
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
->>>>>>> Stashed changes
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="155dp"
         android:background="#73bbee"
         android:onClick="clickBotonComoJugar"
-        android:text="@string/botonComoJugar" />
+        android:text="@string/botonComoJugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/fondo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/txtEdad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:hint="Código de sala"
+            android:inputType="text"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/BtnCrearGrupo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="#8f989e"
+            android:onClick="clickBotonEmpezarJuego"
+            android:text="@string/boton_empezar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEdad" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

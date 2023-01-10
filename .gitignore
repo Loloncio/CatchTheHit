@@ -84,5 +84,5 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
-#strings.xml
-./app/src/main/res/values/*.xml
+app/src/main/res/raw/prueba.mp4
+app/src/main/res/raw/prueba.mp4

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_cesped"
+    android:backgroundTintMode="screen">
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="50dp"
+      android:layout_marginEnd="20dp"
+      android:background="@drawable/border"
+      android:backgroundTint="@color/fondo"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <ImageView
+        android:id="@+id/iconoJugador"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532"
+        app:srcCompat="@drawable/blue_player" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/border"
+        android:backgroundTint="#70FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/iconoJugador"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iconoJugador">
+
+      <TextView
+          android:id="@+id/tReflejos"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="20dp"
+          android:text="Reflejos"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          app:layout_constraintStart_toStartOf="@+id/reflejos"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <ImageView
+          android:id="@+id/iFuerza"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:layout_marginBottom="10dp"
+          app:layout_constraintBottom_toBottomOf="@+id/tReflejos"
+          app:layout_constraintEnd_toEndOf="@+id/iVelocidad"
+          app:layout_constraintStart_toStartOf="@+id/iVelocidad"
+          app:layout_constraintTop_toTopOf="@+id/tReflejos"
+          app:srcCompat="@drawable/reflejos" />
+
+      <ProgressBar
+          android:id="@+id/reflejos"
+          style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+          android:layout_width="0dp"
+          android:layout_height="30dp"
+          android:layout_marginStart="5dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="5dp"
+          android:indeterminate="false"
+          android:progress="50"
+          android:progressDrawable="@drawable/proggres_bar"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tReflejos" />
+
+      <TextView
+          android:id="@+id/tVelocidad"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_marginTop="20dp"
+          android:text="Velocidad"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          app:layout_constraintStart_toStartOf="@+id/velocidad"
+          app:layout_constraintTop_toBottomOf="@+id/reflejos" />
+
+      <ImageView
+          android:id="@+id/iVelocidad"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          app:layout_constraintBottom_toBottomOf="@+id/tVelocidad"
+          app:layout_constraintEnd_toEndOf="@+id/iEnergia"
+          app:layout_constraintStart_toEndOf="@+id/tVelocidad"
+          app:layout_constraintStart_toStartOf="@+id/iEnergia"
+          app:layout_constraintTop_toTopOf="@+id/tVelocidad"
+          app:srcCompat="@drawable/velocidad" />
+
+      <ProgressBar
+          android:id="@+id/velocidad"
+          style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+          android:layout_width="0dp"
+          android:layout_height="30dp"
+          android:layout_marginStart="5dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="5dp"
+          android:indeterminate="false"
+          android:progress="50"
+          android:progressDrawable="@drawable/proggres_bar"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tVelocidad" />
+
+      <TextView
+          android:id="@+id/tResistencia"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:text="Resistencia"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          app:layout_constraintStart_toStartOf="@+id/resistencia"
+          app:layout_constraintTop_toBottomOf="@+id/velocidad" />
+
+      <ImageView
+          android:id="@+id/iEnergia"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          android:layout_marginStart="15dp"
+          android:layout_marginEnd="10dp"
+          app:layout_constraintBottom_toBottomOf="@+id/tResistencia"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/tResistencia"
+          app:layout_constraintTop_toTopOf="@+id/tResistencia"
+          app:srcCompat="@drawable/resistencia" />
+
+      <ProgressBar
+          android:id="@+id/resistencia"
+          style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+          android:layout_width="0dp"
+          android:layout_height="30dp"
+          android:layout_marginStart="5dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="5dp"
+          android:layout_marginBottom="10dp"
+          android:indeterminate="false"
+          android:progress="50"
+          android:progressDrawable="@drawable/proggres_bar"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tResistencia" />
+
+      <TextView
+          android:id="@+id/txtReflejos"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:textColor="#FFFFFF"
+          android:textSize="16sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="@+id/reflejos"
+          app:layout_constraintStart_toStartOf="@+id/reflejos"
+          app:layout_constraintTop_toTopOf="@+id/reflejos" />
+
+      <TextView
+          android:id="@+id/txtVelocidad"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:textColor="#FFFFFF"
+          android:textSize="16sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="@+id/velocidad"
+          app:layout_constraintStart_toStartOf="@+id/velocidad"
+          app:layout_constraintTop_toTopOf="@+id/velocidad" />
+
+      <TextView
+          android:id="@+id/txtResistencia"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:textColor="#FFFFFF"
+          android:textSize="16sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="@+id/resistencia"
+          app:layout_constraintStart_toStartOf="@+id/resistencia"
+          app:layout_constraintTop_toTopOf="@+id/resistencia" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Ted"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/iconoJugador"
+        app:layout_constraintStart_toStartOf="@+id/iconoJugador"
+        app:layout_constraintTop_toBottomOf="@+id/iconoJugador" />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Jugador:"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <ImageView
+      android:id="@+id/field"
+      android:layout_width="@dimen/icon_width"
+      android:layout_height="@dimen/icon_heigth"
+      android:background="@drawable/border"
+      android:backgroundTint="@color/fondo"
+      android:clickable="true"
+      android:onClick="clickField"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/player"
+      app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+      app:srcCompat="@drawable/aceptar" />
+
+  <ImageView
+      android:id="@+id/player"
+      android:layout_width="@dimen/icon_width"
+      android:layout_height="@dimen/icon_heigth"
+      android:background="@drawable/border"
+      android:backgroundTint="@color/fondo"
+      android:clickable="true"
+      android:onClick="clickTeam"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/field"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+      app:srcCompat="@drawable/team" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

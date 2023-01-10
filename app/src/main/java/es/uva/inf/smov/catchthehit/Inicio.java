@@ -42,6 +42,7 @@ public class Inicio extends AppCompatActivity {
     public void clickDemoJuego(View v) {
         Intent intent = new Intent(Inicio.this, Game_inicio.class);
         startActivity(intent);
+
     }
 
     public void clickBotonComoJugar(View v) {

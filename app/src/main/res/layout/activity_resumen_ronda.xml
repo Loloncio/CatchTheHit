@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResumenRonda">
+    tools:context="es.uva.inf.smov.catchthehit.ResumenRonda">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/campo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0.4"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/field" />
+        app:srcCompat="@drawable/attack_field" />
 
     <TextView
         android:id="@+id/resumen_ronda_titulo"
@@ -58,6 +59,7 @@
         android:layout_width="198dp"
         android:layout_height="80dp"
         android:text="@string/siguiente_ronda_button"
+        android:onClick="clickSiguienteRonda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
