@@ -74,7 +74,7 @@ public class JugadorDefensaActivity extends AppCompatActivity {
         setDatos();
     }
 
-    public void clickField(View v) {
+    public void clickOk(View v) {
         //Creamos el intent
         Intent intent = new Intent(JugadorDefensaActivity.this, ModoDefensa.class);
         intent.putExtra("codigo", codigo);
@@ -107,11 +107,11 @@ public class JugadorDefensaActivity extends AppCompatActivity {
         txtNombre.setText(nombre);
         int id;
         switch (nombre) {
-            case "Ted":
+            case "Tom":
                 id = getResources().getIdentifier("es.uva.inf.smov.catchthehit:drawable/red_player", null, null);
                 imagen.setImageResource(id);
                 break;
-            case "Babe":
+            case "Ted":
                 id = getResources().getIdentifier("es.uva.inf.smov.catchthehit:drawable/green_player", null, null);
                 imagen.setImageResource(id);
                 break;

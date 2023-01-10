@@ -78,17 +78,6 @@ public class EquipoDefensa extends AppCompatActivity {
         cyan = false;
         yellow = false;
 
-        /*
-        primera_base = null;
-        segunda_base = null;
-        tercera_base = null;
-        short_stop = null;
-        jardinero_derecho = null;
-        jardinero_centro = null;
-        jardinero_izquierdo = null;
-        */
-
-
         player_green = (TextView) findViewById(R.id.name_green);
         player_red = (TextView) findViewById(R.id.name_red);
         player_blue = (TextView) findViewById(R.id.name_blue);
@@ -98,13 +87,13 @@ public class EquipoDefensa extends AppCompatActivity {
         player_gray = (TextView) findViewById(R.id.name_gray);
         player_cyan = (TextView) findViewById(R.id.name_cyan);
         player_yellow = (TextView) findViewById(R.id.name_yelow);
-        player_green.setText("Babe");
-        player_red.setText("Ted");
+        player_red.setText("Tom");
+        player_green.setText("Ted");
         player_blue.setText("Willie");
         player_purple.setText("Stan");
+        player_gray.setText("Lucas");
         player_orange.setText("John");
         player_pink.setText("Jackson");
-        player_gray.setText("Lucas");
         player_cyan.setText("Charlie");
         player_yellow.setText("Andrey");
 
@@ -112,15 +101,15 @@ public class EquipoDefensa extends AppCompatActivity {
         b = new Bundle();
 
         jugadores = new HashMap<>();
-        jugadores.put(1,R.id.iFuerza);
-        jugadores.put(9,R.id.imageView2);
+        jugadores.put(0,R.id.imageView1);
+        jugadores.put(1,R.id.imageView2);
         jugadores.put(2,R.id.imageView3);
         jugadores.put(3,R.id.imageView4);
-        jugadores.put(6,R.id.imageView5);
-        jugadores.put(4,R.id.imageView6);
-        jugadores.put(5,R.id.imageView7);
-        jugadores.put(8,R.id.imageView9);
+        jugadores.put(4,R.id.imageView5);
+        jugadores.put(5,R.id.imageView6);
+        jugadores.put(6,R.id.imageView7);
         jugadores.put(7,R.id.imageView8);
+        jugadores.put(8,R.id.imageView9);
 
         //Para que se guarden las imagenes
         if(bundle.containsKey("primera_base")) {
@@ -209,26 +198,13 @@ public class EquipoDefensa extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*
-    public void clickPlayer(View v) {
-        //Creamos el intent
-        Intent intent = new Intent(EquipoDefensa.this, JugadorActivity.class);
-
-        database = FirebaseDatabase.getInstance("https://catch-the-hit-default-rtdb.europe-west1.firebasedatabase.app/");
-        DatabaseReference myRef = database.getReference(partida.getCodigo());
-        myRef.setValue(partida);
-        intent.putExtra("codigo",partida.getCodigo());
-
-        startActivity(intent);
-    }*/
-
     public void clickRedPlayer(View v){
         if(jugadores.containsKey(10)){
             CharSequence fail = "El jugador ya esta en una posicion. Sustituidlo para poder seleccionarlo de nuevo";
             Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
             toast.show();
         }else {
-            aJugador(partida.getEquipo1().elegirJugador(1));
+            aJugador(partida.getEquipo1().elegirJugador(0));
         }
     }
 
@@ -238,7 +214,7 @@ public class EquipoDefensa extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
             toast.show();
         }else {
-            aJugador(partida.getEquipo1().elegirJugador(9));
+            aJugador(partida.getEquipo1().elegirJugador(1));
         }
     }
 
@@ -268,7 +244,7 @@ public class EquipoDefensa extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
             toast.show();
         }else {
-            aJugador(partida.getEquipo1().elegirJugador(6));
+            aJugador(partida.getEquipo1().elegirJugador(4));
         }
     }
 
@@ -278,7 +254,7 @@ public class EquipoDefensa extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
             toast.show();
         }else {
-            aJugador(partida.getEquipo1().elegirJugador(4));
+            aJugador(partida.getEquipo1().elegirJugador(5));
         }
     }
 
@@ -288,7 +264,7 @@ public class EquipoDefensa extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), fail, Toast.LENGTH_LONG);
             toast.show();
         }else {
-            aJugador(partida.getEquipo1().elegirJugador(5));
+            aJugador(partida.getEquipo1().elegirJugador(6));
         }
     }
 
@@ -324,7 +300,6 @@ public class EquipoDefensa extends AppCompatActivity {
         intent.putExtra("codigo", codigo);
         intent.putExtra("idJugador",jugador.getId());
         intent.putExtra("casilla",bundle.getString("casilla"));
-        //b.putInt(bundle.getString("casilla"),jugador.getId());
         intent.putExtras(b);
         startActivity(intent);
     }
