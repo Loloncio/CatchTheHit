@@ -69,13 +69,13 @@ public class espera_defensa extends AppCompatActivity {
         player_gray = (TextView) findViewById(R.id.name_gray);
         player_cyan = (TextView) findViewById(R.id.name_cyan);
         player_yellow = (TextView) findViewById(R.id.name_yelow);
-        player_green.setText("Babe");
-        player_red.setText("Ted");
+        player_red.setText("Tom");
+        player_green.setText("Ted");
         player_blue.setText("Willie");
         player_purple.setText("Stan");
+        player_gray.setText("Lucas");
         player_orange.setText("John");
         player_pink.setText("Jackson");
-        player_gray.setText("Lucas");
         player_cyan.setText("Charlie");
         player_yellow.setText("Andrey");
 

@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
-            android:text="Fuerza"
+            android:text="Reflejos"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/reflejos"
@@ -55,7 +55,7 @@
             app:layout_constraintEnd_toEndOf="@+id/iVelocidad"
             app:layout_constraintStart_toStartOf="@+id/iVelocidad"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/fuerza" />
+            app:srcCompat="@drawable/reflejos" />
 
         <ProgressBar
             android:id="@+id/reflejos"

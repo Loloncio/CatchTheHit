@@ -235,7 +235,7 @@
       android:background="@drawable/border"
       android:backgroundTint="@color/fondo"
       android:clickable="true"
-      android:onClick="clickField"
+      android:onClick="clickOk"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.5"
