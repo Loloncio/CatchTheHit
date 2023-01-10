@@ -36,8 +36,12 @@ public class Inicio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-
         txtEdad = (EditText) findViewById(R.id.txtEdad);
+    }
+
+    public void clickDemoJuego(View v) {
+        Intent intent = new Intent(Inicio.this, Game_inicio.class);
+        startActivity(intent);
 
     }
 
